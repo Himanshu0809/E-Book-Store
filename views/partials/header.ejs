@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/landing.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"
+        async></script>
+    <title>E-Book Store</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-end">
+
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">HJ STORE</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="nav navbar-nav ml-auto mt-2 mt-lg-0 ">
+                <%if(currentUser&& currentUser.isAdmin==="admin"){%>
+                <li class="nav-item">
+                    <a class="btn btn-primary btn-large" href="/books/new">Add new Book</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-danger btn-large" href="/bestselling/new">Add new BS</a>
+                </li>
+                <%}%>
+                   
+                <li class="nav-item">
+                    <form class="form-inline" method="GET" action="/books">
+                        <div class="form-group">
+                            <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search books here...">
+                            <button class="btn btn-success" type="submit">Search</button>
+                        </div>
+                    </form>
+                </li>
+                <%if(!currentUser){%>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/register">Sign Up</a>
+                </li>
+                <%}else{%>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Signed in as <%=currentUser.username%></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Log Out</a>
+                </li>
+                <%}%>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact us</a>
+                    </li>
+                </ul>
+
+            </div>
+        
+
+    </nav>
+    <div class="container">
+        <%if(error && error.length>0){%>
+                <div class="alert alert-danger">
+                    <%=error%>
+                </div>
+                <%}%>
+        <%if(success && success.length>0){%>
+                <div class="alert alert-success">
+                    <%=success%>
+                </div>
+                <%}%>
+    </div>

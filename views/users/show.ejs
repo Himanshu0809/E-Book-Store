@@ -1,0 +1,36 @@
+<%include ../partials/header%>
+
+<div class="userprofile">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h1><%=user.firstname+" "+user.lastname%></h1>
+                <div class="thumbnail">
+                    <div class="imgcontainer">
+                        <img class="avatar" src="<%=user.image%>" alt="Avatar">
+                        <%if(currentUser){%>
+                            <form action="/users/<%=user._id%>/dp" method="POST" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="image"></label>
+                                    <input type="file" id="image" name="image" accept="image/*" required>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-lg btn-primary btn-block">Upload</button>
+                                </div>
+                            </form>
+                        <%}%>
+                        
+                    </div>
+                    <div class="caption"><a href="mailto:<%=user.email%>"><%=user.email%></a></div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <h3><%=user.username%></h3>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<%include ../partials/footer%>

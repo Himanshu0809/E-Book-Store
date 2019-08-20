@@ -1,0 +1,78 @@
+<%include ../partials/header%>
+
+<div class="register-form">
+    <form action="/register" method="POST" class="full">
+        <div class="imgcontainer">
+            <div class="form-group">
+                <img src="https://previews.123rf.com/images/tanyastock/tanyastock1803/tanyastock180300490/97923644-user-icon-avatar-login-sign-circle-button-with-soft-color-gradient-background-vector-.jpg"
+                    alt="Avatar" class="avatar">
+            </div>
+        </div>
+        <div class="container">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        <i class="fa fa-user icon"></i>
+                        <label for="uname"><b>Username: </b></label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" placeholder="Enter Username" name="username" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        <i class="fa fa-key icon"></i>
+                        <label for="psw"><b>Password: </b></label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="password" placeholder="Enter Password" name="password" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        <i class="fa fa-user icon"></i>
+                        <label for="fname"><b>Firstname: </b></label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" placeholder="Enter First name" name="firstname" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        <i class="fa fa-user icon"></i>
+                        <label for="lname"><b>Last name: </b></label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" placeholder="Enter Last name" name="lastname" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        <i class="fas fa-envelope"></i>
+                        <label for="email"><b>Email: </b></label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="email" placeholder="Enter Email" name="email" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit">Sign Up</button>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" name="remember" required> Accept Terms and Conditions
+                </label>
+            </div>
+        </div>
+    </form>
+</div>
+<%include ../partials/footer%>

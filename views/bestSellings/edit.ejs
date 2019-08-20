@@ -1,0 +1,36 @@
+<%include ../partials/header%>
+<div class="container">
+    <div class="row">
+        <h1>Edit <%=bestSelling.name%></h1>
+        <div style="width:30%; margin: 25px auto;">
+            <form action="/bestselling/<%= bestSelling._id %>?_method=PUT" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="bs[title]" value="<%=bestSelling.title%>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="bs[price]" value="<%=bestSelling.price%>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="bs[image]" value="<%=bestSelling.image%>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="bs[author]" value="<%=bestSelling.author%>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="bs[publisher]" value="<%=bestSelling.publisher%>">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" name="bs[description]">
+                            <%=bestSelling.description%>
+                    </textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Submit</button>
+                </div>
+            </form>
+            <a href="/bestselling">GO BACK</a>
+        </div>
+    </div>
+</div>
+
+<%include ../partials/footer%>

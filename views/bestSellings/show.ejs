@@ -1,0 +1,98 @@
+<% include ../partials/header%>
+
+<div class="container">
+    <header class="jumbotron">
+        <div class="container">
+            <h1>Welcome to HJ Store</h1>
+            <p>View our hand-picked collection of books from various sources</p>
+        </div>
+    </header>
+    <div class="book-show">
+        <div class="row">
+            <div class="col-md-12">
+                <h5 class="card-title"><%=bestSelling.title%></h5>
+                <hr>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="thumbnail">
+                    <div class="space book-image">
+                        <div class="card bg-dark">
+                            <img src="<%=bestSelling.image%>" alt="<%=bestSelling.title%>">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="thumbnail">
+                    <div class="space">
+                        <div class="card-bg-light">
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <p>
+                                            <%=bestSelling.description%>
+                                        </p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <p>
+                                            <strong>Author: </strong><em><%=bestSelling.author%></em>
+                                            <br>
+                                            <strong>Publisher: </strong><em><%=bestSelling.publisher%></em>
+                                            <br>
+                                            <strong style="color:black;">Price: </strong><%=bestSelling.price%>
+                                        </p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="#" class="btn btn-xs btn-primary"> Add to Cart</a>
+                                        <a style="float: right" href="#" class="btn btn-xs btn-success">Buy</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <% if(currentUser&&currentUser.isAdmin=="admin"){%>
+                                        <a class="btn btn-xs btn-warning"
+                                            href="/bestselling/<%=bestSelling._id%>/edit">Edit</a>
+                                        <form id="delete-form" action="/bestselling/<%= bestSelling._id%>?_method=delete"
+                                            method="POST">
+                                            <button class="btn btn-xs btn-danger">Delete</button>
+                                        </form>
+                                        <%}%> 
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="comment">
+        <div class="card card-body bg-light">
+            <div class="text-right">
+                <a class="btn btn-success" href="/bestselling/<%= bestSelling._id%>/comments/new">Add New Comment</a>
+            </div>
+            <hr>
+            <% bestSelling.comments.forEach(function(comment){%>
+            <div class="row">
+                <div class="col-md-12">
+                    <strong><a href="/users/<%=comment.user.id%>"><%=comment.user.username%></a></strong>
+                    <span class="float-right">10 Days ago</span>
+                    <p>
+                        <%= comment.text%>
+                    </p>
+                    <%if(currentUser && comment.user.id.equals(currentUser._id)||currentUser&&currentUser.isAdmin==="admin"){%>
+                    <a class="btn btn-xs btn-warning"
+                        href="/bestselling/<%=bestSelling._id%>/comments/<%=comment._id%>/edit">Edit</a>
+                    <form id="delete-form"
+                        action="/bestselling/<%=bestSelling._id%>/comments/<%=comment._id%>?_method=DELETE"
+                        method="POST">
+                        <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                    </form>
+                    <%}%>
+                </div>
+            </div>
+            <%})%>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer%>

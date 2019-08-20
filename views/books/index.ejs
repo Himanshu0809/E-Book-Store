@@ -1,0 +1,56 @@
+<% include ../partials/header%>
+
+<div class="container">
+    <header class="jumbotron">
+        <div class="container">
+            <h1>Welcome to HJ Store</h1>
+            <p>View our hand-picked collection of books from various sources</p>
+        </div>
+    </header>
+    <div class="row text-center">
+        <div class="col-md-12">
+            <%if(noMatch!==undefined){%>
+            <h3><%=noMatch%></h3>
+            <p>
+                <form class="form-inline" method="GET" action="/books">
+                    <div class="form-group">
+                        <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search books here...">
+                        <button class="btn btn-success" type="submit">Search</button>
+                    </div>
+                </form>
+            </p>
+            <%}%>
+        </div>
+        <%books.forEach(function(book){%>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                    <div class="space">
+                        <div class="card bg-light">
+                            <h5 class="card-title"><%=book.name%></h5>
+                            <img src="<%=book.image%>" class="card-img-top-xs" alt="<%=book.name%>">
+                            <div class="card-body">
+                                <h6 class="card-title font-weight-bold"><%=book.title%></h6>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <p>
+                                            <strong>Author: </strong><em><%=book.author%></em>
+                                            <br>
+                                            <strong style="color:black;">Price: </strong><%=book.price%>
+                                        </p>
+                                    <li class="list-group-item">
+                                        <a style="float: left" href="/books/<%=book._id%>"
+                                            class="btn btn-xs btn-primary">More</a>
+                                        <!-- Add to cart functionality and then redirect to the cart page -->
+                                        <a style="float:right" href="#" class="btn btn-xs btn-success"> Add to Cart</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%});%>
+        </div>
+    </div>
+
+    <% include ../partials/footer%>

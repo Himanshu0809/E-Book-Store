@@ -1,0 +1,368 @@
+
+/*  ========================================
+ show page for books and best selling 
+    ========================================*/
+.book-show{
+    background: #C6FFDD;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f7797d, #FBD786, #C6FFDD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.book-show .card-title{
+    text-align:center;
+    font-size: 3em;
+}
+
+/* Styling the images of the show page */
+.book-show .thumbnail{
+    display: flex;
+    flex-wrap: wrap;
+    padding:0;
+}
+
+.book-show .thumbnail img{
+    width:100%;
+}
+
+.book-show .thumbnail .caaption-full{
+    padding:9px;
+}
+
+.book-show .book-image{
+    text-align: center;
+    width: 100%;
+    padding: 10%;
+    margin-top:10%;
+    margin-left:5%;
+}
+
+@media only screen and (max-width:992px){
+    .book-show .book-image{
+        text-align: center;
+        width: 100%;
+        height:100%;
+        padding: 5% 10%;
+        margin-top:2%;
+    }
+}
+
+.book-show{
+    padding:20px;
+    margin: 10px;
+    margin-bottom: 20px;
+    border:1px solid rgb(199, 195, 195);
+}
+/* comment section of show page */
+.comment{
+    padding:20px;
+    margin:10px;
+    margin-bottom: 30px;
+}
+
+
+/*  =====================================
+    Register form
+    ===================================== */
+
+.register-form .full{
+    width:40%;
+    margin:50px auto;
+}
+    
+.register-form form {
+    border: 3px solid #f1f1f1;
+    background: #FF4E50;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #F9D423, #FF4E50);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #F9D423, #FF4E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+      
+.register-form .imgcontainer{
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+    
+.register-form .avatar{
+    width: 40%;
+    border-radius:50%
+}  
+    
+.register-form .container{
+    padding: 20px;
+}
+    
+.register-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+      
+.register-form button:hover{
+    opacity: 0.8;
+}
+    
+.register-form input[type=text],.register-form input[type=email], .register-form input[type=password]{
+    width:100%;
+    padding: 5px 20px;
+    margin-bottom: 2px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+/*  =====================================
+    Login form
+    ===================================== */
+
+.login-form .full{
+    width:40%;
+    margin:50px auto;
+}
+    
+.login-form form {
+    border: 3px solid #f1f1f1;
+    background: #C9FFBF;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFAFBD, #C9FFBF);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFAFBD, #C9FFBF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+      
+.login-form .imgcontainer{
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+    
+.login-form .avatar{
+    width: 40%;
+    border-radius:50%
+}
+    
+    
+.login-form .container{
+    padding: 20px;
+}
+    
+.login-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+      
+.login-form button:hover{
+    opacity: 0.8;
+}
+    
+.login-form input[type=text],.login-form input[type=password]{
+    width:100%;
+    padding: 12px 20px;
+    margin-bottom: 16px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+    
+.login-form span.psw{
+    float:right;
+    padding-top:16px;
+}
+    
+@media screen and (max-width: 300px) {
+    .login-form span.psw {
+       display: block;
+       float: none;
+    } 
+}
+    
+/*  ======================================
+    User Profile
+    ====================================== */
+
+.userprofile .imgcontainer{
+    border: 1px solid #ccc;
+    width: 100%;
+    height: 100%;
+}
+.userprofile .avatar{
+    width: 100%;
+    border-radius:50%
+}
+
+
+/*  ======================================
+    NAVBAR
+    ====================================== */
+
+.navbar .form-inline{
+    margin-right:20px;
+}
+
+
+/* ========================================
+   CONTACT PAGE
+   ======================================== */
+
+section {
+    padding-bottom: 50px;
+    width:90%;
+    margin:0 auto;
+}
+
+img {
+    vertical-align: middle;
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.contact {
+    margin-top: -20%;
+    padding: 1.5% 5% 3% 5%;
+    background-color:white;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.img-responsive{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.contact-address ul{
+    padding: 0px;
+}
+
+.contact-address li {
+    list-style: none;
+}
+
+/* to give the icon some effects */
+.contact-address i {
+    float: left;
+    font-size: 1.1667em;
+    margin-top:3px;
+    background: #08918e;
+    width: 2.5em;
+    height: 2.5em;
+    line-height: 2.5em;
+    border-radius: 50% 50% 50% 50%;
+    color: #fff;
+    text-align: center;
+}
+
+.contact-address h4 {
+    font-size: 20px;
+    font-weight: 600;
+    padding: 20px 0px 10px 0px;
+    border-bottom: 1px solid Gray;
+    width: 80%;
+    color: #333;
+    margin-bottom: 26px;
+}
+
+.style .details {
+    border-bottom: 1px solid #edf6ff;
+    margin-left: 50px;
+    padding-bottom: 15px;
+    padding-left: 15px !important;
+}
+
+.details h5 {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 5px;
+    margin-top: 0px;
+    color: #08918e;
+}
+
+.details p {
+    margin: 0 0 10px;
+    font-size: 12px;
+}
+
+a {
+    color: #08918e;
+    text-decoration: none;
+}
+
+form {
+    display: block;
+    margin-top: 0em;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-control {
+    width: 100%;
+    height: 42px;
+    color: #555;
+    background-color: #fff;
+}
+
+.contact-form {
+    background-color: gray;
+    text-align: left;
+    border-radius: 10px;    
+}
+
+
+/* for desktop */
+.contact-form h5 {
+    font-size: 30px;
+    font-weight: 700;
+    padding: 20px 0px 20px 0px;
+    border-bottom: 1px solid white;
+    width: 80%;
+    color: White;
+}
+
+/* for mobile and tab */
+@media only screen and (max-width: 992px) {
+    .contact-form h5 {
+        font-size: 16px;
+        padding: 10px 0px 5px 0px;
+    }
+}            
+
+.contact-form p {
+    color: #FFF;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.contact-form .btn-success{
+    border-radius: 5px;
+    padding: 5px 20px;
+    margin: 0px 0px 10px 0px;
+}
+
+/*  =====================================
+    FOOTER
+    ===================================== */
+
+.footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    flex-shrink: 0;
+    background-color: #134c7d;
+    text-align: center;
+}
+

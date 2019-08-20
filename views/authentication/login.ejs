@@ -1,0 +1,21 @@
+<%include ../partials/header%>
+
+<div class="login-form">
+    <form action="/login" method="POST" class="full">
+        <div class="imgcontainer">
+            <img src="https://previews.123rf.com/images/tanyastock/tanyastock1803/tanyastock180300490/97923644-user-icon-avatar-login-sign-circle-button-with-soft-color-gradient-background-vector-.jpg"
+                alt="Avatar" class="avatar">
+        </div>
+        <div class="container">
+            <i class="fa fa-user icon"></i>
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="username" required>
+            <i class="fa fa-key icon"></i>
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+            <button type="submit">Login</button>
+            <span class="psw"><a href="/forgot">Forgot password?</a></span>
+        </div>
+    </form>
+</div>
+<%include ../partials/footer%>

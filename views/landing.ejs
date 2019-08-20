@@ -1,0 +1,465 @@
+<% include ./partials/header%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<div id="section1">
+    <div id="demo" class="carousel slide" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+            <li data-target="#demo" data-slide-to="3"></li>
+        </ul>
+
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../public/images/slider/1.jpg" alt="HJ Store">
+                <div class="carousel-caption">
+                    <h1 class="display-1"><b>HJ STORE</b></h1>
+                    <p>
+                        <h3>&emsp;&emsp;The place you trust...</h3>
+                    </p>
+                    <a class="scroll-down" href="#section2"><span class="scroll-symbol"></span>Scroll</a>
+                </div>
+
+            </div>
+            <div class="carousel-item">
+                <img src="../public/images/slider/2.jpg" alt="HJ Store">
+                <div class="carousel-caption">
+                    <a class="scroll-down" href="#section2"><span class="scroll-symbol"></span>Scroll</a>
+                </div>
+
+            </div>
+            <div class="carousel-item">
+                <img src="../public/images/slider/3.jpg" alt="HJ Store">
+
+                <div class="carousel-caption">
+                    <a class="scroll-down" href="#section2"><span class="scroll-symbol"></span>Scroll</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="../public/images/slider/4.jpg" alt="HJ Store">
+
+                <div class="carousel-caption">
+                    <a class="scroll-down" href="#section2"><span class="scroll-symbol"></span>Scroll</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+</div>
+
+
+<div id="section2">
+    <div class="container">
+        <div class="lead">
+            <h1>Best Selling Books</h1>
+        </div>
+        <hr>
+        <div id="carousel-example-multi" class="carousel slide carousel-multi-item v-2" data-ride="carousel">
+            <!--Controls-->
+            <div class="controls-top">
+                <a class="btn-floating" href="#carousel-example-multi" data-slide="prev"><i
+                        class="fas fa-chevron-left"></i></a>
+                <a class="btn-floating" href="#carousel-example-multi" data-slide="next"><i
+                        class="fas fa-chevron-right"></i></a>
+            </div>
+            <!--/.Controls-->
+
+            <a style="float:right;" href="/bestselling">View All</a>
+
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card mb-2">
+
+                            <img class="card-img-top" src="<%=bestSellings[0].image%>" alt="Card image cap">
+                            <div class="card-body">
+                                <h6 class="card-title font-weight-bold"><%=bestSellings[0].title%></h6>
+                                <p class="card-text">
+
+                                    <strong>Author: </strong><%=bestSellings[0].author%><br><strong>Price:
+                                    </strong><%=bestSellings[0].price%>
+                                </p>
+                                <div class="best-selling-buttons">
+
+                                    <a href="/bestselling/<%=bestSellings[0]._id%>"  class="btn btn-primary btn-md btn-rounded">More</a>
+                                    <a class="btn btn-success btn-md btn-rounded">Add to Cart</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card mb-2">
+                            <img class="card-img-top" src="<%=bestSellings[1].image%>" alt="Card image cap">
+                            <div class="card-body">
+                                <h6 class="card-title font-weight-bold"><%=bestSellings[1].title%></h6>
+                                <p class="card-text">
+                                    <strong>Author: </strong><%=bestSellings[1].author%><br><strong>Price:
+                                    </strong><%=bestSellings[1].price%>
+                                </p>
+                                <div class="best-selling-buttons">
+
+                                    <a href="/bestselling/<%=bestSellings[1]._id%>"  class="btn btn-primary btn-md btn-rounded">More</a>
+                                    <a class="btn btn-success btn-md btn-rounded">Add to Cart</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card mb-2">
+                            <img class="card-img-top" src="<%=bestSellings[2].image%>" alt="Card image cap">
+                            <div class="card-body">
+                                <h6 style="font-size: 13px" class="card-title font-weight-bold">
+                                    <%=bestSellings[2].title%></h6>
+                                <p style="font-size: .8em" class="card-text">
+                                    <strong>Author: </strong><%=bestSellings[2].author%><br><strong>Price:
+                                    </strong><%=bestSellings[2].price%>
+                                </p>
+                                <div class="best-selling-buttons">
+
+                                    <a href="/bestselling/<%=bestSellings[2]._id%>"  class="btn btn-primary btn-md btn-rounded">More</a>
+                                    <a class="btn btn-success btn-md btn-rounded">Add to Cart</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card mb-2">
+                            <img class="card-img-top" src="<%=bestSellings[3].image%>" alt="Card image cap">
+                            <div class="card-body">
+                                <h6 class="card-title font-weight-bold"><%=bestSellings[3].title%></h6>
+                                <p class="card-text">
+                                    <strong>Author: </strong><%=bestSellings[3].author%><br><strong>Price:
+                                    </strong><%=bestSellings[3].price%>
+                                </p>
+                                <div class="best-selling-buttons">
+
+                                    <a href="/bestselling/<%=bestSellings[3]._id%>"  class="btn btn-primary btn-md btn-rounded">More</a>
+                                    <a class="btn btn-success btn-md btn-rounded">Add to Cart</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card mb-2">
+                            <img class="card-img-top" src="<%=bestSellings[4].image%>" alt="Card image cap">
+                            <div class="card-body">
+                                <h6 class="card-title font-weight-bold"><%=bestSellings[4].title%></h6>
+                                <p class="card-text">
+                                    <strong>Author: </strong><%=bestSellings[4].author%><br><strong>Price:
+                                    </strong><%=bestSellings[4].price%>
+                                </p>
+                                <div class="best-selling-buttons">
+
+                                    <a href="/bestselling/<%=bestSellings[4]._id%>"  class="btn btn-primary btn-md btn-rounded">More</a>
+                                    <a class="btn btn-success btn-md btn-rounded">Add to Cart</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card mb-2">
+                            <img class="card-img-top" src="<%=bestSellings[5].image%>" alt="Card image cap">
+                            <div class="card-body">
+                                <h6 class="card-title font-weight-bold"><%=bestSellings[5].title%></h6>
+                                <p class="card-text">
+                                    <strong>Author: </strong><%=bestSellings[5].author%><br><strong>Price:
+                                    </strong><%=bestSellings[5].price%>
+                                </p>
+                                <div class="best-selling-buttons">
+
+                                    <a href="/bestselling/<%=bestSellings[5]._id%>"  class="btn btn-primary btn-md btn-rounded">More</a>
+                                    <a class="btn btn-success btn-md btn-rounded">Add to Cart</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card mb-2">
+                            <img class="card-img-top" src="<%=bestSellings[6].image%>" alt="Card image cap">
+                            <div class="card-body">
+                                <h6 class="card-title font-weight-bold"><%=bestSellings[6].title%></h6>
+                                <p class="card-text">
+                                    <strong>Author: </strong><%=bestSellings[6].author%><br><strong>Price:
+                                    </strong><%=bestSellings[6].price%>
+                                </p>
+                                <div class="best-selling-buttons">
+
+                                    <a href="/bestselling/<%=bestSellings[6]._id%>"  class="btn btn-primary btn-md btn-rounded">More</a>
+                                    <a class="btn btn-success btn-md btn-rounded">Add to Cart</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col-12 col-md-4 col-lg-3">
+                        <div class="card mb-2">
+                            <img class="card-img-top" src="<%=bestSellings[7].image%>" alt="Card image cap">
+                            <div class="card-body">
+                                <h6 class="card-title font-weight-bold"><%=bestSellings[7].title%></h6>
+                                <p class="card-text">
+                                    <strong>Author: </strong><%=bestSellings[7].author%><br><strong>Price:
+                                    </strong><%=bestSellings[7].price%>
+                                </p>
+                                <div class="best-selling-buttons">
+
+                                    <a href="/bestselling/<%=bestSellings[7]._id%>"  class="btn btn-primary btn-md btn-rounded">More</a>
+                                    <a class="btn btn-success btn-md btn-rounded">Add to Cart</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="section3" class="card card-body bg-light">
+    <div class="container">
+        <div class="lead">
+            <h1>HJ Books Collection</h1>
+        </div>
+        <hr>
+        <div id="carousel-example-multi-2" class="carousel slide carousel-multi-item v-2" data-ride="carousel">
+            <!--Controls-->
+            <div class="controls-top">
+                <a class="btn-floating" href="#carousel-example-multi-2" data-slide="prev"><i
+                        class="fas fa-chevron-left"></i></a>
+                <a class="btn-floating" href="#carousel-example-multi-2" data-slide="next"><i
+                        class="fas fa-chevron-right"></i></a>
+            </div>
+            <!--/.Controls-->
+
+            <a style="float:right;" href="/books">View All</a>
+
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card mb-2">
+
+                            <img class="card-img-top" src="<%=books[18].image%>" alt="Card image cap">
+                            <div class="card-body">
+                                <h6 class="card-title font-weight-bold"><%=books[18].title%></h6>
+                                <p class="card-text">
+
+                                    <strong>Author: </strong><%=books[18].author%><br><strong>Price:
+                                    </strong><%=books[18].price%>
+                                </p>
+                                <div class="best-selling-buttons">
+
+                                    <a href="/books/<%=books[18]._id%>" class="btn btn-primary btn-md btn-rounded">More</a>
+                                    <a class="btn btn-success btn-md btn-rounded">Add to Cart</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card mb-2">
+                            <img class="card-img-top" src="<%=books[34].image%>" alt="Card image cap">
+                            <div class="card-body">
+                                <h6 class="card-title font-weight-bold"><%=books[34].title%></h6>
+                                <p class="card-text">
+                                    <strong>Author: </strong><%=books[34].author%><br><strong>Price:
+                                    </strong><%=books[34].price%>
+                                </p>
+                                <div class="best-selling-buttons">
+
+                                    <a href="/books/<%=books[34]._id%>"  class="btn btn-primary btn-md btn-rounded">More</a>
+                                    <a class="btn btn-success btn-md btn-rounded">Add to Cart</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card mb-2">
+                            <img class="card-img-top" src="<%=books[2].image%>" alt="Card image cap">
+                            <div class="card-body">
+                                <h6 class="card-title font-weight-bold">
+                                    <%=books[2].title%></h6>
+                                <p class="card-text">
+                                    <strong>Author: </strong><%=books[2].author%><br><strong>Price:
+                                    </strong><%=books[2].price%>
+                                </p>
+                                <div class="best-selling-buttons">
+
+                                    <a href="/books/<%=books[2]._id%>"  class="btn btn-primary btn-md btn-rounded">More</a>
+                                    <a class="btn btn-success btn-md btn-rounded">Add to Cart</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card mb-2">
+                            <img class="card-img-top" src="<%=books[3].image%>" alt="Card image cap">
+                            <div class="card-body">
+                                <h6 class="card-title font-weight-bold"><%=books[3].title%></h6>
+                                <p class="card-text">
+                                    <strong>Author: </strong><%=books[3].author%><br><strong>Price:
+                                    </strong><%=books[3].price%>
+                                </p>
+                                <div class="best-selling-buttons">
+
+                                    <a href="/books/<%=books[3]._id%>"  class="btn btn-primary btn-md btn-rounded">More</a>
+                                    <a class="btn btn-success btn-md btn-rounded">Add to Cart</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card mb-2">
+                            <img class="card-img-top" src="<%=books[192].image%>" alt="Card image cap">
+                            <div class="card-body">
+                                <h6 class="card-title font-weight-bold"><%=books[192].title%></h6>
+                                <p class="card-text">
+                                    <strong>Author: </strong><%=books[192].author%><br><strong>Price:
+                                    </strong><%=books[192].price%>
+                                </p>
+                                <div class="best-selling-buttons">
+                                    <a href="/books/<%=books[192]._id%>"  class="btn btn-primary btn-md btn-rounded">More</a>
+                                    <a class="btn btn-success btn-md btn-rounded">Add to Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card mb-2">
+                            <img class="card-img-top" src="<%=books[351].image%>" alt="Card image cap">
+                            <div class="card-body">
+                                <h6 class="card-title font-weight-bold"><%=books[351].title%></h6>
+                                <p class="card-text">
+                                    <strong>Author: </strong><%=books[351].author%><br><strong>Price:
+                                    </strong><%=books[351].price%>
+                                </p>
+                                <div class="best-selling-buttons">
+
+                                    <a href="/books/<%=books[351]._id%>"  class="btn btn-primary btn-md btn-rounded">More</a>
+                                    <a class="btn btn-success btn-md btn-rounded">Add to Cart</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card mb-2">
+                            <img class="card-img-top" src="<%=books[459].image%>" alt="Card image cap">
+                            <div class="card-body">
+                                <h6 class="card-title font-weight-bold"><%=books[459].title%></h6>
+                                <p class="card-text">
+                                    <strong>Author: </strong><%=books[459].author%><br><strong>Price:
+                                    </strong><%=books[459].price%>
+                                </p>
+                                <div class="best-selling-buttons">
+                                    <a href="/books/<%=books[459]._id%>"  class="btn btn-primary btn-md btn-rounded">More</a>
+                                    <a class="btn btn-success btn-md btn-rounded">Add to Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col-12 col-md-4 col-lg-3">
+                        <div class="card mb-2">
+                            <img class="card-img-top" src="<%=books[180].image%>" alt="Card image cap">
+                            <div class="card-body">
+                                <h6 class="card-title font-weight-bold"><%=books[180].title%></h6>
+                                <p class="card-text">
+                                    <strong>Author: </strong><%=books[180].author%><br><strong>Price:
+                                    </strong><%=books[180].price%>
+                                </p>
+                                <div class="best-selling-buttons">
+                                    <a href="/books/<%=books[180]._id%>"  class="btn btn-primary btn-md btn-rounded">More</a>
+                                    <a class="btn btn-success btn-md btn-rounded">Add to Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    $('#section2 .carousel.carousel-multi-item.v-2 .carousel-item').each(function () {
+        var next = $(this).next();
+        if (!next.length) {
+            next = $(this).siblings(':first');
+        }
+        next.children(':first-child').clone().appendTo($(this));
+
+        for (var i = 0; i < 4; i++) {
+            next = next.next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+            next.children(':first-child').clone().appendTo($(this));
+        }
+    });
+    $('#section3 .carousel.carousel-multi-item.v-2 .carousel-item').each(function () {
+        var next = $(this).next();
+        if (!next.length) {
+            next = $(this).siblings(':first');
+        }
+        next.children(':first-child').clone().appendTo($(this));
+
+        for (var i = 0; i < 4; i++) {
+            next = next.next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+            next.children(':first-child').clone().appendTo($(this));
+        }
+    });
+</script>
+
+<% include ./partials/footer%>
