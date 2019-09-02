@@ -133,8 +133,12 @@ router.post('/forgot', function (req, res, next) {
             });
         }
     ], function (err) {
-        if (err) return next(err);
-        res.redirect('/forgot');
+        if (err) 
+        {
+            console.log(err);
+            return next(err);
+        
+        }res.redirect('/forgot');
     });
 });
 
