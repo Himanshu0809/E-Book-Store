@@ -210,24 +210,30 @@
    CONTACT PAGE
    ======================================== */
 
-section {
+.contact-image {
     padding-bottom: 50px;
     width:90%;
     margin:0 auto;
 }
 
-img {
+.contact image img {
     vertical-align: middle;
 }
 
-.container {
+.contact-image .img-responsive{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.contact-us-page .container {
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
 }
 
-.contact {
+.contact-us-page .contact {
     margin-top: -20%;
     padding: 1.5% 5% 3% 5%;
     background-color:white;
@@ -236,22 +242,16 @@ img {
     margin-bottom: 30px;
 }
 
-.img-responsive{
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
-
-.contact-address ul{
+.contact-us-page .contact-address ul{
     padding: 0px;
 }
 
-.contact-address li {
+.contact-us-page .contact-address li {
     list-style: none;
 }
 
 /* to give the icon some effects */
-.contact-address i {
+.contact-us-page .contact-address i {
     float: left;
     font-size: 1.1667em;
     margin-top:3px;
@@ -264,7 +264,7 @@ img {
     text-align: center;
 }
 
-.contact-address h4 {
+.contact-us-page .contact-address h4 {
     font-size: 20px;
     font-weight: 600;
     padding: 20px 0px 10px 0px;
@@ -274,14 +274,14 @@ img {
     margin-bottom: 26px;
 }
 
-.style .details {
+.contact-us-page .style .details {
     border-bottom: 1px solid #edf6ff;
     margin-left: 50px;
     padding-bottom: 15px;
     padding-left: 15px !important;
 }
 
-.details h5 {
+.contact-us-page .details h5 {
     font-weight: 600;
     font-size: 16px;
     margin-bottom: 5px;
@@ -289,33 +289,33 @@ img {
     color: #08918e;
 }
 
-.details p {
+.contact-us-page .details p {
     margin: 0 0 10px;
     font-size: 12px;
 }
 
-a {
+.contact-us-page a {
     color: #08918e;
     text-decoration: none;
 }
 
-form {
+.contact-us-page form {
     display: block;
     margin-top: 0em;
 }
 
-.form-group {
+.contact-us-page .form-group {
     margin-bottom: 15px;
 }
 
-.form-control {
+.contact-us-page .form-control {
     width: 100%;
     height: 42px;
     color: #555;
     background-color: #fff;
 }
 
-.contact-form {
+.contact-us-page .contact-form {
     background-color: gray;
     text-align: left;
     border-radius: 10px;    
@@ -323,7 +323,7 @@ form {
 
 
 /* for desktop */
-.contact-form h5 {
+.contact-us-page .contact-form h5 {
     font-size: 30px;
     font-weight: 700;
     padding: 20px 0px 20px 0px;
@@ -334,22 +334,64 @@ form {
 
 /* for mobile and tab */
 @media only screen and (max-width: 992px) {
-    .contact-form h5 {
+    .contact-us-page .contact-form h5 {
         font-size: 16px;
         padding: 10px 0px 5px 0px;
     }
 }            
 
-.contact-form p {
+.contact-us-page .contact-form p {
     color: #FFF;
     font-size: 14px;
     line-height: 22px;
 }
 
-.contact-form .btn-success{
+.contact-us-page .contact-form .btn-success{
     border-radius: 5px;
     padding: 5px 20px;
     margin: 0px 0px 10px 0px;
+}
+
+/*  =====================================
+    ABOUT US 
+    ===================================== */
+
+.about-image {
+    padding-bottom: 50px;
+    width:90%;
+    margin:0 auto;
+}
+
+.about-image img {
+    vertical-align: middle;
+}
+
+.about-image .img-responsive{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.about-us-page .container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.about-us-page .about {
+    margin-top: -20%;
+    padding: 1.5% 5% 3% 5%;
+    background-color:white;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.about-us-page .about-form {
+    background-color: rgb(255, 253, 148);
+    text-align: left;
+    border-radius: 10px;    
 }
 
 /*  =====================================
@@ -362,7 +404,12 @@ form {
     width: 100%;
     color: white;
     flex-shrink: 0;
-    background-color: #134c7d;
+    background-color: #eeeb22;
     text-align: center;
 }
 
+/* Google Maps */
+#map {
+    height: 400px;
+    width: 100%;
+}

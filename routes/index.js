@@ -33,4 +33,9 @@ router.post("/contact", function (req, res) {
     //save the details in the backend
 });
 
+//about us 
+router.get("/aboutus", function(req, res){
+    res.render("aboutus");
+});
+
 module.exports = router;

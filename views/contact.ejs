@@ -1,72 +1,76 @@
 <% include ./partials/header%>
-<section>
+<section class="contact-image">
     <img src="../public/images/contact/contact-us.jpg" class="img-responsive" alt="Contact Us" title="Contact Us">
 </section>
-<div class="container">
-
-    <div class="row">
-        <div class="col-md-12">
-            <div class="contact">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div>
-                            <ul class="contact-address style">
-                                <h4>YOU CAN CONTACT US</h4>
-                                <li>
-                                    <i class="fa fa-phone"></i>
-                                    <div class="details">
-                                        <h5>Phone</h5>
-                                        <p><a href="tel:8826286877">+91-8826286877</a></p>
-                                    </div>
-                                </li>
-                                <li><i class="fa fa-envelope"></i>
-                                    <div class="details">
-                                        <h5>Email</h5>
-                                        <p><a href="mailto:guptahimanshu479@gmail.com">guptahimanshu479@gmail.com</a>
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
+<div class="contact-us-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="contact">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div>
+                                <ul class="contact-address style">
+                                    <h4>YOU CAN CONTACT US</h4>
+                                    <li>
+                                        <i class="fa fa-phone"></i>
+                                        <div class="details">
+                                            <h5>Phone</h5>
+                                            <p><a href="tel:8826286877">+91-8826286877</a></p>
+                                        </div>
+                                    </li>
+                                    <li><i class="fa fa-envelope"></i>
+                                        <div class="details">
+                                            <h5>Email</h5>
+                                            <p><a
+                                                    href="mailto:guptahimanshu479@gmail.com">guptahimanshu479@gmail.com</a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 contact-form">
-                        <h5>WE CAN CONTACT YOU</h5>
-                        <p>Do you have inquiry? Fill out the form below and our representative will get back to you with
-                            more
-                            information.</p>
-                        <form action="/contact" method="POST">
-                            <div class="form-group">
-                                <input name="name" type="text" class="form-control" id="contact[name]"
-                                    placeholder="Name" required="">
-                            </div>
-                            <div class="form-group">
-                                <input name="email" type="email" class="form-control" id="contact[email]"
-                                    placeholder="Your Email" onchange="email_validation(this.value,'contact_email')"
-                                    required="">
-                            </div>
-                            <div class="form-group">
-                                <input name="mobile" type="text" class="form-control" id="contact[mobile]"
-                                    placeholder="Mobile" required="">
-                            </div>
-                            <div class="form-group">
-                                <textarea name="message" rows="4" class="form-control"
-                                    placeholder="Type your message here..." required=""></textarea>
-                            </div>
-                            <p>
-                                <input id="id" type="checkbox" name="id" required="">
-                                <span style="vertical-align: text-bottom;">I accept the <a href="#" target="_blank"
-                                        style="color:white;">Terms and Conditions</a></span>
-                            </p>
-                            <input type="submit" class="btn btn-success" name="add-enquiry" value="SEND">
-                        </form>
-                    </div>
+                        <div class="col-md-6 contact-form">
+                            <h5>WE CAN CONTACT YOU</h5>
+                            <p>Do you have inquiry? Fill out the form below and our representative will get back to you
+                                with
+                                more
+                                information.</p>
+                            <form action="/contact" method="POST">
+                                <div class="form-group">
+                                    <input name="name" type="text" class="form-control" id="contact[name]"
+                                        placeholder="Name" required="">
+                                </div>
+                                <div class="form-group">
+                                    <input name="email" type="email" class="form-control" id="contact[email]"
+                                        placeholder="Your Email" onchange="email_validation(this.value,'contact_email')"
+                                        required="">
+                                </div>
+                                <div class="form-group">
+                                    <input name="mobile" type="text" class="form-control" id="contact[mobile]"
+                                        placeholder="Mobile" required="">
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="message" rows="4" class="form-control"
+                                        placeholder="Type your message here..." required=""></textarea>
+                                </div>
+                                <p>
+                                    <input id="id" type="checkbox" name="id" required="">
+                                    <span style="vertical-align: text-bottom;">I accept the <a href="#" target="_blank"
+                                            style="color:white;">Terms and Conditions</a></span>
+                                </p>
+                                <input type="submit" class="btn btn-success" name="add-enquiry" value="SEND">
+                            </form>
+                        </div>
 
+                    </div>
                 </div>
             </div>
+
         </div>
 
     </div>
-
 </div>
+
 
 <% include ./partials/footer%>
