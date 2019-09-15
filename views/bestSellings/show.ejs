@@ -57,6 +57,32 @@
                                         </form>
                                         <%}%> 
                                     </li>
+                                    <div class="pull-right">
+                                        <button type="button" class="btn btn-xs btn-primary" data-toggle="modal"
+                                                data-target="#bestSellingLikes">
+                                            <span>Total likes: <i class="fas fa-thumbs-up"></i> <%= bestSelling.likes.length %></span>
+                                        </button>
+                                    </div>
+                                    <div style="padding-bottom: 10px;">
+                                        <form action="/bestselling/<%= bestSelling._id %>/like" method="POST">
+                                            <div class="btn-group">
+                                                <% if (currentUser && bestSelling.likes.some(function (like) {
+                                                    return like.equals(currentUser._id)
+                                                })) { %>
+                                                <button class="btn btn-sm btn-primary">
+                                                    <i class="fas fa-thumbs-up"></i> Liked (<%= bestSelling.likes.length %>)
+                                                </button>
+                                                <% } else { %>
+                                                <button class="btn btn-sm btn-secondary">
+                                                    <i class="fas fa-thumbs-up"></i> Like (<%= bestSelling.likes.length %>)
+                                                </button>
+                                                <% } %>
+                                                <button type="button" class="btn btn-sm btn-default" data-toggle="modal"
+                                                        data-target="#bestSellingLikes">See more details
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </ul>
                             </div>
                         </div>
@@ -65,6 +91,7 @@
             </div>
         </div>
     </div>
+    
     <div class="comment">
         <div class="card card-body bg-light">
             <div class="text-right">
@@ -91,6 +118,43 @@
                 </div>
             </div>
             <%})%>
+        </div>
+    </div>
+</div>
+
+<!-- BestSelling Likes Modal -->
+<div id="bestSellingLikes" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">BestSelling likes: <%= bestSelling.likes.length %></h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Liked by:</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% bestSelling.likes.forEach(function(like) { %>
+                        <tr>
+                            <td><span class="badge"><i class="fas fa-user"></i></span> <%= like.username %></td>
+                        </tr>
+                    <% }); %>
+                    <% if (bestSelling.likes.length === 0) { %>
+                        <tr>
+                            <td><em>No likes yet.</em></td>
+                        </tr>
+                    <% } %>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
 </div>

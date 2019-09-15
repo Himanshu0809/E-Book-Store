@@ -13,8 +13,7 @@
             <div class="thumbnail">
                 <div class="space">
                     <div class="card bg-light">
-                        <h5 class="card-title"><%=bestSelling.name%></h5>
-                        <img src="<%=bestSelling.image%>" class="card-img-top-xs" alt="<%=bestSelling.name%>">
+                        <img src="<%=bestSelling.image%>" class="card-img-top-xs" alt="<%=bestSelling.title%>">
                         <div class="card-body">
                                 <h6 class="card-title font-weight-bold"><%=bestSelling.title%></h6>
                             <ul class="list-group list-group-flush">
@@ -24,6 +23,9 @@
                                         <br>
                                         <strong style="color:black;">Price: </strong><%=bestSelling.price%>
                                     </p>
+                                    <div>
+                                        <span class="badge label-primary"><i class="fas fa-thumbs-up"></i> <%= bestSelling.likes.length %></span>
+                                    </div>
                                 <li class="list-group-item">
                                     <a style="float: left" href="/bestselling/<%=bestSelling._id%>" class="btn btn-xs btn-primary">More</a>
                                     <!-- Add to cart functionality and then redirect to the cart page -->
