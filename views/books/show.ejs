@@ -14,7 +14,7 @@
                 <hr>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-lg-4">
                 <div class="thumbnail">
                     <div class="space book-image">
                         <div class="card bg-light">
@@ -23,7 +23,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-lg-8">
                 <div class="thumbnail">
                     <div class="space">
                         <div class="card-bg-light">
@@ -57,6 +57,32 @@
                                         </form>
                                         <%}%> 
                                     </li>
+                                    <div class="pull-right">
+                                        <button type="button" class="btn btn-xs btn-primary" data-toggle="modal"
+                                                data-target="#bookLikes">
+                                            <span>Total likes: <i class="fas fa-thumbs-up"></i> <%= book.likes.length %></span>
+                                        </button>
+                                    </div>
+                                    <div style="padding-bottom: 10px;">
+                                        <form action="/books/<%= book._id %>/like" method="POST">
+                                            <div class="btn-group">
+                                                <% if (currentUser && book.likes.some(function (like) {
+                                                    return like.equals(currentUser._id)
+                                                })) { %>
+                                                <button class="btn btn-sm btn-primary">
+                                                    <i class="fas fa-thumbs-up"></i> Liked (<%= book.likes.length %>)
+                                                </button>
+                                                <% } else { %>
+                                                <button class="btn btn-sm btn-secondary">
+                                                    <i class="fas fa-thumbs-up"></i> Like (<%= book.likes.length %>)
+                                                </button>
+                                                <% } %>
+                                                <button type="button" class="btn btn-sm btn-default" data-toggle="modal"
+                                                        data-target="#bookLikes">See more details
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </ul>
                             </div>
                         </div>
@@ -90,8 +116,45 @@
                 </div>
             </div>
             <%})%>
-                </div>
+        </div>
+    </div>
+</div>
+
+<!-- BestSelling Likes Modal -->
+<div id="bookLikes" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Book likes: <%= book.likes.length %></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Liked by:</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% book.likes.forEach(function(like) { %>
+                        <tr>
+                            <td><span class="badge"><i class="fas fa-user"></i></span> <%= like.username %></td>
+                        </tr>
+                    <% }); %>
+                    <% if (book.likes.length === 0) { %>
+                        <tr>
+                            <td><em>No likes yet.</em></td>
+                        </tr>
+                    <% } %>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
+    </div>
+</div>
 
-        <% include ../partials/footer%>
+<% include ../partials/footer%>

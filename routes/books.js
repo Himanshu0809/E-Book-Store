@@ -59,13 +59,44 @@ router.post("/", middleware.checkIsAdmin, function (req, res) {
 //SHOW - Show more info about one campground
 router.get("/:id", function (req, res) {
     //find the book by provided ID
-    Book.findById(req.params.id).populate("comments").exec(function (err, foundBook) {
+    Book.findById(req.params.id).populate("comments likes").exec(function (err, foundBook) {
         if (err || !foundBook) {
             req.flash("error", "Book Not Found");
             console.log(err);
         } else {
             res.render("books/show", { book: foundBook });
         }
+    });
+});
+
+// Book Like Route
+router.post("/:id/like", middleware.isLoggedIn, function (req, res) {
+    Book.findById(req.params.id, function (err, foundBook) {
+        if (err || !foundBook) {
+            console.log(err);
+            req.flash("error", "Book Not Found!");
+            return res.redirect("/books");
+        }
+        // check if req.user._id exists in foundBestSelling.likes
+        var foundUserLike = foundBook.likes.some(function (like) {
+            return like.equals(req.user._id);
+        });
+
+        if (foundUserLike) {
+            // user already liked, removing like
+            foundBook.likes.pull(req.user._id);
+        } else {
+            // adding the new user like
+            foundBook.likes.push(req.user);
+        }
+
+        foundBook.save(function (err) {
+            if (err) {
+                console.log(err);
+                return res.redirect("/books");
+            }
+            return res.redirect("/books/" + foundBook._id);
+        });
     });
 });
 
@@ -78,11 +109,26 @@ router.get("/:id/edit", middleware.checkIsAdmin, function (req, res) {
 
 //UPGRADE - upgrade the book
 router.put("/:id", middleware.checkIsAdmin, function (req, res) {
-    Book.findByIdAndUpdate(req.params.id, req.body.book, function (err, upgradedBook) {
+    Book.findById(req.params.id, function (err, book) {
         if (err) {
-            res.redirect("/books");
+            req.flash("error", err.message);
+            res.redirect("back");
         } else {
-            res.redirect("/books/" + req.params.id);
+            book.title = req.body.book.title;
+            book.price = req.body.book.price;
+            book.author = req.body.book.author;
+            book.image = req.body.book.image;
+            book.description = req.body.book.description;
+            book.publisher = req.body.book.publisher;
+            book.save(function (err) {
+                if (err) {
+                    req.flash("error", err.message);
+                    res.redirect("back");
+                } else {
+                    req.flash("success", "Successfully Updated!");
+                    res.redirect("/books/" + book._id);
+                }
+            });
         }
     });
 });
@@ -106,6 +152,5 @@ router.delete("/:id", middleware.checkIsAdmin, function (req, res) {
 function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
-
 
 module.exports = router;

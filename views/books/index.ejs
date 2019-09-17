@@ -37,6 +37,9 @@
                                             <br>
                                             <strong style="color:black;">Price: </strong><%=book.price%>
                                         </p>
+                                        <div>
+                                            <span class="badge label-primary"><i class="fas fa-thumbs-up"></i> <%= book.likes.length %></span>
+                                        </div>                                 
                                     <li class="list-group-item">
                                         <a style="float: left" href="/books/<%=book._id%>"
                                             class="btn btn-xs btn-primary">More</a>
