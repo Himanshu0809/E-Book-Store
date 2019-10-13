@@ -55,7 +55,7 @@
                 </li>
                 <%}else{%>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Signed in as <%=currentUser.username%></a>
+                    <a class="nav-link" href="/users/<%=currentUser.id%>">Signed in as <%=currentUser.username%></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">Log Out</a>
@@ -72,13 +72,13 @@
     </nav>
     <div class="container">
         <%if(error && error.length>0){%>
-                <div class="alert alert-danger">
-                    <%=error%>
-                </div>
-                <%}%>
+            <div class="alert alert-danger">
+                <%=error%>
+            </div>
+        <%}%>
         <%if(success && success.length>0){%>
-                <div class="alert alert-success">
-                    <%=success%>
-                </div>
-                <%}%>
+            <div class="alert alert-success">
+                <%=success%>
+            </div>
+        <%}%>
     </div>

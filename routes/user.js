@@ -37,7 +37,6 @@ router.get("/register", function (req, res) {
 
 //handle sign up logic
 router.post("/register", function (req, res) {
-
     var newUser = new User(
         {
             username: req.body.username,
@@ -236,5 +235,23 @@ router.post("/users/:id/dp", middleware.isLoggedIn, upload.single('image'), func
         res.redirect("/users/" + user._id);
     });
 });
+
+router.post("/users/:id/edit", middleware.isLoggedIn, function(req, res){
+    User.findById(req.params.id, async function(err, user){
+        if (err) {
+            req.flash("error", "Something went wrong!");
+            res.redirect("back");
+        }else{
+            user.firstname=req.body.fname;
+            user.lastname=req.body.lname;
+            user.username=req.body.username;
+            user.gender=req.body.gender;
+            user.email=req.body.email;
+        }
+        user.save();
+        req.flash("success", "Successfully Updated!");
+        res.redirect("/users/" + user._id);
+    })
+})
 
 module.exports = router;

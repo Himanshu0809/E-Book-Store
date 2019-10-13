@@ -196,7 +196,22 @@
     border-radius:50%
 }
 
+.userprofile .user-details{
+    margin:10px;
+    padding: 10px;
+    margin-top: 60px;
+    border:1px solid #ccc;
+}
 
+.userprofile input{
+    width: 100%;
+    border:none;
+    border-bottom: 1px solid #ccc;
+}
+
+.userprofile .user-gender input{
+    width:33%;  
+}
 /*  ======================================
     NAVBAR
     ====================================== */

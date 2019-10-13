@@ -9,23 +9,94 @@
                     <div class="imgcontainer">
                         <img class="avatar" src="<%=user.image%>" alt="Avatar">
                         <%if(currentUser){%>
-                            <form action="/users/<%=user._id%>/dp" method="POST" enctype="multipart/form-data">
-                                <div class="form-group">
-                                    <label for="image"></label>
-                                    <input type="file" id="image" name="image" accept="image/*" required>
-                                </div>
-                                <div class="form-group">
-                                    <button class="btn btn-lg btn-primary btn-block">Upload</button>
-                                </div>
-                            </form>
+                        <form action="/users/<%=user._id%>/dp" method="POST" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="image"></label>
+                                <input type="file" id="image" name="image" accept="image/*" required>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-lg btn-primary btn-block">Upload</button>
+                            </div>
+                        </form>
                         <%}%>
                         
                     </div>
-                    <div class="caption"><a href="mailto:<%=user.email%>"><%=user.email%></a></div>
+                    <div class="caption">Mailto : <a href="mailto:<%=user.email%>"> <%=user.email%></a></div>
                 </div>
             </div>
             <div class="col-md-8">
-                <h3><%=user.username%></h3>
+                <div class="user-details">
+                    <form action="/users/<%=user._id%>/edit" method="POST">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="fname">First Name: </label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" id="fname" name="fname" value="<%=user.firstname%>" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="lname">Last Name: </label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" id="lname" name="lname" value="<%=user.lastname%>" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="username">Username: </label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" id="username" name="username" value="<%=user.username%>"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="name">Gender: </label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="user-gender">
+                                        <h6><%=user.gender%></h6>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <input type="radio" id="gender" name="gender" value="Male"> Male
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input type="radio" id="gender" name="gender" value="Female"> Female
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input type="radio" id="gender" name="gender" value="Others"> Others
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="username">E-mail: </label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" id="email" name="email" value="<%=user.email%>" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-success">
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

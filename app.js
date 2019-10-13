@@ -72,6 +72,8 @@ app.use("/bestSelling",bestSellingRoutes);
 app.use("/", commentRoutees);
 app.use("/", userRoutes);
 
-app.listen(process.env.PORT || 7781, function(){
-    console.log("E-book server started");
+const PORT=process.env.PORT||7781;
+
+app.listen(PORT, function(){
+    console.log(`E-book server started on port ${PORT}`);
 });
