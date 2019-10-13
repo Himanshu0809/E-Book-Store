@@ -1,0 +1,58 @@
+<% include ./partials/header%>
+<section class="about-image">
+    <img src="../public/images/contact/offers" class="img-responsive" alt="About Us" title="About Us">
+</section>
+<div class="offers-page">
+    <div class="container">
+
+    </div>
+</div>
+
+<script>
+    function initMap() {
+        //MAP OPTIONS
+        var options = {
+            zoom: 8,
+            center: {
+                lat: 28.7041,
+                lng: 77.1025
+            }
+        };
+        //NEW MAP
+        var map = new google.maps.Map(document.getElementById('map'), options);
+
+        var markers = [
+            {
+                coords: { lat: 28.715770, lng: 77.176491 },
+                content: "<h4>E-book Store</h4>"
+            }
+        ];
+        for (var i = 0; i < markers.length; i++) {
+            addMarker(markers[i]);
+        }
+
+        //ADD MARKER FUNCTION
+        function addMarker(props) {
+            var marker = new google.maps.Marker({
+                position: props.coords,
+                map: map,
+                // icon:'';    We can chnage the icon of the marker using this wherein we need to provide a link to the image 
+            });
+            if (props.content) {
+                var infoWindow = new google.maps.InfoWindow({
+                    content: props.content
+                });
+                marker.addListener("click", function () {
+                    infoWindow.open(map, marker);
+                });
+            }
+        }
+
+
+    }
+</script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQJbML2d8XY-eRNk1-icAXZ7sBdnj_XCs&callback=initMap"></script>
+
+
+<% include ./partials/footer%>
