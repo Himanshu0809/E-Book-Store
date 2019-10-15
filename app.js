@@ -59,7 +59,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     storage: new MongoStore({ mongooseConnection: mongoose.connection }), //so that there is no new connection opened
-    cookie:{maxAge:180*60*1000} //how long the session should live before it expires (3hrs)
+    cookie: { maxAge: 180 * 60 * 1000 } //how long the session should live before it expires (3hrs)
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -68,9 +68,14 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+// catch 404 and forward to error handler
+app.use(function (req, res, next) {
+    next(createError(404));
+});
+
 app.use(function (req, res, next) {
     res.locals.currentUser = req.user;
-    res.locals.session=req.session; // making the session available to the templates
+    res.locals.session = req.session; // making the session available to the templates
     res.locals.error = req.flash("error");
     res.locals.success = req.flash("success");
     next();
