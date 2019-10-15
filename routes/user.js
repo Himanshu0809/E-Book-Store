@@ -62,6 +62,7 @@ router.post("/register", function (req, res) {
 
 //show login form
 router.get("/login", function (req, res) {
+    var messages=req.flash("error");
     res.render("authentication/login");
 })
 

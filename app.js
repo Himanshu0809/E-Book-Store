@@ -1,8 +1,10 @@
 require("dotenv").config()
 
 //requiring npm packages
-var express = require("express"),
+var createError = require('http-errors'),
+    express = require("express"),
     app = express(),
+    path = require('path'),
     bodyParser = require("body-parser"),
     mongoose = require("mongoose"),
     passport = require("passport"),
@@ -11,13 +13,13 @@ var express = require("express"),
     passportLocalMongoose = require("passport-local-mongoose"),
     methodOverride = require("method-override"),
     session = require("express-session"),
-    cookieParser=require("cookie-parser"),
+    cookieParser = require("cookie-parser"),
     request = require("request"),
-    async = require("async"), 
+    async = require("async"),
     nodemailer = require("nodemailer"),
     crypto = require("crypto"),
-    MongoStore=require("connect-mongo")(session);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ;
-
+    logger = require('morgan'),
+    MongoStore = require("connect-mongo")(session);
 //requiring models
 var Book = require("./models/books"),
     BestSelling = require("./models/bestSelling"),
@@ -34,12 +36,14 @@ var indexRoutes = require("./routes/index"),
     userRoutes = require("./routes/user");
 
 mongoose.connect("mongodb+srv://Himanshu:MSDhoni07@cluster0-1uhbb.mongodb.net/HJ_Book_Store?retryWrites=true&w=majority", { useNewUrlParser: true })
-        .then(() => console.log(`Database connected`))
-        .catch(err => console.log(`Database connection error: ${err.message}`));
+    .then(() => console.log(`Database connected`))
+    .catch(err => console.log(`Database connection error: ${err.message}`));
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
-app.use(cookieParser);
+app.use(cookieParser());
 app.use('/public/images/', express.static('./public/images'));
 //done to make the images directory in the public directory static
 
@@ -54,7 +58,8 @@ app.use(session({
     //allows encrypted data to be stored during the session rather than storing the username and password a plain text
     resave: false,
     saveUninitialized: false,
-    storage: new MongoStore({ mongooseConnection: mongoose.connection })
+    storage: new MongoStore({ mongooseConnection: mongoose.connection }), //so that there is no new connection opened
+    cookie:{maxAge:180*60*1000} //how long the session should live before it expires (3hrs)
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -65,6 +70,7 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(function (req, res, next) {
     res.locals.currentUser = req.user;
+    res.locals.session=req.session; // making the session available to the templates
     res.locals.error = req.flash("error");
     res.locals.success = req.flash("success");
     next();

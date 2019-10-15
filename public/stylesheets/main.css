@@ -230,6 +230,14 @@
     margin-right:20px;
 }
 
+.navbar .dropdown .dropdown-toggle{
+    color: rgb(136, 128, 128);
+    margin: 0px;
+    padding:10px;
+    position: relative;
+    padding-top:50px;
+    padding-bottom: 0px;
+}
 
 /* ========================================
    CONTACT PAGE
