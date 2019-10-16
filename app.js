@@ -33,7 +33,8 @@ var indexRoutes = require("./routes/index"),
     addDBRoutes = require("./routes/addDB"),
     bestSellingRoutes = require("./routes/bestSelling"),
     commentRoutees = require("./routes/comments"),
-    userRoutes = require("./routes/user");
+    userRoutes = require("./routes/user"),
+    cartRoutes=require("./routes/cart");
 
 mongoose.connect("mongodb+srv://Himanshu:MSDhoni07@cluster0-1uhbb.mongodb.net/HJ_Book_Store?retryWrites=true&w=majority", { useNewUrlParser: true })
     .then(() => console.log(`Database connected`))
@@ -68,10 +69,10 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-    next(createError(404));
-});
+// // catch 404 and forward to error handler
+// app.use(function (req, res, next) {
+//     next(createError(404));
+// });
 
 app.use(function (req, res, next) {
     res.locals.currentUser = req.user;
@@ -88,6 +89,7 @@ app.use("/", addDBRoutes);
 app.use("/bestSelling", bestSellingRoutes);
 app.use("/", commentRoutees);
 app.use("/", userRoutes);
+app.use("/", cartRoutes);
 
 const PORT = process.env.PORT || 7781;
 
