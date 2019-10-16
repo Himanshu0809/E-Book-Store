@@ -2,7 +2,7 @@ var mongoose=require("mongoose");
 //SCHEMA SETUP
 var bookSchema=new mongoose.Schema({
     title: String,
-    price: String,
+    price: Number,
     image: String,
     author:String, 
     publisher:String, 

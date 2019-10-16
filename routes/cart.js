@@ -7,7 +7,7 @@ var Cart=require("../models/cart");
 //Add to cart functionality for books
 router.get("/add-to-cart/:id", function(req, res){
     var productId=req.params.id;
-    var cart=new Cart(req.session.cart ? req.session.cart:{items:{}}); //every time an item is added a new object is created with the old cart from the session
+    var cart=new Cart(req.session.cart ? req.session.cart:{}); //every time an item is added a new object is created with the old cart from the session
     //we are checking whether we have an existing cart or not. if it exists we are passing the old cart otherwise an empty object
 
     Book.findById(productId, function(err, product){

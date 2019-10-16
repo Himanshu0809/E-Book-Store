@@ -3,7 +3,7 @@ var mongoose=require("mongoose");
 //SCHEMA SETUP FOR THE BEST SELLING BOOKS
 var bestSellingSchema=new mongoose.Schema({
     title: String,
-    price: String,
+    price: Number,
     image: String,
     author:String, 
     publisher:String, 
