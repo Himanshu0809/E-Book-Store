@@ -52,6 +52,11 @@
                 </li>
                 <%if(!currentUser){%>
                 <li class="nav-item">
+                    <a class="nav-link" href="/shopping-cart">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart                       
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/login">Login</a>
                 </li>
                 <li class="nav-item">
@@ -65,8 +70,9 @@
                     <a class="nav-link" href="/users/<%=currentUser.id%>">Signed in as <%=currentUser.username%></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping
-                        Cart</a>
+                    <a class="nav-link" href="/shopping-cart">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart
+                    </a>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -94,13 +100,13 @@
     </nav>
     <div class="container">
         <%if(error && error.length>0){%>
-            <div class="alert alert-danger">
-                <%=error%>
-            </div>
-        <%}%>
+                <div class="alert alert-danger">
+                    <%=error%>
+                </div>
+                <%}%>
         <%if(success && success.length>0){%>
-            <div class="alert alert-success">
-                <%=success%>
-            </div>
-        <%}%>
+                <div class="alert alert-success">
+                    <%=success%>
+                </div>
+                <%}%>
     </div>

@@ -19,8 +19,17 @@ router.get("/add-to-cart/:id", function(req, res){
         req.session.cart=cart;
         console.log(req.session.cart);
         req.flash("success","Succesfully Added to cart!")
-        res.redirect('/books');
+        res.redirect('/');
     })
 });
+
+router.get("/shopping-cart", function(req, res){
+    if(!req.session.cart){
+        return res.render("cart/index", {products:null});
+    }
+    var cart=new Cart(req.session.cart);
+    res.render("cart/index", {products:cart.generateArray(), totalPrice:cart.totalPrice});  
+})
+
 
 module.exports = router;
