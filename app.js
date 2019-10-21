@@ -47,7 +47,7 @@ app.set("view engine", "ejs");
 app.use(cookieParser());
 app.use('/public/images/', express.static('./public/images'));
 //done to make the images directory in the public directory static
-
+app.use('/public/javascripts/', express.static('./public/javascripts'));
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
