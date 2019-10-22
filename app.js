@@ -50,7 +50,7 @@ app.use('/public/images/', express.static('./public/images'));
 app.use('/public/javascripts/', express.static('./public/javascripts'));
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
-app.use(flash());
+app.use(flash());           
 // seedDB();
 
 //PASSPORT CONFIGURATION

@@ -4,6 +4,7 @@ var Book = require("../models/books");
 var middleware = require("../middleware");
 var Cart = require("../models/cart");
 var BestSelling = require("../models/bestSelling");
+var Order = require("../models/order");
 
 //Add to cart functionality for books
 router.get("/books/add-to-cart/:id", function (req, res) {
@@ -51,16 +52,16 @@ router.get("/shopping-cart", function (req, res) {
     res.render("cart/shopping-cart", { products: cart.generateArray(), totalPrice: cart.totalPrice });
 })
 
-router.get("/checkout", function (req, res) {
+router.get("/checkout", middleware.isLoggedIn,function (req, res) {
     if (!req.session.cart) {
         return res.redirect("/shopping-cart");
     }
     var cart = new Cart(req.session.cart);
-    var errMsg=req.flash("error")[0];
-    res.render("cart/checkout", { total: cart.totalPrice, errMsg:errMsg, noError:!errMsg })
+    var errMsg = req.flash("error")[0];
+    res.render("cart/checkout", { total: cart.totalPrice, errMsg: errMsg, noError: !errMsg })
 });
 
-router.post("/checkout", function (req, res) {
+router.post("/checkout",middleware.isLoggedIn ,function (req, res) {
     if (!req.session.cart) {
         return res.redirect("/shopping-cart");
     }
@@ -70,20 +71,33 @@ router.post("/checkout", function (req, res) {
     // `source` is obtained with Stripe.js; see https://stripe.com/docs/payments/cards/collecting/web#create-token
     stripe.charges.create(
         {
-            amount: cart.totalPrice*100,
+            amount: cart.totalPrice * 100,
             currency: 'inr',
             source: req.body.stripeToken,
             description: 'Test Charge',
         },
         function (err, charge) {
-            if(err){
+            if (err) {
                 req.flash("error", err.message);
                 return res.redirect("/checkout");
             }
-            req.flash("success", "Successfully bought product");
-            req.session.cart=null;
-            res.redirect("/");
+            var order = new Order({
+                user: req.user,
+                cart: cart,
+                address: req.body.address,
+                name: req.body.name,
+                paymentId: charge.id
+            });
+            order.save(function (err, result) {
+                if (err) {
+                    req.flash("error", err.message);
+                    return res.redirect("back");
+                }
+                req.flash("success", "Successfully bought product");
+                req.session.cart = null;
+                res.redirect("/");
+            });
         }
     );
-})
+});
 module.exports = router;
