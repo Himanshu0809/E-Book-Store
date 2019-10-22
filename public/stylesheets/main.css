@@ -124,6 +124,12 @@
     box-sizing: border-box;
 }
 
+.register-form .to-signin{
+    text-align: center;
+    margin:0;
+    padding:0;
+}
+
 
 /*  =====================================
     Login form
@@ -182,7 +188,7 @@
     
 .login-form span.psw{
     float:right;
-    padding-top:16px;
+    /* padding-top:16px; */
 }
     
 @media screen and (max-width: 300px) {
@@ -190,6 +196,12 @@
        display: block;
        float: none;
     } 
+}
+
+.login-form .to-signup{
+    text-align: center;
+    margin:0;
+    padding:0;
 }
     
 /*  ======================================

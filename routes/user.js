@@ -68,9 +68,17 @@ router.get("/login", function (req, res) {
 
 //handling login logic
 router.post("/login", passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/login"
+    // successRedirect: "/",
+    failureRedirect: "/login",
+    failureFlash:true
 }), function (req, res) {
+    if(req.session.oldUrl){
+        var oldUrl=req.session.oldUrl;
+        req.session.oldUrl=null;
+        res.redirect(oldUrl);   //to redirect user to previous url
+    }else{
+        res.redirect("/");
+    }
     req.flash("success", "Welcome to YelpCamp ");
 });
 
