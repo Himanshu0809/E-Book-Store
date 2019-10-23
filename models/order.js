@@ -8,11 +8,8 @@ var orderSchema = mongoose.Schema({
         }
     },
     cart:{
-        id:{
-            type:mongoose.Schema.Types.ObjectId,
-            required:true,
-            ref:"Cart"
-        }
+        type:Object,
+        required:true
     },
     address:{
         type:String,

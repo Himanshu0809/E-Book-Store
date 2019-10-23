@@ -25,7 +25,10 @@ var Book = require("./models/books"),
     BestSelling = require("./models/bestSelling"),
     Comment = require("./models/comments"),
     User = require("./models/user"),
-    seedDB = require("./seeds.js");
+    Cart=require("./models/cart"),
+    Maps=require("./models/maps"),
+    Order=require("./models/order");
+    // seedDB = require("./seeds.js");
 
 //requiring routes
 var indexRoutes = require("./routes/index"),

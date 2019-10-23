@@ -52,7 +52,7 @@ router.get("/shopping-cart", function (req, res) {
     res.render("cart/shopping-cart", { products: cart.generateArray(), totalPrice: cart.totalPrice });
 })
 
-router.get("/checkout", middleware.isLoggedIn,function (req, res) {
+router.get("/checkout", middleware.isLoggedIn, function (req, res) {
     if (!req.session.cart) {
         return res.redirect("/shopping-cart");
     }
@@ -61,16 +61,15 @@ router.get("/checkout", middleware.isLoggedIn,function (req, res) {
     res.render("cart/checkout", { total: cart.totalPrice, errMsg: errMsg, noError: !errMsg })
 });
 
-router.post("/checkout",middleware.isLoggedIn ,function (req, res) {
+router.post("/checkout", middleware.isLoggedIn, function (req, res) {
     if (!req.session.cart) {
         return res.redirect("/shopping-cart");
     }
     var cart = new Cart(req.session.cart);
-    var stripe = require('stripe')('sk_test_8SlDMEpxzLDNhDvoPIAo3Fyn00wAJwaFMa');
+    var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
     // `source` is obtained with Stripe.js; see https://stripe.com/docs/payments/cards/collecting/web#create-token
-    stripe.charges.create(
-        {
+    stripe.charges.create({
             amount: cart.totalPrice * 100,
             currency: 'inr',
             source: req.body.stripeToken,
@@ -90,6 +89,7 @@ router.post("/checkout",middleware.isLoggedIn ,function (req, res) {
             });
             order.save(function (err, result) {
                 if (err) {
+                    console.log(err);
                     req.flash("error", err.message);
                     return res.redirect("back");
                 }
@@ -98,6 +98,6 @@ router.post("/checkout",middleware.isLoggedIn ,function (req, res) {
                 res.redirect("/");
             });
         }
-    );
+    )
 });
 module.exports = router;
