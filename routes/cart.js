@@ -24,6 +24,16 @@ router.get("/books/add-to-cart/:id", function (req, res) {
         res.redirect('/');
     })
 });
+
+router.get("/reduce/:id", function(req, res){
+    var productId = req.params.id;
+    var cart = new Cart(req.session.cart ? req.session.cart : {});
+
+    cart.reduceByOne(productId);
+    req.session.cart=cart;
+    res.redirect("/shopping-cart");
+})
+
 //Add to cart functionality for best selling
 router.get("/bestselling/add-to-cart/:id", function (req, res) {
     var productId = req.params.id;
