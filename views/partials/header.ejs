@@ -57,7 +57,7 @@
                 <%if(!currentUser){%>
                 <li class="nav-item">
                     <a class="nav-link" href="/shopping-cart">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
                     </a>
                 </li>
                 <li class="nav-item">
@@ -75,7 +75,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/shopping-cart">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
                     </a>
                 </li>
                 <li class="dropdown">
@@ -84,14 +84,17 @@
                             class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a class="nav-link" href="/users/<%=currentUser.id%>"><i class="fa fa-user"
-                                    aria-hidden="true"></i> User Account</a>
+                            <a class="nav-link" href="/users/<%=currentUser.id%>"><i class="fa fa-user" aria-hidden="true"></i> User
+                                Account</a>
                         </li>
                         <li>
-                            <a class="nav-link" href="/logout">Log Out</a>
+                            <a class="nav-link" href="/users/<%=currentUser.id%>/myorders"><i class="fas fa-list-ul"></i> My Orders</a>
                         </li>
                         <li>
-                            <a class="nav-link" href="/contact">Contact us</a>
+                            <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/contact"><i class="fas fa-phone-volume"></i> Contact us</a>
                         </li>
                     </ul>
                 </li>
@@ -104,13 +107,13 @@
     </nav>
     <div class="container">
         <%if(error && error.length>0){%>
-        <div class="alert alert-danger">
-            <%=error%>
-        </div>
+            <div class="alert alert-danger">
+                <%=error%>
+            </div>
         <%}%>
-            <%if(success && success.length>0){%>
-        <div class="alert alert-success">
-            <%=success%>
-        </div>
+        <%if(success && success.length>0){%>
+            <div class="alert alert-success">
+                <%=success%>
+            </div>
         <%}%>
     </div>

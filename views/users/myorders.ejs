@@ -1,0 +1,34 @@
+<%include ../partials/header%>
+
+<div class="my-orders">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h1>My Orders</h1>
+                <hr>
+                <%orders.forEach(function(order){%>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-text">
+                            <ul class="list-group">
+                                <%order.items.forEach(function(item){%>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <%=item.item.title%>  <strong><%=item.qty%> Units</strong>
+                                    <span class="badge badge-primary badge-pill"><%=item.price%></span>
+                                    
+                                </li>
+                                <%})%>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <strong>Total Price : Rs <%=order.cart.totalPrice%></strong> 
+                    </div>
+                </div>
+                <%})%>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%include ../partials/footer%>

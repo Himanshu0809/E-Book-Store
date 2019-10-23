@@ -3,6 +3,8 @@ var router = express.Router();
 var passport = require("passport");
 var User = require("../models/user");
 var Comment = require("../models/comments");
+var Order=require("../models/order");
+var Cart=require("../models/cart");
 var middleware = require("../middleware");
 var async = require("async");
 var nodemailer = require("nodemailer");
@@ -211,7 +213,7 @@ router.post('/reset/:token', function (req, res) {
 });
 
 //user profile routes
-router.get("/users/:id", function (req, res) {
+router.get("/users/:id", middleware.isLoggedIn, function (req, res) {
     User.findById(req.params.id, function (err, foundUser) {
         if (err) {
             req.flash("error", "Something went wrong!");
@@ -221,6 +223,28 @@ router.get("/users/:id", function (req, res) {
 
     });
 });
+
+router.get("/users/:id/myorders", middleware.isLoggedIn,function(req, res){
+    User.findById(req.params.id, function(err, foundUser){
+        if(err){
+            req.flash("error", "Something went wrong!");
+            return res.redirect("back");
+        }
+        Order.find({user:req.user}, function(err, orders){
+            if(err){
+                req.flash("error", "Something went wrong!");
+                return res.redirect("back");
+            }
+            var cart;
+            console.log(orders);
+            orders.forEach(function(order){
+                cart=new Cart(order.cart); //order.cart bcz we are storing the cart in database
+                order.items=cart.generateArray();
+            });
+            res.render("users/myorders",{orders:orders});
+        });
+    })
+})
 
 router.post("/users/:id/dp", middleware.isLoggedIn, upload.single('image'), function (req, res) {
     User.findById(req.params.id,async function (err, user) {
