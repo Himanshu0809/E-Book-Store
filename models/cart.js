@@ -21,9 +21,15 @@ module.exports = function Cart(oldCart) { //passing old cart items every time we
         this.totalQty--;
         this.totalPrice -= this.items[id].item.price;
 
-        if(this.items[id].qty<=0){
+        if (this.items[id].qty <= 0) {
             delete this.items[id];
         }
+    }
+
+    this.removeItem = function (id) {
+        this.totalQty -= this.items[id].qty;
+        this.totalPrice -= this.items[id].price;
+        delete this.items[id];
     }
 
     this.generateArray = function () { // it will return the cart items as an array

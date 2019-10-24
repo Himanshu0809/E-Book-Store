@@ -34,6 +34,15 @@ router.get("/reduce/:id", function(req, res){
     res.redirect("/shopping-cart");
 })
 
+router.get("/remove/:id", function(req, res){
+    var productId = req.params.id;
+    var cart = new Cart(req.session.cart ? req.session.cart : {});
+
+    cart.removeItem(productId);
+    req.session.cart=cart;
+    res.redirect("/shopping-cart");
+})
+
 //Add to cart functionality for best selling
 router.get("/bestselling/add-to-cart/:id", function (req, res) {
     var productId = req.params.id;
@@ -47,7 +56,6 @@ router.get("/bestselling/add-to-cart/:id", function (req, res) {
         }
         cart.add(product, productId);
         req.session.cart = cart;
-        console.log(req.session.cart);
         req.flash("success", "Succesfully Added to cart!")
         res.redirect('/');
     })
