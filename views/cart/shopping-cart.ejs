@@ -1,55 +1,72 @@
 <% include ../partials/header%>
 
-<div class="container">
-    <%if(products.length>0){%>
-    <div class="row">
-        <div class="col-sm-10 col-md-10 col-md-offset-5 col-sm-offset-5">
-            <ul class="list-group">
-                <%products.forEach(function(product){%>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <strong><%=product.item.title%></strong>
-                        </div>
-                        <div class="col-md-2">
-                            <span class="badge"><%=product.qty%></span>
-                        </div>
-                        <div class="col-md-2">
-                            <span class="label label-success"><%=product.price%></span>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="btn-group">
-                                <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" type="button">Remove</button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="/reduce/<%=product.item._id%>">Reduce by 1</a></li>
-                                    <li><a href="/remove/<%=product.item._id%>">Remove All</a></li>
-                                </ul>
+<div class="my-cart">
+    <div class="container">
+        <%if(products.length>0){%>
+        <div class="card">
+            <div class="card-header">
+                <h1>My Cart</h1>
+            </div>
+            <div class="row">
+                <div class="col-sm-10 col-md-10 col-md-offset-5 col-sm-offset-5">
+                    <ul class="list-group">
+                        <%products.forEach(function(product){%>
+
+                        <div class="card-body">
+                            <div class="card-text">
+                                <li class="list-group-item ">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <strong><%=product.item.title%></strong>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <span class="badge badge-primary badge-pill"><%=product.qty%></span>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <span class="badge badge-pill badge-success">Rs <%=product.price%></span>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="btn-group">
+                                                <button class="btn btn-primary btn-xs dropdown-toggle"
+                                                    data-toggle="dropdown" type="button">Remove</button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="/reduce/<%=product.item._id%>">Reduce by 1</a></li>
+                                                    <li><a href="/remove/<%=product.item._id%>">Remove All</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <%})%>
                             </div>
                         </div>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+                        <strong>Total: <%=totalPrice%> </strong>
                     </div>
-                </li>
-                <%})%>
-            </ul>
-        </div> 
-    </div>
-    <div class="row">
-        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-            <strong>Total: <%=totalPrice%> </strong>
+                </div>
+            </div>
         </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-            <a href="/checkout" class="btn btn-success" type="button">Checkout</a>
+
+        <hr>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+                <a href="/checkout" class="btn btn-success" type="button">Checkout</a>
+            </div>
         </div>
-    </div>
-    <%}else{%>
-    <div class="row">
-        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-            <h2>Your Cart is Empty!</h2>
+        <%}else{%>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+                <h2>Your Cart is Empty!</h2>
+            </div>
         </div>
+        <%}%>
     </div>
-    <%}%>
 </div>
+
 
 <% include ../partials/footer%>
