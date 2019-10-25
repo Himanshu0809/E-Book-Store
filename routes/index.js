@@ -42,4 +42,9 @@ router.get("/aboutus", function(req, res){
 router.get("/offers", function(req, res){
     res.render("offers");
 });
+
+router.get("/terms", function(req, res){
+    res.render("terms");
+});
+
 module.exports = router;
