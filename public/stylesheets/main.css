@@ -260,6 +260,42 @@
 }
 
 /* ========================================
+   TERMS PAGE
+   ======================================== */
+
+.terms-image {
+    padding-bottom: 50px;
+    width:90%;
+    margin:0 auto;
+}
+
+.terms-image img {
+    vertical-align: middle;
+}
+
+.terms-image .img-responsive{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.terms-page .container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.terms-page .terms {
+    margin-top: -20%;
+    padding: 1.5% 5% 3% 5%;
+    background-color:white;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    margin-bottom: 30px;
+}
+
+/* ========================================
    CONTACT PAGE
    ======================================== */
 
