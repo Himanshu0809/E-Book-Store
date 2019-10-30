@@ -27,7 +27,7 @@
 
         gtag('config', 'UA-151222018-2');
     </script>
-    
+
 </head>
 <body onload="myFunction()">
 
@@ -115,12 +115,12 @@
     </nav>
     <div class="container">
         <%if(error && error.length>0){%>
-            <div class="alert alert-danger">
+            <div class="alert alert-danger" role="alert"> 
                 <%=error%>
             </div>
         <%}%>
         <%if(success && success.length>0){%>
-            <div class="alert alert-success">
+            <div class="alert alert-success" role="alert">
                 <%=success%>
             </div>
         <%}%>
