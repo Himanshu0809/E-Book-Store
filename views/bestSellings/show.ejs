@@ -92,6 +92,7 @@
         </div>
     </div>
     
+    <!-- Comments -->
     <div class="comment">
         <div class="card card-body bg-light">
             <div class="text-right">
@@ -102,7 +103,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <strong><a href="/users/<%=comment.user.id%>"><%=comment.user.username%></a></strong>
-                    <span class="float-right">10 Days ago</span>
+                    <span class="float-right"><%= moment(comment.createdAt).fromNow() %></span>
                     <p>
                         <%= comment.text%>
                     </p>
