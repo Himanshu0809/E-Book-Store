@@ -9,7 +9,7 @@
     </header>
     <div class="row text-center">
         <div class="col-md-12">
-            <%if(noMatch!==undefined){%>
+            <%if(noMatch!==null){%>
             <h3><%=noMatch%></h3>
             <p>
                 <form class="form-inline" method="GET" action="/books">
@@ -55,5 +55,48 @@
             <%});%>
         </div>
     </div>
+<div class="row justify-content-center">
+    <% if (pages && pages > 0) { %>
+    <ul class="pagination justify-content-center" style="margin:20px 0">
+        <% if (current == 1) { %>
+        <li class="page-item disabled"><a class="page-link">First</a></li>
+        <% } else { %>
+        <li class="page-item"><a class="page-link" href="/books<%if(search){%>?search=<%=search%><%}%>">First</a></li>
+            <% } %>
+     
+            <% if (current == 1) { %>
+            <li class="page-item disabled"><a class="page-link">«</a></li>
+        <% } else { %>
+        <li><a class="page-link" href="/books?page=<%= Number(current) - 1 %><%if(search){%>&search=<%=search%><%}%>">«</a></li>
+            <% } %>
+     
+            <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+            <% if (i !== 1) { %>
+            <li class=" disabled"><a class="page-link">...</a></li>
+        <% } %>
+        <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+        <% if (i == current) { %>
+        <li class="active"><a class="page-link"><%= i %></a></li>
+        <% } else { %>
+        <li><a class="page-link" href="/books?page=<%= i %><%if(search){%>&search=<%=search%><%}%>"><%= i %></a></li>
+            <% } %>
+            <% if (i == Number(current) + 4 && i < pages) { %>
+            <li class=" disabled"><a class="page-link">...</a></li>
+        <% } %>
+        <% } %>
 
+        <% if (current == pages) { %>
+        <li class="disabled"><a class="page-link">»</a></li>
+        <% } else { %>
+        <li><a class="page-link" href="/books?page=<%= Number(current) + 1 %><%if(search){%>&search=<%=search%><%}%>">»</a></li>
+            <% } %>
+     
+            <% if (current == pages) { %>
+            <li class=" disabled"><a class="page-link">Last</a></li>
+        <% } else { %>
+        <li><a class="page-link" href="/books?page=<%= pages %><%if(search){%>&search=<%=search%><%}%>">Last</a></li>
+            <% } %>
+    </ul>
+    <% } %>
+</div>
     <% include ../partials/footer%>

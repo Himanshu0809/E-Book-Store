@@ -5,28 +5,39 @@ var middleware = require("../middleware");
 
 //INDEX - Show all books
 router.get("/", function (req, res) {
-    var noMatch;
+    var perPage = 16;
+    var pageQuery = parseInt(req.query.page);
+    var pageNumber = pageQuery ? pageQuery : 1;
+    var noMatch = null;
     if (req.query.search) {
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
         //Get all the books from the DB
-        Book.find({ title: regex }, function (err, allBooks) {
-            if (err) {
-                console.log(err);
-            } else {
-                if (allBooks.length < 1) {
-                    noMatch = "No books match found!!"
+        Book.find({ title: regex }).skip((perPage*pageNumber)-perPage).limit(perPage).exec(function (err, allBooks) {
+            Book.count({ title: regex }).exec(function (err, count) {
+                if (err || !allBooks) {
+                    req.flash("Something Went Wrong!!");
+                    console.log(err)
+                    res.redirect("back");
                 }
-                res.render("books/index", { books: allBooks, noMatch: noMatch });
-            }
+                else {
+                    if (allBooks.length < 1) {
+                        noMatch = "No books match found!! Please Try Again!!"
+                    }
+                    res.render("books/index", { books: allBooks, currentUser: req.user, noMatch: noMatch, current: pageNumber, pages: Math.ceil(count / perPage), search: req.query.search });
+                }
+            });
         });
     } else {
         //Get all the books from the DB
-        Book.find({}, function (err, allBooks) {
-            if (err) {
-                console.log(err);
-            } else {
-                res.render("books/index", { books: allBooks, noMatch: noMatch });
-            }
+        Book.find({}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function (err, allBooks) {
+            Book.count().exec(function (err, count) {
+                if (err) {
+                    console.log(err)
+                }
+                else {
+                    res.render("books/index", { books:allBooks, currentUser: req.user, noMatch: noMatch, current: pageNumber, pages: Math.ceil(count / perPage), search: false });
+                }
+            });
         });
     }
 });

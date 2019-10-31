@@ -52,8 +52,7 @@ router.post("/register", function (req, res) {
     }
     User.register(newUser, req.body.password, function (err, user) {
         if (err) {
-            req.flash("error", err.message);
-            return res.render("authentication/register");
+            return res.render("authentication/register",{error:err.message});
         }
         passport.authenticate("local")(req, res, function () {
             req.flash("success", "Welcome to YelpCamp " + user.username);
@@ -72,7 +71,8 @@ router.get("/login", function (req, res) {
 router.post("/login", passport.authenticate("local", {
     // successRedirect: "/",
     failureRedirect: "/login",
-    failureFlash:true
+    failureFlash:true,
+    successFlash: 'Welcome to HG Book Store!'
 }), function (req, res) {
     if(req.session.oldUrl){
         var oldUrl=req.session.oldUrl;
