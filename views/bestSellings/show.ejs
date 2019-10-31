@@ -44,15 +44,16 @@
                                         </p>
                                     </li>
                                     <li class="list-group-item">
-                                        <a href="/bestselling/add-to-cart/<%=bestSelling._id%>" class="btn btn-xs btn-primary"> Add to Cart</a>
+                                        <a href="/bestselling/add-to-cart/<%=bestSelling._id%>"
+                                            class="btn btn-xs btn-primary"> Add to Cart</a>
                                         <a style="float: right" href="#" class="btn btn-xs btn-success">Buy</a>
                                     </li>
                                     <li class="list-group-item">
                                         <% if(currentUser&&currentUser.isAdmin=="admin"){%>
                                         <a class="btn btn-xs btn-warning"
                                             href="/bestselling/<%=bestSelling._id%>/edit">Edit</a>
-                                        <form id="delete-form" action="/bestselling/<%= bestSelling._id%>?_method=delete"
-                                            method="POST">
+                                        <form id="delete-form"
+                                            action="/bestselling/<%= bestSelling._id%>?_method=delete" method="POST">
                                             <button class="btn btn-xs btn-danger">Delete</button>
                                         </form>
                                         <%}%> 
@@ -62,38 +63,38 @@
                                                 data-target="#bestSellingLikes">
                                             <span>Total likes: <i class="fas fa-thumbs-up"></i> <%= bestSelling.likes.length %></span>
                                         </button>
-                                    </div>
-                                    <div style="padding-bottom: 10px;">
-                                        <form action="/bestselling/<%= bestSelling._id %>/like" method="POST">
-                                            <div class="btn-group">
-                                                <% if (currentUser && bestSelling.likes.some(function (like) {
+                            </div>
+                            <div style="padding-bottom: 10px;">
+                                <form action="/bestselling/<%= bestSelling._id %>/like" method="POST">
+                                    <div class="btn-group">
+                                        <% if (currentUser && bestSelling.likes.some(function (like) {
                                                     return like.equals(currentUser._id)
                                                 })) { %>
-                                                <button class="btn btn-sm btn-primary">
-                                                    <i class="fas fa-thumbs-up"></i> Liked (<%= bestSelling.likes.length %>)
-                                                </button>
-                                                <% } else { %>
-                                                <button class="btn btn-sm btn-secondary">
-                                                    <i class="fas fa-thumbs-up"></i> Like (<%= bestSelling.likes.length %>)
-                                                </button>
-                                                <% } %>
-                                                <button type="button" class="btn btn-sm btn-default" data-toggle="modal"
-                                                        data-target="#bestSellingLikes">See more details
-                                                </button>
-                                            </div>
-                                        </form>
+                                        <button class="btn btn-sm btn-primary">
+                                            <i class="fas fa-thumbs-up"></i> Liked (<%= bestSelling.likes.length %>)
+                                        </button>
+                                        <% } else { %>
+                                        <button class="btn btn-sm btn-secondary">
+                                            <i class="fas fa-thumbs-up"></i> Like (<%= bestSelling.likes.length %>)
+                                        </button>
+                                        <% } %>
+                                        <button type="button" class="btn btn-sm btn-default" data-toggle="modal"
+                                            data-target="#bestSellingLikes">See more details
+                                        </button>
                                     </div>
-                                </ul>
+                                </form>
                             </div>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    <!-- Comments -->
-    <!-- <div class="comment">
+</div>
+
+<!-- Comments -->
+<!-- <div class="comment">
         <div class="card card-body bg-light">
             <div class="text-right">
                 <a class="btn btn-success" href="/bestselling/<%= bestSelling._id%>/comments/new">Add New Comment</a>
@@ -110,7 +111,7 @@
                     <%if(currentUser && comment.user.id.equals(currentUser._id)||currentUser&&currentUser.isAdmin==="admin"){%>
                     <a class="btn btn-xs btn-warning"
                         href="/bestselling/<%=bestSelling._id%>/comments/<%=comment._id%>/edit">Edit</a>-->
-                    <!-- <form id="delete-form"
+<!-- <form id="delete-form"
                         action="/bestselling/<%=bestSelling._id%>/comments/<%=comment._id%>?_method=DELETE"
                         method="POST">
                         <input type="submit" class="btn btn-xs btn-danger" value="Delete">
@@ -123,117 +124,113 @@
     </div> -->
 
 
-    <!--COMMENT SECTION START-->
-    <div class="card card-body bg-light">
-            <!--Setting up the add new comment button that is used for collapsing-->
-            <div class="text-right">
-                <a class="btn btn-success float-right" role="button" data-toggle="collapse" href="#collapseComment"
-                    aria-expanded="false" aria-controls="collapseComment">
-                    <span aria-hidden="true"><i class="fas fa-plus"></i></span> Add new comment</a>
-            </div>
+<!--COMMENT SECTION START-->
+<div class="card card-body bg-light">
+    <!--Setting up the add new comment button that is used for collapsing-->
+    <div class="text-right">
+        <a class="btn btn-success float-right" role="button" data-toggle="collapse" href="#collapseComment"
+            aria-expanded="false" aria-controls="collapseComment">
+            <span aria-hidden="true"><i class="fas fa-plus"></i></span> Add new comment</a>
+    </div>
 
-            <!--Comment section title-->
-            <h4><strong>Comments <span aria-hidden="true"><i class="fas fa-comments"></i></span></strong></h4>
+    <!--Comment section title-->
+    <h4><strong>Comments <span aria-hidden="true"><i class="fas fa-comments"></i></span></strong></h4>
 
-            <!--Collapse Add a comment form START-->
-            <div class="collapse" id="collapseComment">
-                <div class="card card-body bg-light" style="border-left: 5px solid #00C851;">
-                    <% if(!currentUser) { %>
-                    <!--If the user is not logged in, direct him to the login page-->
-                    <h5>You need to login before you can comment. <a href="/login">Click here</a> to go to the login
-                        page.</h5>
-                    <% } %>
-                    <% if(currentUser) { %>
-                    <!--If the user is logged in, show the new comment form-->
-                    <h4>Write your comment <span aria-hidden="true"><i class="fas fa-pencil-alt"></i></span></h4>
-                    <form id="add-comment-form" action="/bestselling/<%=bestSelling._id%>/comments" method="POST">
+    <!--Collapse Add a comment form START-->
+    <div class="collapse" id="collapseComment">
+        <div class="card card-body bg-light" style="border-left: 5px solid #00C851;">
+            <% if(!currentUser) { %>
+            <!--If the user is not logged in, direct him to the login page-->
+            <h5>You need to login before you can comment. <a href="/login">Click here</a> to go to the login
+                page.</h5>
+            <% } %>
+            <% if(currentUser) { %>
+            <!--If the user is logged in, show the new comment form-->
+            <h4>Write your comment <span aria-hidden="true"><i class="fas fa-pencil-alt"></i></span></h4>
+            <form id="add-comment-form" action="/bestselling/<%=bestSelling._id%>/comments" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" disabled value="<%= currentUser.username %>">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" name="comment[text]" placeholder="Write your comment..."
+                        form="add-comment-form" rows="5" cols="70"></textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success btn-sm">Comment <span aria-hidden="true"><i
+                                class="fas fa-comment"></i></span></button>
+                </div>
+            </form>
+            <% } %>
+        </div>
+    </div>
+    <!--Collapse Add a comment form END-->
+
+    <hr>
+
+    <!--Check if there are comments, if there are none say no comments.-->
+    <% if (bestSelling.comments.length === 0) { %>
+
+    <em style="color: grey;">No comments yet.</em>
+    <% } %>
+
+    <!--Display comments by looping through them-->
+    <% bestSelling.comments.forEach(function(comment) { %>
+    <div class="row">
+        <div class="col-md-12">
+            <strong>
+                <% if (currentUser && currentUser._id.equals(comment.user.id)) { %>
+                <!--If the current user owns the comment, change the color of the user icon-->
+                <span style="color: orange;" aria-hidden="true"><i class="fas fa-user"></i></span>
+                <% } else { %>
+                <!--Else just display it black-->
+                <span aria-hidden="true"><i class="fas fa-user"></i></span>
+                <% } %>
+                <!--Print out the user's username-->
+                <%= comment.user.username %>
+            </strong>
+            <!--Show when the comment was made-->
+            <span class="float-right"><%= moment(comment.createdAt).fromNow() %></span>
+            <!--Printing the comment-->
+            <p><%= comment.text %></p>
+            <!--If the visitor is logged in and the owner of the comment, show the edit and delete buttons-->
+            <% if(currentUser && comment.user.id.equals(currentUser._id)||currentUser && currentUser.isAdmin==="admin"){%>
+            <!--Edit button used for collapsing the edit comment form-->
+            <a class="btn btn-xs btn-warning" role="button" data-toggle="collapse"
+                href="#collapseEdit<%= comment._id %>" aria-expanded="false" aria-controls="collapse<%= comment._id %>">
+                Edit</a>
+            <!--Delete comment button-->
+            <form id="delete-form" action="/bestselling/<%=bestSelling._id%>/comments/<%=comment._id%>?_method=DELETE"
+                method="POST" style="display: inline;">
+                <button class="btn btn-xs btn-danger">Delete</button>
+            </form>
+            <!--Edit comment form-->
+            <div class="collapse" id="collapseEdit<%= comment._id %>">
+                <div class="card card-body bg-light" style="border-left: 5px solid #ffbb33; margin-top: 15px;">
+                    <h4>Edit your comment <span aria-hidden="true"><i class="fas fa-edit"></i></span>
+                    </h4>
+                    <form id="edit-comment-form"
+                        action="/bestselling/<%=bestSelling._id%>/comments/<%=comment._id %>?_method=PUT" method="POST">
                         <div class="form-group">
                             <input class="form-control" type="text" disabled value="<%= currentUser.username %>">
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" name="comment[text]" placeholder="Write your comment..."
-                                form="add-comment-form" rows="5" cols="70"></textarea>
+                            <textarea class="form-control" name="comment[text]" placeholder="Your comment text..."
+                                form="edit-comment-form" rows="5" cols="70"><%= comment.text %></textarea>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-success btn-sm">Comment <span aria-hidden="true"><i class="fas fa-comment"></i></span></button>
+                            <button class="btn btn-warning btn-sm">Edit comment <span aria-hidden="true"><i
+                                        class="fas fa-comment"></i></span></button>
                         </div>
                     </form>
-                    <% } %>
                 </div>
             </div>
-            <!--Collapse Add a comment form END-->
-
-            <hr>
-
-            <!--Check if there are comments, if there are none say no comments.-->
-            <% if (bestSelling.comments.length === 0) { %>
-
-            <em style="color: grey;">No comments yet.</em>
             <% } %>
-
-            <!--Display comments by looping through them-->
-            <% bestSelling.comments.forEach(function(comment) { %>
-            <div class="row">
-                <div class="col-md-12">
-                    <strong>
-                        <% if (currentUser && currentUser._id.equals(comment.user.id)) { %>
-                        <!--If the current user owns the comment, change the color of the user icon-->
-                        <span style="color: orange;" aria-hidden="true"><i class="fas fa-user"></i></span>
-                        <% } else { %>
-                        <!--Else just display it black-->
-                        <span aria-hidden="true"><i class="fas fa-user"></i></span>
-                        <% } %>
-                        <!--Print out the user's username-->
-                        <%= comment.user.username %>
-                    </strong>
-                    <!--Show when the comment was made-->
-                    <span class="float-right"><%= moment(comment.createdAt).fromNow() %></span>
-                    <!--Printing the comment-->
-                    <p><%= comment.text %></p>
-                    <!--If the visitor is logged in and the owner of the comment, show the edit and delete buttons-->
-                    <% if(currentUser && comment.user.id.equals(currentUser._id)||currentUser && currentUser.isAdmin==="admin"){%>
-                    <!--Edit button used for collapsing the edit comment form-->
-                    <a class="btn btn-xs btn-warning" role="button" data-toggle="collapse"
-                        href="#collapseEdit<%= comment._id %>" aria-expanded="false"
-                        aria-controls="collapse<%= comment._id %>">
-                        Edit</a>
-                    <!--Delete comment button-->
-                    <form id="delete-form"
-                        action="/bestselling/<%=bestSelling._id%>/comments/<%=comment._id%>?_method=DELETE"
-                        method="POST" style="display: inline;">
-                        <button class="btn btn-xs btn-danger">Delete</button>
-                    </form>
-                    <!--Edit comment form-->
-                    <div class="collapse" id="collapseEdit<%= comment._id %>">
-                        <div class="card card-body bg-light" style="border-left: 5px solid #ffbb33; margin-top: 15px;">
-                            <h4>Edit your comment <span aria-hidden="true"><i class="fas fa-edit"></i></span>
-                            </h4>
-                            <form id="edit-comment-form"
-                                action="/bestselling/<%=bestSelling._id%>/comments/<%=comment._id %>?_method=PUT"
-                                method="POST">
-                                <div class="form-group">
-                                    <input class="form-control" type="text" disabled
-                                        value="<%= currentUser.username %>">
-                                </div>
-                                <div class="form-group">
-                                    <textarea class="form-control" name="comment[text]"
-                                        placeholder="Your comment text..." form="edit-comment-form" rows="5"
-                                        cols="70"><%= comment.text %></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <button class="btn btn-warning btn-sm">Edit comment <span aria-hidden="true"><i class="fas fa-comment"></i></span></button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <% } %>
-                    <hr>
-                </div>
-            </div>
-            <% }) %>
+            <hr>
         </div>
-        <!--COMMENT SECTION END-->
-
+    </div>
+    <% }) %>
+</div>
+<!--COMMENT SECTION END-->
 
 </div>
 
@@ -244,26 +241,26 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">BestSelling likes: <%= bestSelling.likes.length %></h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>           
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
                 <table class="table table-striped">
                     <thead>
-                    <tr>
-                        <th>Liked by:</th>
-                    </tr>
+                        <tr>
+                            <th>Liked by:</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <% bestSelling.likes.forEach(function(like) { %>
+                        <% bestSelling.likes.forEach(function(like) { %>
                         <tr>
                             <td><span class="badge"><i class="fas fa-user"></i></span> <%= like.username %></td>
                         </tr>
-                    <% }); %>
-                    <% if (bestSelling.likes.length === 0) { %>
+                        <% }); %>
+                        <% if (bestSelling.likes.length === 0) { %>
                         <tr>
                             <td><em>No likes yet.</em></td>
                         </tr>
-                    <% } %>
+                        <% } %>
                     </tbody>
                 </table>
             </div>
