@@ -59,5 +59,48 @@ router.post("/", middleware.isLoggedIn, middleware.checkReviewExistence, functio
     });
 });
 
+// Reviews Edit
+router.get("/:review_id/edit", middleware.checkReviewOwnership, function (req, res) {
+    Review.findById(req.params.review_id, function (err, foundReview) {
+        if (err) {
+            req.flash("error", err.message);
+            return res.redirect("back");
+        }
+        res.render("reviews/edit", {book_id: req.params.id, review: foundReview});
+    });
+});
+
+// Reviews Update
+router.put("/:review_id", middleware.checkReviewOwnership, function (req, res) {
+    Review.findByIdAndUpdate(req.params.review_id, req.body.review, {new: true}, function (err, updatedReview) {
+        if (err) {
+            req.flash("error", err.message);
+            return res.redirect("back");
+        }
+        Book.findById(req.params.id).populate("reviews").exec(function (err, book) {
+            if (err) {
+                req.flash("error", err.message);
+                return res.redirect("back");
+            }
+            // recalculate book average
+            book.rating = calculateAverage(book.reviews);
+            //save changes
+            book.save();
+            req.flash("success", "Your review was successfully edited.");
+            res.redirect('/books/' + book._id);
+        });
+    });
+});
+
+function calculateAverage(reviews) {
+    if (reviews.length === 0) {
+        return 0;
+    }
+    var sum = 0;
+    reviews.forEach(function (element) {
+        sum += element.rating;
+    });
+    return sum / reviews.length;
+}
 
 module.exports = router;
