@@ -19,6 +19,7 @@ var createError = require('http-errors'),
     nodemailer = require("nodemailer"),
     crypto = require("crypto"),
     logger = require('morgan'),
+    favicon=require("serve-favicon"),
     MongoStore = require("connect-mongo")(session);
 //requiring models
 var Book = require("./models/books"),
@@ -49,6 +50,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(cookieParser());
 app.use('/public/images/', express.static('./public/images'));
+app.use(favicon(path.join(__dirname, 'public','images', 'favicon.ico')));
 //done to make the images directory in the public directory static
 app.use('/public/javascripts/', express.static('./public/javascripts'));
 app.use(express.static(__dirname + "/public"));
