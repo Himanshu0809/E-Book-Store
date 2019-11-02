@@ -1,3 +1,7 @@
+.checked{
+    color: yellow;
+}
+
 /*  ========================================
     Preloader
     ======================================== */
@@ -9,8 +13,8 @@
     z-index: 99999; 
 }
 
-    /*  ========================================
-    show page for books and best selling 
+/*  ========================================
+     show page for books and best selling 
     ========================================*/
 .book-show{
     background: #C6FFDD;  /* fallback for old browsers */

@@ -21,6 +21,7 @@ var createError = require('http-errors'),
     logger = require('morgan'),
     favicon=require("serve-favicon"),
     MongoStore = require("connect-mongo")(session);
+
 //requiring models
 var Book = require("./models/books"),
     BestSelling = require("./models/bestSelling"),
@@ -28,6 +29,7 @@ var Book = require("./models/books"),
     User = require("./models/user"),
     Cart=require("./models/cart"),
     Maps=require("./models/maps"),
+    Review=require("./models/review"),
     Order=require("./models/order");
     // seedDB = require("./seeds.js");
 
@@ -38,6 +40,7 @@ var indexRoutes = require("./routes/index"),
     bestSellingRoutes = require("./routes/bestSelling"),
     commentRoutees = require("./routes/comments"),
     userRoutes = require("./routes/user"),
+    reviewRoutes=require("./routes/reviews"),
     cartRoutes=require("./routes/cart");
 
 mongoose.connect("mongodb+srv://Himanshu:MSDhoni07@cluster0-1uhbb.mongodb.net/HJ_Book_Store?retryWrites=true&w=majority", { useNewUrlParser: true })
