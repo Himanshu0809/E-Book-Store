@@ -39,7 +39,16 @@
                                         </p>
                                         <div>
                                             <span class="badge label-primary"><i class="fas fa-thumbs-up"></i> <%= book.likes.length %></span>
-                                        </div>                                 
+                                        </div>
+                                        <% if (book.rating === 0) { %>
+                                            <em>No reviews yet.</em>
+                                        <% } else { %>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star <% if (book.rating > 1.5) { %> checked <% } %>"></span>
+                                            <span class="fa fa-star <% if (book.rating > 2.5) { %> checked <% } %>"></span>
+                                            <span class="fa fa-star <% if (book.rating > 3.5) { %> checked <% } %>"></span>
+                                            <span class="fa fa-star <% if (book.rating > 4.5) { %> checked <% } %>"></span>
+                                        <% } %>                        
                                     <li class="list-group-item">
                                         <a style="float: left" href="/books/<%=book._id%>"
                                             class="btn btn-xs btn-primary">More</a>
@@ -99,4 +108,4 @@
     </ul>
     <% } %>
 </div>
-    <% include ../partials/footer%>
+<% include ../partials/footer%>

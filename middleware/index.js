@@ -1,4 +1,6 @@
 var Comment=require("../models/comments");
+var Book=require("../models/books");
+var Review=require("../models/review");
 
 //all middlewares go here
 

@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var Book = require("../models/books");
+var Review=require("../models/review");
 var middleware = require("../middleware");
 
 //INDEX - Show all books
@@ -70,7 +71,10 @@ router.post("/", middleware.checkIsAdmin, function (req, res) {
 //SHOW - Show more info about one campground
 router.get("/:id", function (req, res) {
     //find the book by provided ID
-    Book.findById(req.params.id).populate("comments likes").exec(function (err, foundBook) {
+    Book.findById(req.params.id).populate("comments likes").populate({
+        path:"reviews",
+        options:{sort:{createdAt:-1}}
+    }).exec(function (err, foundBook) {
         if (err || !foundBook) {
             req.flash("error", "Book Not Found");
             console.log(err);
@@ -120,6 +124,7 @@ router.get("/:id/edit", middleware.checkIsAdmin, function (req, res) {
 
 //UPGRADE - upgrade the book
 router.put("/:id", middleware.checkIsAdmin, function (req, res) {
+    delete req.body.book.rating;
     Book.findById(req.params.id, function (err, book) {
         if (err) {
             req.flash("error", err.message);
@@ -156,9 +161,43 @@ router.delete("/:id", middleware.checkIsAdmin, function (req, res) {
     });
 });
 
-//buy best selling(all users)
+//DESTROY - delete book(admin only)
+router.delete("/:id", middleware.checkIsAdmin, function (req, res) {
+    Book.findById(req.params.id, async function (err, book) {
+        if (err) {
+            req.flash("error", err.message);
+            return res.redirect("back");
+        }
+        try {
+            //delete all comments associated with the campground
+            await Comment.remove({ "_id": { $in: book.comments } }, async function (err) {
+                if (err) {
+                    req.flash("error", err.message);
+                    return res.redirect("back");
+                }
+                //delete all the reviews associated with the campground
+                Review.remove({ "_id": { $in: book.reviews } }, async function (err) {
+                    if (err) {
+                        req.flash("error", err.message);
+                        return res.redirect("back");
+                    }
+                    //delete the book
+                    book.remove();
+                    req.flash('success', 'Book deleted successfully!');
+                    res.redirect('/books');
+                });
+            });
 
-//add to cart best selling(all users)
+        } catch (err) {
+            if (err) {
+                req.flash("error", err.message);
+                return res.redirect("back");
+            }
+        }
+    });
+});
+
+//buy best selling(all users)
 
 function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");

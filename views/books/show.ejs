@@ -36,7 +36,7 @@
                                     </li>
                                     <li class="list-group-item">
                                         <p>
-                                            <strong>Author: </strong><em><%=book.author%></em>
+                                            <strong>Author: </strong><em><%=book.user%></em>
                                             <br>
                                             <strong>Publisher: </strong><em><%=book.publisher%></em>
                                             <br>
@@ -117,6 +117,65 @@
             <%})%>
         </div>
     </div> -->
+
+
+    <div class="card card-body bg-light">
+        <div class="caption-full">
+            <% if (book.rating === 0) { %>
+            <h5>
+                <em>No reviews yet.</em>
+            </h5>
+            <% } else { %>
+            <p>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star <% if (book.rating > 1.5) { %> checked <% } %>"></span>
+                <span class="fa fa-star <% if (book.rating > 2.5) { %> checked <% } %>"></span>
+                <span class="fa fa-star <% if (book.rating > 3.5) { %> checked <% } %>"></span>
+                <span class="fa fa-star <% if (book.rating > 4.5) { %> checked <% } %>"></span>
+                <em>(total reviews: <%= book.reviews.length %>)</em>
+            </p>
+            <p>
+                Current book rating: <strong><%= book.rating.toFixed(2) %></strong>
+            </p>
+            <p>
+                <h4>Latest reviews for this book:</h4>
+            </p>
+            <hr style="margin-top: 0;">
+            <% book.reviews.slice(0, 5).forEach(function(review){ %>
+            <div class="row">
+                <div class="col-md-3">
+                    <%- '<span class="fa fa-star checked"></span>'.repeat(review.rating) %><%- '<span class="fa fa-star"></span>'.repeat(5 - review.rating) %>
+                    <div>Review by: <strong><%= review.user.username %></strong></div>
+                    <span><em><%= review.updatedAt.toDateString() %></em></span>
+                </div>
+                <div class="col-md-9">
+                    <p style="text-align: justify; word-wrap: break-word;">
+                        <%= review.text %>
+                    </p>
+                    <% if(currentUser && review.user.id.equals(currentUser._id)){ %>
+                    <a class="btn btn-xs btn-warning"
+                        href="/books/<%=book._id %>/reviews/<%=review._id %>/edit">Edit</a>
+                    <form id="delete-form"
+                        action="/books/<%=book._id %>/reviews/<%=review._id %>?_method=DELETE" method="POST">
+                        <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                    </form>
+                    <% } %>
+                </div>
+            </div>
+            <hr>
+            <% }); %>
+            <div style="margin-bottom: 10px;">
+                <h4><a href="/books/<%= book._id %>/reviews"><i class="fa fa-search" aria-hidden="true"></i> See
+                        all reviews</a></h4>
+            </div>
+            <% } %>
+            <div>
+                <a class="btn btn-primary btn-lg <% if (currentUser && book.reviews.some(function (review) {return review.user.id.equals(currentUser._id)})) { %> disabled <% } %>"
+                    href="/books/<%= book._id %>/reviews/new">
+                    Write a New Review</a>
+            </div>
+        </div>
+    </div>
 
 <!--COMMENT SECTION START-->
 <div class="card card-body bg-light">
@@ -228,7 +287,6 @@
         <% }) %>
     </div>
     <!--COMMENT SECTION END-->
-
 </div>
 
 <!-- Book Likes Modal -->

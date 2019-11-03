@@ -100,6 +100,7 @@ app.use("/bestSelling", bestSellingRoutes);
 app.use("/", commentRoutees);
 app.use("/", userRoutes);
 app.use("/", cartRoutes);
+app.use("/books/:id/reviews", reviewRoutes);
 
 const PORT = process.env.PORT || 7781;
 
