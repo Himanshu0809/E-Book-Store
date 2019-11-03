@@ -92,6 +92,28 @@ router.put("/:review_id", middleware.checkReviewOwnership, function (req, res) {
     });
 });
 
+// Reviews Delete
+router.delete("/:review_id", middleware.checkReviewOwnership, function (req, res) {
+    Review.findByIdAndRemove(req.params.review_id, function (err) {
+        if (err) {
+            req.flash("error", err.message);
+            return res.redirect("back");
+        }
+        Book.findByIdAndUpdate(req.params.id, {$pull: {reviews: req.params.review_id}}, {new: true}).populate("reviews").exec(function (err, book) {
+            if (err) {
+                req.flash("error", err.message);
+                return res.redirect("back");
+            }
+            // recalculate book average
+            book.rating = calculateAverage(book.reviews);
+            //save changes
+            book.save();
+            req.flash("success", "Your review was deleted successfully.");
+            res.redirect("/books/" + req.params.id);
+        });
+    });
+});
+
 function calculateAverage(reviews) {
     if (reviews.length === 0) {
         return 0;
