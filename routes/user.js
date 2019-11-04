@@ -3,8 +3,8 @@ var router = express.Router();
 var passport = require("passport");
 var User = require("../models/user");
 var Comment = require("../models/comments");
-var Order=require("../models/order");
-var Cart=require("../models/cart");
+var Order = require("../models/order");
+var Cart = require("../models/cart");
 var middleware = require("../middleware");
 var async = require("async");
 var nodemailer = require("nodemailer");
@@ -52,7 +52,7 @@ router.post("/register", function (req, res) {
     }
     User.register(newUser, req.body.password, function (err, user) {
         if (err) {
-            return res.render("authentication/register",{error:err.message});
+            return res.render("authentication/register", { error: err.message });
         }
         passport.authenticate("local")(req, res, function () {
             req.flash("success", "Welcome to YelpCamp " + user.username);
@@ -63,7 +63,7 @@ router.post("/register", function (req, res) {
 
 //show login form
 router.get("/login", function (req, res) {
-    var messages=req.flash("error");
+    var messages = req.flash("error");
     res.render("authentication/login");
 })
 
@@ -71,14 +71,14 @@ router.get("/login", function (req, res) {
 router.post("/login", passport.authenticate("local", {
     // successRedirect: "/",
     failureRedirect: "/login",
-    failureFlash:true,
+    failureFlash: true,
     successFlash: 'Welcome to HG Book Store!'
 }), function (req, res) {
-    if(req.session.oldUrl){
-        var oldUrl=req.session.oldUrl;
-        req.session.oldUrl=null;
+    if (req.session.oldUrl) {
+        var oldUrl = req.session.oldUrl;
+        req.session.oldUrl = null;
         res.redirect(oldUrl);   //to redirect user to previous url
-    }else{
+    } else {
         res.redirect("/");
     }
     req.flash("success", "Welcome to YelpCamp ");
@@ -90,6 +90,12 @@ router.get("/logout", function (req, res) {
     req.flash("success", "Logged You Out!")
     res.redirect("/");
 });
+
+//facebook auth
+router.get('/login/facebook/return',
+    passport.authenticate('facebook', { failureRedirect: '/login', successRedirect: '/campgrounds' }));
+
+router.get('/login/facebook', passport.authenticate('facebook', { scope: ['email'] }));
 
 //forgot
 router.get("/forgot", function (req, res) {
@@ -143,12 +149,11 @@ router.post('/forgot', function (req, res, next) {
             });
         }
     ], function (err) {
-        if (err) 
-        {
+        if (err) {
             console.log(err);
             return next(err);
-        
-        }res.redirect('/forgot');
+
+        } res.redirect('/forgot');
     });
 });
 
@@ -224,37 +229,37 @@ router.get("/users/:id", middleware.isLoggedIn, function (req, res) {
     });
 });
 
-router.get("/users/:id/myorders", middleware.isLoggedIn,function(req, res){
-    User.findById(req.params.id, function(err, foundUser){
-        if(err){
+router.get("/users/:id/myorders", middleware.isLoggedIn, function (req, res) {
+    User.findById(req.params.id, function (err, foundUser) {
+        if (err) {
             req.flash("error", "Something went wrong!");
             return res.redirect("back");
         }
-        Order.find({user:req.user}, function(err, orders){
-            if(err){
+        Order.find({ user: req.user }, function (err, orders) {
+            if (err) {
                 req.flash("error", "Something went wrong!");
                 return res.redirect("back");
             }
             var cart;
             console.log(orders);
-            orders.forEach(function(order){
-                cart=new Cart(order.cart); //order.cart bcz we are storing the cart in database
-                order.items=cart.generateArray();
+            orders.forEach(function (order) {
+                cart = new Cart(order.cart); //order.cart bcz we are storing the cart in database
+                order.items = cart.generateArray();
             });
-            res.render("users/myorders",{orders:orders});
+            res.render("users/myorders", { orders: orders });
         });
     })
 })
 
 router.post("/users/:id/dp", middleware.isLoggedIn, upload.single('image'), function (req, res) {
-    User.findById(req.params.id,async function (err, user) {
+    User.findById(req.params.id, async function (err, user) {
         if (err) {
             req.flash("error", "Something went wrong!");
             res.redirect("back");
         } else {
             if (req.file) {
                 try {
-                    var result =await cloudinary.v2.uploader.upload(req.file.path);
+                    var result = await cloudinary.v2.uploader.upload(req.file.path);
                     user.imageId = result.public_id;
                     user.image = result.secure_url;
                 } catch (err) {
@@ -269,17 +274,17 @@ router.post("/users/:id/dp", middleware.isLoggedIn, upload.single('image'), func
     });
 });
 
-router.post("/users/:id/edit", middleware.isLoggedIn, function(req, res){
-    User.findById(req.params.id, async function(err, user){
+router.post("/users/:id/edit", middleware.isLoggedIn, function (req, res) {
+    User.findById(req.params.id, async function (err, user) {
         if (err) {
             req.flash("error", "Something went wrong!");
             res.redirect("back");
-        }else{
-            user.firstname=req.body.fname;
-            user.lastname=req.body.lname;
-            user.username=req.body.username;
-            user.gender=req.body.gender;
-            user.email=req.body.email;
+        } else {
+            user.firstname = req.body.fname;
+            user.lastname = req.body.lname;
+            user.username = req.body.username;
+            user.gender = req.body.gender;
+            user.email = req.body.email;
         }
         user.save();
         req.flash("success", "Successfully Updated!");

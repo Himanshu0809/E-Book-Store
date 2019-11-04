@@ -10,6 +10,7 @@ var createError = require('http-errors'),
     passport = require("passport"),
     flash = require("connect-flash"),
     LocalStrategy = require("passport-local"),
+    FacebookStrategy = require("passport-facebook"),
     passportLocalMongoose = require("passport-local-mongoose"),
     methodOverride = require("method-override"),
     session = require("express-session"),
@@ -19,7 +20,7 @@ var createError = require('http-errors'),
     nodemailer = require("nodemailer"),
     crypto = require("crypto"),
     logger = require('morgan'),
-    favicon=require("serve-favicon"),
+    favicon = require("serve-favicon"),
     MongoStore = require("connect-mongo")(session);
 
 //requiring models
@@ -27,11 +28,11 @@ var Book = require("./models/books"),
     BestSelling = require("./models/bestSelling"),
     Comment = require("./models/comments"),
     User = require("./models/user"),
-    Cart=require("./models/cart"),
-    Maps=require("./models/maps"),
-    Review=require("./models/review"),
-    Order=require("./models/order");
-    // seedDB = require("./seeds.js");
+    Cart = require("./models/cart"),
+    Maps = require("./models/maps"),
+    Review = require("./models/review"),
+    Order = require("./models/order");
+// seedDB = require("./seeds.js");
 
 //requiring routes
 var indexRoutes = require("./routes/index"),
@@ -40,8 +41,8 @@ var indexRoutes = require("./routes/index"),
     bestSellingRoutes = require("./routes/bestSelling"),
     commentRoutees = require("./routes/comments"),
     userRoutes = require("./routes/user"),
-    reviewRoutes=require("./routes/reviews"),
-    cartRoutes=require("./routes/cart");
+    reviewRoutes = require("./routes/reviews"),
+    cartRoutes = require("./routes/cart");
 
 mongoose.connect("mongodb+srv://Himanshu:MSDhoni07@cluster0-1uhbb.mongodb.net/HJ_Book_Store?retryWrites=true&w=majority", { useNewUrlParser: true })
     .then(() => console.log(`Database connected`))
@@ -53,22 +54,22 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(cookieParser());
 app.use('/public/images/', express.static('./public/images'));
-app.use(favicon(path.join(__dirname, 'public','images', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 //done to make the images directory in the public directory static
 app.use('/public/javascripts/', express.static('./public/javascripts'));
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
-app.use(flash());           
+app.use(flash());
 // seedDB();
 
 app.locals.moment = require('moment');
 
 //PASSPORT CONFIGURATION
 app.use(session({
-    secret: "HJ Store Secret",
+    secret: "HG Store",
     //allows encrypted data to be stored during the session rather than storing the username and password a plain text
-    resave: false,
-    saveUninitialized: false,
+    resave: true,
+    saveUninitialized: true,
     storage: new MongoStore({ mongooseConnection: mongoose.connection }), //so that there is no new connection opened
     cookie: { maxAge: 180 * 60 * 1000 } //how long the session should live before it expires (3hrs)
 }));
@@ -76,8 +77,58 @@ app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 //user authenticate comes in with passport local mongoose
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
+app.use(require('morgan')('combined'));
+app.use(require('cookie-parser')());
+app.use(require('body-parser').urlencoded({ extended: true }));
+app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+
+
+passport.use(new FacebookStrategy({
+    clientID: '640275096164486',
+    clientSecret: '5be315a5d6c1f9dd4d7463df4b78536e',
+    callbackURL: 'http://localhost:8000/login/facebook/return'
+}, function (accessToken, refreshToken, profile, cb) {
+    process.nextTick(function () {
+        console.log(profile)
+        User.findOne({ username: profile.displayName }).exec(function (err, UserFromFacebook) {
+            if (err) {
+                return cb(err);
+            }
+
+            if (UserFromFacebook) {
+                return cb(null, UserFromFacebook);
+            } else {
+                var NewUser = new User();
+                NewUser.name = profile.displayName;
+                NewUser.username = profile.displayName;
+                NewUser.token = accessToken;
+                NewUser.save(function (err) {
+                    if (err) {
+                        console.log(err);
+                    }
+                })
+                return cb(null, NewUser);
+            }
+        })
+    })
+}));
+
+
+// passport.serializeUser(User.serializeUser());
+passport.serializeUser(function (user, cb) {
+    // console.log(User);
+    cb(null, user._id);
+});
+
+passport.deserializeUser(function (id, cb) {
+    // console.log(User);
+    User.findById(id, function (err, user) {
+        console.log(user);
+        cb(err, user);
+    })
+});
 
 // // catch 404 and forward to error handler
 // app.use(function (req, res, next) {
