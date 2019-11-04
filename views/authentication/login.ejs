@@ -1,23 +1,54 @@
 <%include ../partials/header%>
 
 <div class="login-form">
-    <form action="/login" method="POST" class="full">
-        <div class="imgcontainer">
-            <img src="https://previews.123rf.com/images/tanyastock/tanyastock1803/tanyastock180300490/97923644-user-icon-avatar-login-sign-circle-button-with-soft-color-gradient-background-vector-.jpg"
-                alt="Avatar" class="avatar">
+    <div class="login-body full">
+        <form action="/login" method="POST" class="form-group">
+            <div class="imgcontainer">
+                <img src="https://previews.123rf.com/images/tanyastock/tanyastock1803/tanyastock180300490/97923644-user-icon-avatar-login-sign-circle-button-with-soft-color-gradient-background-vector-.jpg"
+                    alt="Avatar" class="avatar">
+            </div>
+            <div class="container">
+                <i class="fa fa-user icon"></i>
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="username" class="form-control" required>
+                <i class="fa fa-key icon"></i>
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" class="form-control" required>
+                <button type="submit" value="Login!">Login</button>
+
+                <span class="psw"><a href="/forgot">Forgot password?</a></span>
+            </div>
+        </form>
+        <div class="auth">
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="form-control facebook_button">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <i class="fab fa-facebook fa-lg icon" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-md-10">
+                               <h6>Sign In with Facebook Account</h5> 
+                            </div>
+                        </div>
+                    </button>
+                </div>
+                <div class="col-md-12">
+                    <button class="form-control google_button">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <i class="fab fa-google fa-lg icon" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-md-10">
+                                <h6>Sign In with Google Account</h5>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="container">
-            <i class="fa fa-user icon"></i>
-            <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="username" required>
-            <i class="fa fa-key icon"></i>
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" required>
-            <button type="submit">Login</button>
-            <span class="psw"><a href="/forgot">Forgot password?</a></span>
-        </div>
-    </form>
-    <p class="to-signup">Don't have an account? <a href="/register">Sign up instead!</a></p>
+        <p class="to-signup">Don't have an account? <a href="/register">Sign up instead!</a></p>
+    </div>
 </div>
 
 <%include ../partials/footer%>

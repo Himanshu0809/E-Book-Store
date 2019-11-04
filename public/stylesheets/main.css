@@ -144,21 +144,46 @@
     margin:50px auto;
 }
     
-.login-form form {
+.login-form .login-body  {
     border: 3px solid #f1f1f1;
     background: #C9FFBF;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #FFAFBD, #C9FFBF);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #FFAFBD, #C9FFBF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
 }
       
+.login-form .auth{
+    padding:20px;
+    text-align: center;
+}
+
+.login-form .icon {
+    margin-left: 1em;
+    margin-bottom: 3em;
+}   
+
+.login-form .facebook_button {
+	color: white;
+	background-color: #3b5998;
+    border-radius: 2em;
+}
+
+.login-form .google_button {
+	color: white;
+	background-color: #DD4B39;
+	border-radius: 2em;
+}
+
+.login-form .facebook_icon_div {
+	background-color: #3b5998;
+}
+
 .login-form .imgcontainer{
     text-align: center;
     margin: 24px 0 12px 0;
 }
     
 .login-form .avatar{
-    width: 40%;
+    width: 30%;
     border-radius:50%
 }
     
