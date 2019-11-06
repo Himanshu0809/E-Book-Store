@@ -172,6 +172,10 @@
 	border-radius: 2em;
 }
 
+.login-form .auth-content{
+    color:#fff;
+}
+
 .login-form .facebook_icon_div {
 	background-color: #3b5998;
 }
