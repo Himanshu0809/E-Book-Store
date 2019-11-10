@@ -97,6 +97,15 @@ router.get('/login/facebook/return',
 
 router.get('/login/facebook', passport.authenticate('facebook', { scope: ['email'] }));
 
+
+//google auth 
+router.get('/login/google', passport.authenticate('google', { scope: ['profile'] }));
+
+router.get('/google/auth/callback',
+    passport.authenticate('google', { failureRedirect: '/login' }), function (req, res) {
+        res.redirect('/');
+    });
+
 //forgot
 router.get("/forgot", function (req, res) {
     res.render("authentication/forgot");

@@ -11,6 +11,7 @@ var createError = require('http-errors'),
     flash = require("connect-flash"),
     LocalStrategy = require("passport-local"),
     FacebookStrategy = require("passport-facebook"),
+    GoogleStrategy = require("passport-google-oauth20"),
     passportLocalMongoose = require("passport-local-mongoose"),
     methodOverride = require("method-override"),
     session = require("express-session"),
@@ -84,71 +85,43 @@ app.use(require('cookie-parser')());
 app.use(require('body-parser').urlencoded({ extended: true }));
 app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 
-
-// passport.use(new FacebookStrategy({
-//     clientID: process.env.FB_CLIENT_ID,
-//     clientSecret: process.env.FB_CLIENT_SECRET,
-//     callbackURL: 'http://localhost:7781/login/facebook/return'
-// }, function (accessToken, refreshToken, profile, cb) {
-//     process.nextTick(function () {
-//         console.log(profile)
-//         User.findOne({ username: profile.displayName }).exec(function (err, UserFromFacebook) {
-//             if (err) {
-//                 return cb(err);
-//             }
-
-//             if (UserFromFacebook) {
-//                 return cb(null, UserFromFacebook);
-//             } else {
-//                 var NewUser = new User();
-//                 NewUser.firstName = profile.displayName;
-//                 NewUser.username = profile.displayName;
-//                 NewUser.token = accessToken;
-//                 NewUser.save(function (err) {
-//                     if (err) {
-//                         console.log(err);
-//                     }
-//                 })
-//                 return cb(null, NewUser);
-//             }
-//         })
-//     })
-// }));
-
-var StrategyCallback = function(accessToken, refreshToken, profile, cb) {
-    process.nextTick(function() {
-        User.findOne({ username: profile.displayName }).exec(function(err, UserFromFacebook) {
+var StrategyCallback = function (accessToken, refreshToken, profile, cb) {
+    process.nextTick(function () {
+        User.findOne({ username: profile.displayName }).exec(function (err, UserFromFacebook) {
             if (err) {
                 return cb(err);
             }
 
             if (UserFromFacebook) {
-                console.log(profile);
                 return cb(null, UserFromFacebook);
-            } else  {
-                var NewUser =  new User();
-                console.log(profile);
-                NewUser.firstname = profile.displayName;
-                NewUser.email=profile.email;
+            } else {
+                var NewUser = new User();
+                NewUser.firstName = profile.displayName;
                 NewUser.username = profile.displayName;
                 NewUser.token = accessToken;
-                NewUser.save(function(err) {
+                NewUser.save(function (err) {
                     if (err) {
                         console.log(err);
                     }
                 })
+
                 return cb(null, NewUser);
             }
         })
     })
 }
 
-passport.use(new FacebookStrategy ({
+passport.use(new FacebookStrategy({
     clientID: process.env.FB_CLIENT_ID,
     clientSecret: process.env.FB_CLIENT_SECRET,
     callbackURL: 'http://localhost:7781/login/facebook/return'
-  },StrategyCallback ));
+}, StrategyCallback));
 
+passport.use(new GoogleStrategy({
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: "http://localhost:7781/google/auth/callback"
+}, StrategyCallback))
 
 // passport.serializeUser(User.serializeUser());
 passport.serializeUser(function (user, cb) {
