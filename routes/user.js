@@ -81,7 +81,7 @@ router.post("/login", passport.authenticate("local", {
     } else {
         res.redirect("/");
     }
-    req.flash("success", "Welcome to YelpCamp ");
+    req.flash("success", "Welcome to HG STORE!! ");
 });
 
 //logout route
@@ -93,7 +93,7 @@ router.get("/logout", function (req, res) {
 
 //facebook auth
 router.get('/login/facebook/return',
-    passport.authenticate('facebook', { failureRedirect: '/login', successRedirect: '/campgrounds' }));
+    passport.authenticate('facebook', { failureRedirect: '/login', successRedirect: '/' }));
 
 router.get('/login/facebook', passport.authenticate('facebook', { scope: ['email'] }));
 

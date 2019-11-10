@@ -85,26 +85,54 @@ app.use(require('body-parser').urlencoded({ extended: true }));
 app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 
 
-passport.use(new FacebookStrategy({
-    clientID: '640275096164486',
-    clientSecret: '5be315a5d6c1f9dd4d7463df4b78536e',
-    callbackURL: 'http://localhost:8000/login/facebook/return'
-}, function (accessToken, refreshToken, profile, cb) {
-    process.nextTick(function () {
-        console.log(profile)
-        User.findOne({ username: profile.displayName }).exec(function (err, UserFromFacebook) {
+// passport.use(new FacebookStrategy({
+//     clientID: process.env.FB_CLIENT_ID,
+//     clientSecret: process.env.FB_CLIENT_SECRET,
+//     callbackURL: 'http://localhost:7781/login/facebook/return'
+// }, function (accessToken, refreshToken, profile, cb) {
+//     process.nextTick(function () {
+//         console.log(profile)
+//         User.findOne({ username: profile.displayName }).exec(function (err, UserFromFacebook) {
+//             if (err) {
+//                 return cb(err);
+//             }
+
+//             if (UserFromFacebook) {
+//                 return cb(null, UserFromFacebook);
+//             } else {
+//                 var NewUser = new User();
+//                 NewUser.firstName = profile.displayName;
+//                 NewUser.username = profile.displayName;
+//                 NewUser.token = accessToken;
+//                 NewUser.save(function (err) {
+//                     if (err) {
+//                         console.log(err);
+//                     }
+//                 })
+//                 return cb(null, NewUser);
+//             }
+//         })
+//     })
+// }));
+
+var StrategyCallback = function(accessToken, refreshToken, profile, cb) {
+    process.nextTick(function() {
+        User.findOne({ username: profile.displayName }).exec(function(err, UserFromFacebook) {
             if (err) {
                 return cb(err);
             }
 
             if (UserFromFacebook) {
+                console.log(profile);
                 return cb(null, UserFromFacebook);
-            } else {
-                var NewUser = new User();
-                NewUser.name = profile.displayName;
+            } else  {
+                var NewUser =  new User();
+                console.log(profile);
+                NewUser.firstname = profile.displayName;
+                NewUser.email=profile.email;
                 NewUser.username = profile.displayName;
                 NewUser.token = accessToken;
-                NewUser.save(function (err) {
+                NewUser.save(function(err) {
                     if (err) {
                         console.log(err);
                     }
@@ -113,7 +141,13 @@ passport.use(new FacebookStrategy({
             }
         })
     })
-}));
+}
+
+passport.use(new FacebookStrategy ({
+    clientID: process.env.FB_CLIENT_ID,
+    clientSecret: process.env.FB_CLIENT_SECRET,
+    callbackURL: 'http://localhost:7781/login/facebook/return'
+  },StrategyCallback ));
 
 
 // passport.serializeUser(User.serializeUser());

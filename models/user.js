@@ -14,7 +14,7 @@ var userSchema=new mongoose.Schema({
         type:String,
         default:"https://previews.123rf.com/images/tanyastock/tanyastock1803/tanyastock180300490/97923644-user-icon-avatar-login-sign-circle-button-with-soft-color-gradient-background-vector-.jpg".public_id
     },
-    email:{ type: String, unique:true, required:true}, 
+    email:{ type: String, unique:true}, 
     token:String,
     resetPasswordToken: String,
     resetPasswordExpires:Date,
