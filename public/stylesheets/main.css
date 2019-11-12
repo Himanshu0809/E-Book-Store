@@ -116,6 +116,11 @@
     NAVBAR
     ====================================== */
 
+.navbar button{
+    background-color: #FF4B2B;
+    border-color:#FF4B2B;
+}
+
 .navbar .form-inline{
     margin-right:20px;
 }
@@ -305,8 +310,10 @@
     line-height: 22px;
 }
 
-.contact-us-page .contact-form .btn-success{
+.contact-us-page .contact-form .button{
+    background-color: #FF4B2B;
     border-radius: 5px;
+    border-color:#FF4B2B;
     padding: 5px 20px;
     margin: 0px 0px 10px 0px;
 }

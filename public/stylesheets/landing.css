@@ -117,23 +117,26 @@
   padding:30px;
   margin-top:50px;
   margin-bottom:30px;
-  background: #FFEFBA;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #FFFFFF, #FFEFBA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  background: rgb(255, 218, 227) !important;
+  background: -webkit-linear-gradient(to right, rgb(241, 148, 131), rgb(250, 210, 219)) !important;
+  background: linear-gradient(to right, rgb(255, 157, 140), rgb(255, 188, 204)) !important;
 }
+
 #section2 .lead{
   text-align: center;
   font-weight: bold;
 }
+
 #section2 .carousel-multi-item {
   margin-bottom: 5rem;
 }
+
 #section2 .carousel-multi-item .controls-top {
   text-align: center;
   margin-bottom: 0.5rem;
   margin-top: 10px;
 }
+
 #section2 .carousel-multi-item .controls-top .btn-floating {
   background: #4285f4;
 }
@@ -181,12 +184,15 @@
   display: -ms-flexbox;
   display: flex;
 }
+
 #section2 .carousel-multi-item .carousel-inner .carousel-item.active, .carousel-multi-item .carousel-item-next, .carousel-multi-item .carousel-item-prev {
   display: block;
 }
+
 #section2 .carousel-item.active {
   display: block;
 }
+
 #section2 .carousel-item {
   position: relative;
   display: none;
@@ -231,18 +237,22 @@
   margin-top:30px;
   margin-bottom:50px;
 }
+
 #section3 .lead{
  text-align: center;
  font-weight: bold;
 }
+
 #section3 .carousel-multi-item {
  margin-bottom: 5rem;
 }
+
 #section3 .carousel-multi-item .controls-top {
  text-align: center;
  margin-bottom: 0.5rem;
  margin-top: 10px;
 }
+
 #section3 .carousel-multi-item .controls-top .btn-floating {
  background: #4285f4;
 }
@@ -290,12 +300,15 @@
  display: -ms-flexbox;
  display: flex;
 }
+
 #section3 .carousel-multi-item .carousel-inner .carousel-item.active, .carousel-multi-item .carousel-item-next, .carousel-multi-item .carousel-item-prev {
  display: block;
 }
+
 #section3 .carousel-item.active {
  display: block;
 }
+
 #section3 .carousel-item {
  position: relative;
  display: none;
