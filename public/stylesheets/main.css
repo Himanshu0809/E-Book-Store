@@ -453,6 +453,43 @@ section .section-title {
     }
 }
 
+/*  ============================
+    FLASH MESSAGES 
+    ============================*/
+
+.alert{
+  z-index: 1;
+  position: absolute;
+}
+
+.errorMsg, .successMsg{
+  text-align: center;
+    width: 100%;
+    margin: 0;
+    left: 0;
+    margin-top: 10px;
+    animation: fade 15s;
+    animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes fade{
+  0%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+
+@keyframes fade{
+  0%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+
 
 /*  =====================================
     Scroll Top-up
