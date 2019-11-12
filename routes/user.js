@@ -32,9 +32,9 @@ cloudinary.config({
     api_secret: "JMWcMdcHrjurh88t7wcrL4ZURWU"
 });
 
-//show register form
-router.get("/register", function (req, res) {
-    res.render("authentication/register");
+//show my account form
+router.get("/login", function (req, res) {
+    res.render("authentication/account");
 });
 
 //handle sign up logic
@@ -62,10 +62,10 @@ router.post("/register", function (req, res) {
 });
 
 //show login form
-router.get("/login", function (req, res) {
-    var messages = req.flash("error");
-    res.render("authentication/login");
-})
+// router.get("/login", function (req, res) {
+//     var messages = req.flash("error");
+//     res.render("authentication/login");
+// })
 
 //handling login logic
 router.post("/login", passport.authenticate("local", {

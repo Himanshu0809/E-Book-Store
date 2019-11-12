@@ -73,167 +73,6 @@
     margin:10px;
     margin-bottom: 30px;
 }
-
-
-/*  =====================================
-    Register form
-    ===================================== */
-
-.register-form .full{
-    width:40%;
-    margin:50px auto;
-}
-    
-.register-form form {
-    border: 3px solid #f1f1f1;
-    background: #FF4E50;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #F9D423, #FF4E50);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #F9D423, #FF4E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-      
-.register-form .imgcontainer{
-    text-align: center;
-    margin: 24px 0 12px 0;
-}
-    
-.register-form .avatar{
-    width: 40%;
-    border-radius:50%
-}  
-    
-.register-form .container{
-    padding: 20px;
-}
-    
-.register-form button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-}
-      
-.register-form button:hover{
-    opacity: 0.8;
-}
-    
-.register-form input[type=text],.register-form input[type=email], .register-form input[type=password]{
-    width:100%;
-    padding: 5px 20px;
-    margin-bottom: 2px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-.register-form .to-signin{
-    text-align: center;
-    margin:0;
-    padding:0;
-}
-
-
-/*  =====================================
-    Login form
-    ===================================== */
-
-.login-form .full{
-    width:40%;
-    margin:50px auto;
-}
-    
-.login-form .login-body  {
-    border: 3px solid #f1f1f1;
-    background: #C9FFBF;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #FFAFBD, #C9FFBF);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #FFAFBD, #C9FFBF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-      
-.login-form .auth{
-    padding:20px;
-    text-align: center;
-}
-
-.login-form .icon {
-    margin-left: 1em;
-}   
-
-.login-form .facebook_button {
-	color: white;
-	background-color: #3b5998;
-    border-radius: 2em;
-}
-
-.login-form .google_button {
-	color: white;
-	background-color: #DD4B39;
-	border-radius: 2em;
-}
-
-.login-form .auth-content{
-    color:#fff;
-}
-
-.login-form .facebook_icon_div {
-	background-color: #3b5998;
-}
-
-.login-form .imgcontainer{
-    text-align: center;
-    margin: 24px 0 12px 0;
-}
-    
-.login-form .avatar{
-    width: 30%;
-    border-radius:50%
-}
-    
-.login-form .container{
-    padding: 20px;
-}
-    
-.login-form button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-  }
-      
-.login-form button:hover{
-    opacity: 0.8;
-}
-    
-.login-form input[type=text],.login-form input[type=password]{
-    width:100%;
-    padding: 12px 20px;
-    margin-bottom: 16px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-    
-.login-form span.psw{
-    float:right;
-    /* padding-top:16px; */
-}
-    
-@media screen and (max-width: 300px) {
-    .login-form span.psw {
-       display: block;
-       float: none;
-    } 
-}
-
-.login-form .to-signup{
-    text-align: center;
-    margin:0;
-    padding:0;
-}
     
 /*  ======================================
     Shopping Cart
@@ -639,33 +478,11 @@ section .section-title {
     background-color: rgb(218, 39, 39);
   }
 
+/*  =====================================
+    Sign up and Login form
+    ===================================== */
 
-
-
-
-
-
-
-
-
-
-
-  @import url('https://fonts.googleapis.com/css?family=Ubuntu');
-
-.register-forms * {
-	box-sizing: border-box;
-}
-
-.register-forms body {
-	background: #f6f5f7;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	font-family: 'Ubuntu', sans-serif;
-	height: 100vh;
-	margin: -20px 0 50px;
-}
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
 .register-forms h1 {
 	font-weight: bold;
@@ -676,7 +493,7 @@ section .section-title {
 	text-align: center;
 }
 
-.register-forms.register-forms  p {
+.register-forms  p {
 	font-size: 14px;
 	font-weight: 100;
 	line-height: 20px;
@@ -744,10 +561,10 @@ section .section-title {
   	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
 				0 10px 10px rgba(0,0,0,0.22);
 	position: relative;
-	overflow: hidden;
-	width: 768px;
+	/* overflow: hidden; */
+	width: 800px;
 	max-width: 100%;
-	min-height: 480px;
+	min-height: 800px;
 }
 
 .register-forms .form-container {
@@ -882,3 +699,174 @@ section .section-title {
 	height: 40px;
 	width: 40px;
 }
+
+.register-forms .imgcontainer{
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+    
+.register-forms .avatar{
+    width: 30%;
+    border-radius:50%
+}
+
+
+
+/*  =====================================
+    Login form
+    ===================================== */
+
+/* .login-form .full{
+    width:40%;
+    margin:50px auto;
+}
+    
+.login-form .login-body  {
+    border: 3px solid #f1f1f1; */
+    /* background: #C9FFBF;  fallback for old browsers */
+    /* background: -webkit-linear-gradient(to right, #FFAFBD, #C9FFBF);  Chrome 10-25, Safari 5.1-6 */
+    /* background: linear-gradient(to right, #FFAFBD, #C9FFBF); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+/* } */
+      
+/* .login-form .auth{
+    padding:20px;
+    text-align: center;
+}
+
+.login-form .icon {
+    margin-left: 1em;
+}   
+
+.login-form .facebook_button {
+	color: white;
+	background-color: #3b5998;
+    border-radius: 2em;
+}
+
+.login-form .google_button {
+	color: white;
+	background-color: #DD4B39;
+	border-radius: 2em;
+}
+
+.login-form .auth-content{
+    color:#fff;
+}
+
+.login-form .facebook_icon_div {
+	background-color: #3b5998;
+}
+
+.login-form .imgcontainer{
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+    
+.login-form .avatar{
+    width: 30%;
+    border-radius:50%
+}
+    
+.login-form .container{
+    padding: 20px;
+}
+    
+.login-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+      
+.login-form button:hover{
+    opacity: 0.8;
+}
+    
+.login-form input[type=text],.login-form input[type=password]{
+    width:100%;
+    padding: 12px 20px;
+    margin-bottom: 16px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+    
+.login-form span.psw{
+    float:right;
+    /* padding-top:16px; */
+/* }
+    
+@media screen and (max-width: 300px) {
+    .login-form span.psw {
+       display: block;
+       float: none;
+    } 
+}
+
+.login-form .to-signup{
+    text-align: center;
+    margin:0;
+    padding:0;
+} */
+
+/*  =====================================
+    Register form
+    ===================================== */
+
+/* .register-form .full{
+    width:40%;
+    margin:50px auto;
+}
+    
+.register-form form {
+    border: 3px solid #f1f1f1; */
+    /* background: #FF4E50;  fallback for old browsers */
+    /* background: -webkit-linear-gradient(to right, #F9D423, #FF4E50);  Chrome 10-25, Safari 5.1-6 */
+    /* background: linear-gradient(to right, #F9D423, #FF4E50); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+/* } */
+      
+/* .register-form .imgcontainer{
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+    
+.register-form .avatar{
+    width: 40%;
+    border-radius:50%
+}  
+    
+.register-form .container{
+    padding: 20px;
+}
+    
+.register-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+      
+.register-form button:hover{
+    opacity: 0.8;
+}
+    
+.register-form input[type=text],.register-form input[type=email], .register-form input[type=password]{
+    width:100%;
+    padding: 5px 20px;
+    margin-bottom: 2px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.register-form .to-signin{
+    text-align: center;
+    margin:0;
+    padding:0;
+} */
