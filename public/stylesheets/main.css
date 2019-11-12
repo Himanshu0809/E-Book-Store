@@ -540,10 +540,9 @@ section .section-title {
 }
 
 #footer {
-    background: #007b5e !important;
-    /* background: #FF416C !important;
+    background: #FF416C !important;
 	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C) !important;
-	background: linear-gradient(to right, #FF4B2B, #FF416C) !important; */
+	background: linear-gradient(to right, #FF4B2B, #FF416C) !important;
 }
 
 #footer h5{
