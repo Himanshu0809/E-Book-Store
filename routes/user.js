@@ -55,8 +55,8 @@ router.post("/register", function (req, res) {
             return res.render("authentication/register", { error: err.message });
         }
         passport.authenticate("local")(req, res, function () {
-            req.flash("success", "Welcome to YelpCamp " + user.username);
-            res.redirect("back");
+            req.flash("success", "Welcome to HG Store " + user.username);
+            res.redirect("/");
         });
     });
 });

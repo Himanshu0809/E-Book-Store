@@ -484,6 +484,10 @@ section .section-title {
 
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
+.register-forms{
+    margin:100px;
+}
+
 .register-forms h1 {
 	font-weight: bold;
 	margin: 0;
@@ -690,7 +694,7 @@ section .section-title {
 }
 
 .register-forms .social-container a {
-	border: 1px solid #DDDDDD;
+    border: 1px solid #DDDDDD;
 	border-radius: 50%;
 	display: inline-flex;
 	justify-content: center;
@@ -698,6 +702,16 @@ section .section-title {
 	margin: 0 5px;
 	height: 40px;
 	width: 40px;
+}
+
+.register-forms .facebook-icon {
+    color:white;
+    background-color: #3b5998;
+}
+
+.register-forms .google-icon {
+    color: white;
+    background-color: #DD4B39;
 }
 
 .register-forms .imgcontainer{
