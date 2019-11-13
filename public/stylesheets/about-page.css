@@ -1,0 +1,52 @@
+/*  =====================================
+    ABOUT US 
+    ===================================== */
+
+.about-image {
+    padding-bottom: 50px;
+    width:90%;
+    margin:0 auto;
+}
+
+.about-image img {
+    vertical-align: middle;
+}
+
+.about-image .img-responsive{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.about-us-page .container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.about-us-page .about {
+    margin-top: -20%;
+    padding: 1.5% 5% 3% 5%;
+    background-color:white;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.about-us-page .about-form {
+    padding:30px;
+    background: rgb(240, 164, 183) !important;
+    background: -webkit-linear-gradient(to right, rgb(248, 129, 107), rgb(248, 174, 190)) !important;
+    background: linear-gradient(to right, rgb(253, 131, 110), rgb(251, 149, 173)) !important;
+    text-align: left;
+    border-radius: 10px;    
+}
+
+/*  =====================================
+    Google Maps
+    ===================================== */
+#map {
+    height: 400px;
+    width: 100%;
+}

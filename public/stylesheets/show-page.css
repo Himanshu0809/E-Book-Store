@@ -1,0 +1,62 @@
+/*  ========================================
+     show page for books and best selling 
+    ========================================*/
+.book-show{
+    background: #C6FFDD;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f7797d, #FBD786, #C6FFDD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.book-show .card-title{
+    text-align:center;
+    font-size: 3em;
+}
+
+/* Styling the images of the show page */
+.book-show .thumbnail{
+    display: flex;
+    flex-wrap: wrap;
+    padding:0;
+}
+
+.book-show .thumbnail img{
+    width:100%;
+}
+
+.book-show .thumbnail .caaption-full{
+    padding:9px;
+}
+
+.book-show .book-image{
+    text-align: center;
+    width: 100%;
+    padding: 10%;
+    margin-top:10%;
+    margin-left:5%;
+}
+
+@media only screen and (max-width:992px){
+    .book-show .book-image{
+        text-align: center;
+        width: 100%;
+        height:100%;
+        padding: 5% 10%;
+        margin-top:2%;
+    }
+}
+
+.book-show{
+    padding:20px;
+    margin: 10px;
+    margin-bottom: 20px;
+    border:1px solid rgb(199, 195, 195);
+}
+
+/* comment section of show page */
+.comment{
+    padding:20px;
+    margin:10px;
+    margin-bottom: 30px;
+    margin:100px;
+}

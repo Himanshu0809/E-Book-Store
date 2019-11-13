@@ -1,0 +1,148 @@
+/* ========================================
+   CONTACT PAGE
+   ======================================== */
+
+.contact-image {
+    padding-bottom: 50px;
+    width:90%;
+    margin:0 auto;
+}
+
+.contact image img {
+    vertical-align: middle;
+}
+
+.contact-image .img-responsive{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.contact-us-page .container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.contact-us-page .contact {
+    margin-top: -20%;
+    padding: 1.5% 5% 3% 5%;
+    background-color:white;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.contact-us-page .contact-address ul{
+    padding: 0px;
+}
+
+.contact-us-page .contact-address li {
+    list-style: none;
+}
+
+/* to give the icon some effects */
+.contact-us-page .contact-address i {
+    float: left;
+    font-size: 1.1667em;
+    margin-top:3px;
+    background: #08918e;
+    width: 2.5em;
+    height: 2.5em;
+    line-height: 2.5em;
+    border-radius: 50% 50% 50% 50%;
+    color: #fff;
+    text-align: center;
+}
+
+.contact-us-page .contact-address h4 {
+    font-size: 20px;
+    font-weight: 600;
+    padding: 20px 0px 10px 0px;
+    border-bottom: 1px solid Gray;
+    width: 80%;
+    color: #333;
+    margin-bottom: 26px;
+}
+
+.contact-us-page .style .details {
+    border-bottom: 1px solid #edf6ff;
+    margin-left: 50px;
+    padding-bottom: 15px;
+    padding-left: 15px !important;
+}
+
+.contact-us-page .details h5 {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 5px;
+    margin-top: 0px;
+    color: #08918e;
+}
+
+.contact-us-page .details p {
+    margin: 0 0 10px;
+    font-size: 12px;
+}
+
+.contact-us-page a {
+    color: #08918e;
+    text-decoration: none;
+}
+
+.contact-us-page form {
+    display: block;
+    margin-top: 0em;
+}
+
+.contact-us-page .form-group {
+    margin-bottom: 15px;
+}
+
+.contact-us-page .form-control {
+    width: 100%;
+    height: 42px;
+    color: #555;
+    background-color: #fff;
+}
+
+.contact-us-page .contact-form {
+    background: #FF416C !important;
+    background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C) !important;
+    background: linear-gradient(to right, #FF4B2B, #FF416C) !important;
+    text-align: left;
+    border-radius: 10px;    
+}
+
+
+/* for desktop */
+.contact-us-page .contact-form h5 {
+    font-size: 30px;
+    font-weight: 700;
+    padding: 20px 0px 20px 0px;
+    border-bottom: 1px solid white;
+    width: 80%;
+    color: White;
+}
+
+/* for mobile and tab */
+@media only screen and (max-width: 992px) {
+    .contact-us-page .contact-form h5 {
+        font-size: 16px;
+        padding: 10px 0px 5px 0px;
+    }
+}            
+
+.contact-us-page .contact-form p {
+    color: #FFF;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.contact-us-page .contact-form .button{
+    
+    border-radius: 5px;
+    padding: 5px 20px;
+    margin: 0px 0px 10px 0px;
+}
