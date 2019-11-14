@@ -19,11 +19,27 @@ router.get("/books/add-to-cart/:id", function (req, res) {
         }
         cart.add(product, productId);
         req.session.cart = cart;
-        console.log(req.session.cart);
         req.flash("success", "Succesfully Added to cart!")
         res.redirect('/');
     })
 });
+
+router.get("/add/:id", function(req, res){
+    var productId = req.params.id;
+    var cart = new Cart(req.session.cart ? req.session.cart : {}); //every time an item is added a new object is created with the old cart from the session
+    //we are checking whether we have an existing cart or not. if it exists we are passing the old cart otherwise an empty object
+
+    Book.findById(productId, function (err, product) {
+        if (err) {
+            console.log(err);
+            return res.redirect("/");
+        }
+        cart.add(product, productId);
+        req.session.cart = cart;
+        console.log(req.session.cart);
+        res.redirect('/shopping-cart');
+    })
+})
 
 router.get("/reduce/:id", function(req, res){
     var productId = req.params.id;

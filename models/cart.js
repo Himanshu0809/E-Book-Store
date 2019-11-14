@@ -21,7 +21,7 @@ module.exports = function Cart(oldCart) { //passing old cart items every time we
         this.totalQty--;
         this.totalPrice -= this.items[id].item.price;
 
-        if (this.items[id].qty <= 0) {
+        if (this.items[id].qty <= 0) {  
             delete this.items[id];
         }
     }
