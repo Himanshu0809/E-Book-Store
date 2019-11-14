@@ -11,12 +11,35 @@
 }
 
 /* Global "table" column settings */
-.my-cart .product-image { float: left; width: 20%; }
-.my-cart .product-details { float: left; width: 23%; }
-.my-cart .product-price { float: left; width: 14%; }
-.my-cart .product-quantity { float: left; width: 14%; }
-.my-cart .product-removal { float: left; width: 12%; }
-.my-cart .product-line-price { float: left; width: 17%; text-align: right; }
+.my-cart .product-image { 
+    float: left; 
+    width: 20%; 
+}
+
+.my-cart .product-details { 
+    float: left; 
+    width: 23%; 
+}
+
+.my-cart .product-price { 
+    float: left; 
+    width: 14%; 
+}
+
+.my-cart .product-quantity { 
+    float: left; 
+    width: 14%; 
+}
+
+.my-cart .product-removal { 
+    float: left; 
+    width: 12%; 
+}
+
+.my-cart .product-line-price { 
+    float: left; 
+    width: 17%; text-align: right; 
+}
 
 /* Body/Header stuff */
 
@@ -24,12 +47,12 @@
     color: rgb(82, 82, 82);
     font-weight: bold;
     text-align: center;
-  }
+}
+
 .my-cart label {
-  color: rgb(82, 82, 82);
-  font-size: .85em;
-  font-weight: bold;
-  /* text-align: center; */
+    color: rgb(82, 82, 82);
+    font-size: .85em;
+    font-weight: bold;
 }
 
 
@@ -41,15 +64,15 @@
 } 
   
 .my-cart .list-group-item{
-    height:150px;
+    height:170px;
 }
 
 /* Product entries */
 
 .my-cart .product {
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  /* border-bottom: 1px solid #eee; */
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    /* border-bottom: 1px solid #eee; */
 }  
 
 .my-cart .product .product-image {
@@ -92,17 +115,17 @@
 /* Totals section */
 
 .my-cart .totals .totals-item  label {
-      float: left;
-      clear: both;
-      width:80%;
-      text-align: right;
+    float: left;
+    clear: both;
+    width:80%;
+    text-align: right;
 }
     
 .my-cart .totals .totals-item .totals-value {
-      float: right;
-      width: 20%;
-      text-align: right;
-      font-weight: bold;
+    float: right;
+    width: 20%;
+    text-align: right;
+    font-weight: bold;
 }
   
 .my-cart .totals .totals-item-total {
@@ -110,18 +133,18 @@
 }
 
 .my-cart .checkout {
-  float: right;
-  border: 0;
-  margin-top: 20px;
-  padding: 6px 25px;
-  background-color: #6b6;
-  color: #fff;
-  font-size: 25px;
-  border-radius: 3px;
+    float: right;
+    border: 0;
+    margin-top: 20px;
+    padding: 6px 25px;
+    background-color: #6b6;
+    color: #fff;
+    font-size: 25px;
+    border-radius: 3px;
 }
 
 .my-cart .checkout:hover {
-  background-color: #494;
+    background-color: #494;
 }
 
 /* Make adjustments for tablet */
@@ -132,42 +155,42 @@
     }
 
     .my-cart .shopping-cart {
-    margin: 0;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
-  }
-  
-  .my-cart .column-labels {
-    display: none;
-  }
-  
-  .my-cart .product-image {
-    float: right;
-    width: auto;
+        margin: 0;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
     }
+  
+    .my-cart .column-labels {
+        display: none;
+    }
+  
+    .my-cart .product-image {
+        float: right;
+        width: auto;
+    }
+    
     .my-cart .product-image img {
-      margin: 0 0 10px 10px;
+        margin: 0 0 10px 10px;
     }
   
-  
-  .my-cart .product-details {
-    float: none;
-    margin-bottom: 10px;
-    width: auto;
-  }
-  
-  .my-cart .product-price {
-    clear: both;
-    width: 70px;
-  }
-  
-  .my-cart .product-quantity {
-    width: 100px;
-  }
-  .my-cart .product-quantity input {
-      margin-left: 20px;
+    .my-cart .product-details {
+        float: none;
+        margin-bottom: 10px;
+        width: auto;
     }
   
+    .my-cart .product-price {
+        clear: both;
+        width: 70px;
+    }
+  
+    .my-cart .product-quantity {
+        width: 100px;
+    }
+
+    .my-cart .product-quantity input {
+        margin-left: 20px;
+    }
   
   .my-cart .product-quantity:before {
     content: 'x';
@@ -183,16 +206,32 @@
   }
   
   .my-cart .list-group-item{
-    height:280px;
+    height:200px;
 }
 }
 
+/* Make adjustments for tablet */
+@media screen and (max-width: 425px) {
+    .my-cart{
+        font-size: 0.8em;
+    }
+
+    .my-cart .product-removal button{
+        font-size:0.9em;
+    }
+
+
+    .my-cart .list-group-item{
+        height:260px;
+}
+}
 
 /* Make more adjustments for phone */
 @media screen and (max-width: 350px) {
     .my-cart{
         font-size: .8em;
     }
+
     .my-cart .product-removal {
         float: right;
     }
@@ -208,6 +247,10 @@
         width: 60%;
     }
       
+    .my-cart .product-removal button{
+        font-size:0.8em;
+    }
+
     .my-cart .totals .totals-item .totals-value {
         width: 40%;
     }
@@ -216,4 +259,3 @@
         height:350px;
     }
 }
-
