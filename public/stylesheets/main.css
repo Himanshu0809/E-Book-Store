@@ -12,14 +12,6 @@
     background:rgb(24, 3, 3) url('https://media.giphy.com/media/TZ3Y3sUWzrquY/giphy.gif') no-repeat center;
     z-index: 99999; 
 }
-    
-/*  ======================================
-    Shopping Cart
-    ====================================== */
-
-.my-cart{
-    margin:50px;
-}
 
 /*  ======================================
     NAVBAR
@@ -100,7 +92,7 @@
     padding: 15px;
     border-radius: 4px;
 }
-  
+
 #myBtn:hover {
     background-color: rgb(218, 39, 39);
 }
