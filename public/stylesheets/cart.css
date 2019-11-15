@@ -3,13 +3,51 @@
     ====================================== */
 
 .my-cart{
-    margin:50px;
+    margin:100px;
 }
 
 .my-cart .card-header{
-    text-align: center;
+    padding:30px;
+    border: none;
+    background: #FF416C !important;
+	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C) !important;
+	background: linear-gradient(to right, #FF4B2B, #FF416C) !important;
 }
 
+.my-cart .card{
+    border:none;
+}
+
+.my-cart .card-footer{
+    border: none;
+}
+
+.my-cart .checkout-button{
+    float: right;
+    margin:30px;
+    background-color: #FF4B2B;
+    border-color:#FF4B2B;
+}
+
+.my-cart .card-header span {
+    float: right;
+}
+
+.my-cart .card-header a :hover {
+	-webkit-animation: bounceright .3s alternate ease infinite;
+	animation: bounceright .3s alternate ease infinite;
+}
+
+@-webkit-keyframes bounceright {
+    from { -webkit-transform: translateX(0); }
+    to   { -webkit-transform: translateX(3px); }
+}
+   
+@keyframes bounceright {
+    from { transform: translateX(0); }
+    to   { transform: translateX(3px); }
+}
+    
 /* Global "table" column settings */
 .my-cart .product-image { 
     float: left; 
@@ -33,6 +71,16 @@
 
 .my-cart .product-quantity i{
     color:black;
+}
+ 
+.my-cart .product-removal button{
+    background-color: #FF4B2B;
+    border-color:#FF4B2B;
+}
+
+.my-cart .product-removal .removal-item :hover{
+    text-decoration:none;
+    color: #FF4B2B;
 }
 
 .my-cart .product-removal { 
@@ -68,7 +116,7 @@
 } 
   
 .my-cart .list-group-item{
-    height:170px;
+    border: none;
 }
 
 /* Product entries */
@@ -203,7 +251,7 @@
   .my-cart .product-removal {
     width: auto;
   }
-  
+
   .my-cart .product-line-price {
     float: right;
     width: 70px;
