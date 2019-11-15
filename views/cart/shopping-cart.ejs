@@ -1,103 +1,109 @@
 <% include ../partials/header%>
+<main class="page cart-page">
+    <section class="cart-form dark">
+        <div class="my-cart">
+            <div class="container">
+                <%if(products!=null && totalPrice!=0){%>
+                <div class="card">
+                    <div class="card-header">
+                        <h1>
+                            My Cart
+                            <span>
+                                <a href="/" class="btn btn-warning shopping-button">
+                                    <i class="fa fa-chevron-right" aria-hidden="true">
+                                        <i class="fa fa-chevron-right" aria-hidden="true"> Continue Shopping
+                                        </i>
+                                    </i>
+                                </a>
+                            </span>
+                        </h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-text">
+                            <div class="shopping-cart">
+                                <div class="column-labels">
+                                    <label class="product-image">Image</label>
+                                    <label class="product-details">Product</label>
+                                    <label class="product-price">Price</label>
+                                    <label class="product-quantity">Quantity</label>
+                                    <label class="product-removal">Remove</label>
+                                    <label class="product-line-price">Total</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="list-group">
+                        <%products.forEach(function(product){%>
+                        <div class="card-body">
+                            <div class="card-text">
+                                <li class="list-group-item ">
+                                    <div class="product">
+                                        <div class="product-image">
+                                            <img src="<%=product.item.image%>">
+                                        </div>
+                                        <div class="product-details">
+                                            <div class="product-title"><%=product.item.title%></div>
+                                        </div>
+                                        <div class="product-price">Rs. <%=product.item.price%></div>
+                                        <div class="product-quantity">
+                                            <a href="/reduce/<%=product.item._id%>"><i
+                                                    class="fas fa-minus-circle"></i></a>
+                                            <%=product.qty%>
+                                            <a href="/add/<%=product.item._id%>"><i class="fas fa-plus-circle"></i></a>
+                                        </div>
+                                        <div class="product-removal">
+                                            <div class="btn-group">
+                                                <button class="btn btn-danger btn-xs dropdown-toggle"
+                                                    data-toggle="dropdown" type="button">Remove</button>
+                                                <ul class="dropdown-menu">
+                                                    <li class="removal-item"><a
+                                                            href="/reduce/<%=product.item._id%>">Reduce by
+                                                            1</a></li>
+                                                    <li class="removal-item"><a
+                                                            href="/remove/<%=product.item._id%>">Remove
+                                                            All</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="product-line-price">Rs. <%=product.price%></div>
+                                    </div>
+                                    </<a>
+                            </div>
+                        </div>
+                        <%})%>
+                    </ul>
+                    <div class="card-footer">
+                        <div class="totals">
+                            <div class="totals-item totals-item-total">
+                                <strong>
+                                    <h4 class="display-5">
+                                        <label>Grand Total: </label>
+                                        <div class="totals-value" id="cart-total">Rs. <%=totalPrice%></div>
+                                    </h4>
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="/checkout" class="btn btn-success raise checkout-button" type="button">Checkout</a>
 
-<div class="my-cart">
-    <div class="container">
-        <%if(products!=null && totalPrice!=0){%>
-        <div class="card">
-            <div class="card-header">
-                <h1>
-                    My Cart
-                    <span>
+                <%}else{%>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-md-offset-6 col-sm-offset-6 empty">
+                        <h2 class="display-3 empty-cart">Your Cart is Empty!</h2>
                         <a href="/" class="btn btn-warning shopping-button">
                             <i class="fa fa-chevron-right" aria-hidden="true">
                                 <i class="fa fa-chevron-right" aria-hidden="true"> Continue Shopping
                                 </i>
                             </i>
                         </a>
-                    </span>
-                </h1>
+                    </div>
+                </div>
+                <%}%>
+                    </div>
+                </div>                
+    </section>
+</main>
 
-            </div>
-            <div class="card-body">
-                <div class="card-text">
-                    <div class="shopping-cart">
-                        <div class="column-labels">
-                            <label class="product-image">Image</label>
-                            <label class="product-details">Product</label>
-                            <label class="product-price">Price</label>
-                            <label class="product-quantity">Quantity</label>
-                            <label class="product-removal">Remove</label>
-                            <label class="product-line-price">Total</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <ul class="list-group">
-                <%products.forEach(function(product){%>
-                <div class="card-body">
-                    <div class="card-text">
-                        <li class="list-group-item ">
-                            <div class="product">
-                                <div class="product-image">
-                                    <img src="<%=product.item.image%>">
-                                </div>
-                                <div class="product-details">
-                                    <div class="product-title"><%=product.item.title%></div>
-                                </div>
-                                <div class="product-price">Rs. <%=product.item.price%></div>
-                                <div class="product-quantity">
-                                    <a href="/reduce/<%=product.item._id%>"><i class="fas fa-minus-circle"></i></a>
-                                    <%=product.qty%>
-                                    <a href="/add/<%=product.item._id%>"><i class="fas fa-plus-circle"></i></a>
-                                </div>
-                                <div class="product-removal">
-                                    <div class="btn-group">
-                                        <button class="btn btn-danger btn-xs dropdown-toggle" data-toggle="dropdown"
-                                            type="button">Remove</button>
-                                        <ul class="dropdown-menu">
-                                            <li class="removal-item"><a href="/reduce/<%=product.item._id%>">Reduce by
-                                                    1</a></li>
-                                            <li class="removal-item"><a href="/remove/<%=product.item._id%>">Remove
-                                                    All</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product-line-price">Rs. <%=product.price%></div>
-                            </div>
-                            </<a>
-                    </div>
-                </div>
-                <%})%>
-            </ul>
-            <div class="card-footer">
-                <div class="totals">
-                    <div class="totals-item totals-item-total">
-                        <strong>
-                            <h4 class="display-5">
-                                <label>Grand Total: </label>
-                                <div class="totals-value" id="cart-total">Rs. <%=totalPrice%></div>
-                            </h4>
-                        </strong>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <a href="/checkout" class="btn btn-success raise checkout-button" type="button">Checkout</a>
-
-        <%}else{%>
-        <div class="row">
-            <div class="col-sm-12 col-md-12 col-md-offset-6 col-sm-offset-6 empty">
-                <h2 class="display-3 empty-cart">Your Cart is Empty!</h2>
-                <a href="/" class="btn btn-warning shopping-button">
-                    <i class="fa fa-chevron-right" aria-hidden="true">
-                        <i class="fa fa-chevron-right" aria-hidden="true"> Continue Shopping
-                        </i>
-                    </i>
-                </a>
-            </div>
-        </div>
-        <%}%>
-    </div>
-</div>
 <script type="text/javascript" src="../../public/javascripts/cart.js"></script>
 <% include ../partials/footer%>

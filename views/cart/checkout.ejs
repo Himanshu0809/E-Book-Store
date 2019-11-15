@@ -11,39 +11,43 @@
                     <%=errMsg%>
                 </div>
                 <form action="/checkout" method="post" id="checkout-form">
-                    
                     <div class="products">
                         <h3 class="title">Checkout</h3>
                         <div class="total">Your Total: <span class="price">Rs. <%=total%></span></div>
                     </div>
                     <div class="card-details">
-                            <h3 class="title">Personal Details</h3>
-                            <div class="col-sm-12 form-group">
-                                        <label for="name">Name</label>
-                                        <input type="text" id="name" placeholder="Name" class="form-control" required name="name">
-                                </div>
-                                <div class="col-sm-12 form-group">
-                                        <label for="address">Address</label>
-                                        <input type="text" id="address" placeholder="Address" class="form-control" required name="address">
-                                </div>
-                                <br>
+                        <h3 class="title">Personal Details</h3>
+                        <div class="col-sm-12 form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" placeholder="Name" class="form-control" required name="name">
+                        </div>
+                        <div class="col-sm-12 form-group">
+                            <label for="address">Address</label>
+                            <input type="text" id="address" placeholder="Address" class="form-control" required
+                                name="address">
+                        </div>
+                        <br>
                         <h3 class="title">Card Details</h3>
                         <div class="row">
                             <div class="form-group col-sm-7">
                                 <label for="card-name">Card Holder Name</label>
-                                <input id="card-name" type="text" class="form-control" placeholder="Card Holder Name" required>
+                                <input id="card-name" type="text" class="form-control" placeholder="Card Holder Name"
+                                    required>
                             </div>
                             <div class="form-group col-sm-5">
                                 <label for="">Expiration Date</label>
                                 <div class="input-group expiration-date">
-                                    <input id="card-expiry-month" type="text" class="form-control" placeholder="MM" required>
+                                    <input id="card-expiry-month" type="text" class="form-control" placeholder="MM"
+                                        required>
                                     <span class="date-separator">/</span>
-                                    <input id="card-expiry-year" type="text" class="form-control" placeholder="YY" required>
+                                    <input id="card-expiry-year" type="text" class="form-control" placeholder="YY"
+                                        required>
                                 </div>
                             </div>
                             <div class="form-group col-sm-8">
                                 <label for="card-number">Card Number</label>
-                                <input id="card-number" type="text" class="form-control" placeholder="Card Number" required>
+                                <input id="card-number" type="text" class="form-control" placeholder="Card Number"
+                                    required>
                             </div>
                             <div class="form-group col-sm-4">
                                 <label for="card-cvc">CVC</label>
@@ -58,11 +62,7 @@
             </div>
         </section>
     </main>
-
 </div>
-
-
-
 
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript" src="../../public/javascripts/checkout.js"></script>
