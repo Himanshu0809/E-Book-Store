@@ -6,6 +6,17 @@
     margin:100px;
 }
 
+.my-cart .empty .shopping-button {
+    margin-right: 30%;
+    margin-left: 40%;
+    margin-top: 20px;;
+    padding:0.5em 1.5em;
+}
+
+.my-cart .empty-cart{
+    text-align: center;
+}
+
 .my-cart .card-header{
     padding:30px;
     border: none;
@@ -20,20 +31,37 @@
 
 .my-cart .card-footer{
     border: none;
+    padding:10px;
 }
 
 .my-cart .checkout-button{
+    color: white;
+    padding:10px 20px;
     float: right;
     margin:30px;
     background-color: #FF4B2B;
     border-color:#FF4B2B;
 }
 
-.my-cart .card-header span {
-    float: right;
+.my-cart .raise:hover,
+.raise:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
 }
 
-.my-cart .card-header a :hover {
+.my-cart .checkout-button:hover{
+    background-color: #FF4B2B;
+    border-color:#FF4B2B;       
+}
+
+.my-cart .card-header .shopping-button {
+    float: right;
+    padding:0.5em 1.5em;
+}
+
+
+
+.my-cart .shopping-button :hover {
 	-webkit-animation: bounceright .3s alternate ease infinite;
 	animation: bounceright .3s alternate ease infinite;
 }

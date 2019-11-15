@@ -55,8 +55,10 @@
                                         <button class="btn btn-danger btn-xs dropdown-toggle" data-toggle="dropdown"
                                             type="button">Remove</button>
                                         <ul class="dropdown-menu">
-                                            <li class="removal-item"><a href="/reduce/<%=product.item._id%>">Reduce by 1</a></li>
-                                            <li class="removal-item"><a href="/remove/<%=product.item._id%>">Remove All</a></li>
+                                            <li class="removal-item"><a href="/reduce/<%=product.item._id%>">Reduce by
+                                                    1</a></li>
+                                            <li class="removal-item"><a href="/remove/<%=product.item._id%>">Remove
+                                                    All</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -70,18 +72,28 @@
             <div class="card-footer">
                 <div class="totals">
                     <div class="totals-item totals-item-total">
-                        <label>Grand Total: </label>
-                        <div class="totals-value" id="cart-total">Rs. <%=totalPrice%></div>
+                        <strong>
+                            <h4 class="display-5">
+                                <label>Grand Total: </label>
+                                <div class="totals-value" id="cart-total">Rs. <%=totalPrice%></div>
+                            </h4>
+                        </strong>
                     </div>
                 </div>
             </div>
         </div>
-        <a href="/checkout" class="btn btn-success checkout-button" type="button">Checkout</a>
+        <a href="/checkout" class="btn btn-success raise checkout-button" type="button">Checkout</a>
 
         <%}else{%>
         <div class="row">
-            <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-                <h2>Your Cart is Empty!</h2>
+            <div class="col-sm-12 col-md-12 col-md-offset-6 col-sm-offset-6 empty">
+                <h2 class="display-3 empty-cart">Your Cart is Empty!</h2>
+                <a href="/" class="btn btn-warning shopping-button">
+                    <i class="fa fa-chevron-right" aria-hidden="true">
+                        <i class="fa fa-chevron-right" aria-hidden="true"> Continue Shopping
+                        </i>
+                    </i>
+                </a>
             </div>
         </div>
         <%}%>
