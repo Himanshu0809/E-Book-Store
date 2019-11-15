@@ -1,0 +1,264 @@
+/*  ======================================
+    Shopping Cart
+    ====================================== */
+
+.cart-form.dark{
+    background-color: #f6f6f6;
+}    
+
+.my-orders{
+    margin:20px;
+}
+
+.my-orders .empty .shopping-button {
+    margin-right: 30%;
+    margin-left: 40%;
+    margin-top: 20px;;
+    padding:0.5em 1.5em;
+}
+
+.my-orders .card-header{
+    padding:30px;
+    border: none;
+    background-color: #ffe1e2;
+}
+
+.my-orders .card{
+    border-bottom: none;
+    border-top: 2px solid #FF4B2B;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+	background-color: #ffffff;
+	padding: 0;
+	margin: auto;
+}
+
+.my-orders .card-footer{
+    border: none;
+    padding:10px;
+    background-color: #ffe1e2;
+}
+
+.my-orders .raise:hover,
+.raise:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+}
+
+
+.my-orders .card-header .shopping-button {
+    float: right;
+    padding:0.5em 1.5em;
+}
+
+.my-orders .shopping-button :hover {
+	-webkit-animation: bounceright .3s alternate ease infinite;
+	animation: bounceright .3s alternate ease infinite;
+}
+
+@-webkit-keyframes bounceright {
+    from { -webkit-transform: translateX(0); }
+    to   { -webkit-transform: translateX(3px); }
+}
+   
+@keyframes bounceright {
+    from { transform: translateX(0); }
+    to   { transform: translateX(3px); }
+}
+    
+/* Global "table" column settings */
+.my-orders .product-image { 
+    float: left; 
+    width: 20%; 
+}
+
+.my-orders .product-details { 
+    float: left; 
+    width: 30%; 
+}
+
+.my-orders .product-price { 
+    float: left; 
+    width: 19%; 
+}
+
+.my-orders .product-quantity { 
+    float: left; 
+    width: 14%; 
+}
+
+.my-orders .product-quantity i{
+    color:black;
+}
+
+.my-orders .product-line-price { 
+    float: left; 
+    width: 17%; text-align: right; 
+}
+
+/* Body/Header stuff */
+
+.my-orders .shopping-cart .product-image {
+    color: rgb(82, 82, 82);
+    font-weight: bold;
+    text-align: center;
+}
+
+.my-orders label {
+    color: rgb(82, 82, 82);
+    font-size: .85em;
+    font-weight: bold;
+}
+
+
+/* Column headers */
+.my-orders .column-labels label{
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+} 
+  
+.my-orders .list-group-item{
+    border: none;
+}
+
+/* Product entries */
+
+.my-orders .product {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    /* border-bottom: 1px solid #eee; */
+}  
+
+.my-orders .product .product-image {
+    text-align: center;
+}
+
+.my-orders .product .product-image img {
+    width: 100px;
+    height:120px;
+}
+
+.my-orders .product .product-details .product-title {
+    margin-right: 20px;
+    font-family: 'HelveticaNeue-Medium', 'Helvetica Neue Medium';
+}
+
+.my-orders .product .product-quantity input {
+    width: 40px;
+}
+
+/* Totals section */
+
+.my-orders .totals .totals-item  label {
+    float: left;
+    clear: both;
+    width:80%;
+    text-align: right;
+}
+    
+.my-orders .totals .totals-item .totals-value {
+    float: right;
+    width: 20%;
+    text-align: right;
+    font-weight: bold;
+}
+  
+.my-orders .totals .totals-item-total {
+    font-family: 'HelveticaNeue-Medium', 'Helvetica Neue Medium';
+}
+
+/* Make adjustments for tablet */
+@media screen and (max-width: 650px) {
+    
+    .my-orders{
+        font-size: 0.8em;
+    }
+
+    .my-orders .shopping-cart {
+        margin: 0;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+    }
+  
+    .my-orders .column-labels {
+        display: none;
+    }
+  
+    .my-orders .product-image {
+        float: right;
+        width: auto;
+    }
+    
+    .my-orders .product-image img {
+        margin: 0 0 10px 10px;
+    }
+  
+    .my-orders .product-details {
+        float: none;
+        margin-bottom: 10px;
+        width: auto;
+    }
+  
+    .my-orders .product-price {
+        clear: both;
+        width: 70px;
+    }
+  
+    .my-orders .product-quantity {
+        width: 100px;
+    }
+
+    .my-orders .product-quantity input {
+        margin-left: 20px;
+    }
+  
+  .my-orders .product-quantity:before {
+    content: 'x';
+  }
+
+  .my-orders .product-line-price {
+    float: right;
+    width: 70px;
+  }
+  
+  .my-orders .list-group-item{
+    height:200px;
+}
+}
+
+/* Make adjustments for tablet */
+@media screen and (max-width: 425px) {
+    .my-orders{
+        font-size: 0.8em;
+    }
+
+    .my-orders .list-group-item{
+        height:260px;
+    }
+}
+
+/* Make more adjustments for phone */
+@media screen and (max-width: 350px) {
+    .my-orders{
+        font-size: .8em;
+    }
+
+    .my-orders .product-line-price {
+        float: right;
+        clear: left;
+        width: auto;
+        margin-top: 10px;
+    }
+
+    .my-orders .totals .totals-item label {
+        width: 60%;
+    }
+
+    .my-orders .totals .totals-item .totals-value {
+        width: 40%;
+    }
+
+    .my-orders .list-group-item{
+        height:350px;
+    }
+}
