@@ -280,22 +280,22 @@
         margin-left: 20px;
     }
   
-  .my-cart .product-quantity:before {
-    content: 'x';
-  }
+    .my-cart .product-quantity:before {
+        content: 'x';
+    }
   
-  .my-cart .product-removal {
-    width: auto;
-  }
+    .my-cart .product-removal {
+        width: auto;
+    }
 
-  .my-cart .product-line-price {
-    float: right;
-    width: 70px;
-  }
+    .my-cart .product-line-price {
+        float: right;
+        width: 70px;
+    }
   
-  .my-cart .list-group-item{
-    height:200px;
-}
+    .my-cart .list-group-item{
+        height:200px;
+    }
 }
 
 /* Make adjustments for tablet */
