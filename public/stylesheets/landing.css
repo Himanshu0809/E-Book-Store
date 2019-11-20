@@ -19,6 +19,69 @@
   color: blue;
   font-size: 2em;
 }
+@keyframes mask-move {
+  0% {
+    transform: translateX(0);
+ }
+  100% {
+    transform: translateX(199px);
+ }
+}
+@keyframes mask-inner-move {
+  0% {
+    transform: translateX(0);
+ }
+  100% {
+    transform: translateX(-199px);
+ }
+}
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.focus {
+  font-size: 3rem;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 0.2rem;
+  line-height: 1;
+  position: relative;
+  width: 260px;
+}
+.focus:before {
+  content: 'HGStore';
+  filter: blur(3px);
+}
+.focus:after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: calc(100% + 8px);
+  top: -4px;
+  left: 0;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  animation: mask-move 1s linear infinite alternate;
+}
+.focus--mask {
+  overflow: hidden;
+  position: absolute;
+  width: 50px;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(122, 27, 27, 0.85);
+  animation: mask-move 1s linear infinite alternate;
+}
+.focus--mask-inner {
+  animation: mask-inner-move 1s linear infinite alternate;
+}
+.text-position {
+  position: absolute;
+  top: 15%;
+  left: 45%;
+}
+
 @media only screen and (max-width:600px){
   #section1 .carousel-caption h1{
     font-size: 3em;

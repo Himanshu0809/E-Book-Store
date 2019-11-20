@@ -40,12 +40,12 @@
     ============================*/
 
 .alert{
-  z-index: 1;
-  position: absolute;
+    z-index: 1;
+    position: absolute;
 }
 
 .errorMsg, .successMsg{
-  text-align: center;
+    text-align: center;
     width: 100%;
     margin: 0;
     left: 0;
@@ -55,23 +55,22 @@
 }
 
 @-webkit-keyframes fade{
-  0%{
-    opacity: 1;
-  }
-  100%{
-    opacity: 0;
-  }
+    0%{
+      opacity: 1;
+    }
+    100%{
+      opacity: 0;
+    }
 }
 
 @keyframes fade{
-  0%{
-    opacity: 1;
-  }
-  100%{
-    opacity: 0;
-  }
+    0%{
+      opacity: 1;
+    }
+    100%{
+      opacity: 0;
+    }
 }
-
 
 /*  =====================================
     Scroll Top-up

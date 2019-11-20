@@ -212,18 +212,18 @@
         margin-left: 20px;
     }
   
-  .my-orders .product-quantity:before {
-    content: 'x';
-  }
+    .my-orders .product-quantity:before {
+        content: 'x';
+    }
 
-  .my-orders .product-line-price {
-    float: right;
-    width: 70px;
-  }
+    .my-orders .product-line-price {
+        float: right;
+        width: 70px;
+    }
   
-  .my-orders .list-group-item{
-    height:200px;
-}
+    .my-orders .list-group-item{
+        height:200px;
+    }
 }
 
 /* Make adjustments for tablet */
