@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="/stylesheets/contact-page.css">
     <link rel="stylesheet" href="/stylesheets/about-page.css">
     <link rel="stylesheet" href="/stylesheets/footer.css">
+    <link rel="stylesheet" href="/stylesheets/header.css">
     <link rel="stylesheet" href="/stylesheets/account.css">
     <link rel="stylesheet" href="/stylesheets/terms-page.css">
     <link rel="stylesheet" href="/stylesheets/show-page.css">
@@ -80,8 +81,62 @@
     <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-angle-up"></i></button>
 
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-end">
-    
+    <section class="navigation">
+        <div class="nav-container">
+            <div class="brand">
+                <a href="/" class="pull-left">HG STORE</a>
+            </div>
+            <nav>
+                <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
+                <ul class="nav-list">
+                    <%if(!currentUser){%>
+                    <li class="pull-right">
+                        <a href="/shopping-cart">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
+                        </a>
+                    </li>
+                    <li class="pull-right">
+                        <a href="/login">My Account</a>
+                    </li>
+                    <li class="pull-right">
+                        <a href="/contact">Contact us</a>
+                    </li>
+                    <%}else{%>
+                    <li class="pull-right">
+                        <a href="/users/<%=currentUser.id%>">Signed in as <%=currentUser.username%></a>
+                    </li>
+                    <li class="pull-right">
+                        <a href="/shopping-cart">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
+                        </a>
+                    </li>
+                    <li class="pull-right">
+                        <a href="#"><i class="fa fa-user" aria-hidden="true"></i> User Management <span
+                                class="caret"></span></a>
+                        <ul class="nav-dropdown">
+                            <li>
+                                <a href="/users/<%=currentUser.id%>"><i class="fa fa-user" aria-hidden="true"></i> User
+                                    Account</a>
+                            </li>
+                            <li>
+                                <a href="/users/<%=currentUser.id%>/myorders"><i class="fas fa-list-ul"></i> My Orders</a>
+                            </li>
+                            <li>
+                                <a href="/logout"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+                            </li>
+                            <li>
+                                <a href="/contact"><i class="fas fa-phone-volume"></i> Contact us</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <%}%>       
+                </ul>
+            </nav>
+        </div>
+    </section>
+      
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-end">
+
         <div class="navbar-header">
             <a class="navbar-brand" href="/">HG STORE</a>
         </div>
@@ -89,7 +144,7 @@
             aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-    
+
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="nav navbar-nav ml-auto mt-2 mt-lg-0 ">
                 <%if(currentUser&& currentUser.isAdmin==="admin"){%>
@@ -100,16 +155,16 @@
                     <a class="btn btn-danger btn-large" href="/bestselling/new">Add new BS</a>
                 </li>
                 <%}%>
-                       
-                    <li class="nav-item">
-                        <form class="form-inline" method="GET" action="/books">
-                            <div class="form-group">
-                                <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search books here...">
-                                <button class="btn btn-success" type="submit">Search</button>
-                            </div>
-                        </form>
-                    </li>
-                    <%if(!currentUser){%>
+                   
+                <li class="nav-item">
+                    <form class="form-inline" method="GET" action="/books">
+                        <div class="form-group">
+                            <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search books here...">
+                            <button class="btn btn-success" type="submit">Search</button>
+                        </div>
+                    </form>
+                </li>
+                <%if(!currentUser){%>
                 <li class="nav-item">
                     <a class="nav-link" href="/shopping-cart">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
@@ -130,8 +185,6 @@
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
                     </a>
                 </li>
-                
-                <li class="nav-item">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                         aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> User Management <span
@@ -142,8 +195,7 @@
                                 Account</a>
                         </li>
                         <li>
-                            <a class="nav-link" href="/users/<%=currentUser.id%>/myorders"><i class="fas fa-list-ul"></i> My
-                                Orders</a>
+                            <a class="nav-link" href="/users/<%=currentUser.id%>/myorders"><i class="fas fa-list-ul"></i> My Orders</a>
                         </li>
                         <li>
                             <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i> Log Out</a>
@@ -153,11 +205,10 @@
                         </li>
                     </ul>
                 </li>
-                </li>
                 <%}%>       
-            </ul>
-        </div>
-    </nav>
+                </ul>
+            </div>
+    </nav> -->
 
     <!-- FLASH MESSAGES -->
     <div class="container">
@@ -172,3 +223,5 @@
             </div>
         <%}%>
     </div>
+
+    <script type="text/javascript" src="../../public/javascripts/header.js"></script>
