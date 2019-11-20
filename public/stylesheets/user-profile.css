@@ -2,11 +2,26 @@
     User Profile
     ====================================== */
 
+.userprofile h1{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
 .userprofile .imgcontainer{
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     width: 100%;
     height: 100%;
 }
+
+.userprofile .imgcontainer form{
+    text-align: center;
+}
+
+.userprofile .caption{
+    text-align: center;
+}
+
 .userprofile .avatar{
     width: 100%;
     border-radius:50%
@@ -15,8 +30,13 @@
 .userprofile .user-details{
     margin:10px;
     padding: 10px;
-    margin-top: 60px;
-    border:1px solid #ccc;
+    margin-top: 0px;
+    font-size: 20px;
+    /* border:1px solid #ccc; */
+}
+
+.userprofile label{
+    min-width: 100px;
 }
 
 .userprofile input{
@@ -27,4 +47,77 @@
 
 .userprofile .user-gender input{
     width:33%;  
+}
+
+.userprofile .button-container{
+    text-align: center;
+    margin-top: 5%;
+}
+
+.userprofile .button {
+    display: inline-block;
+    font-family: "Montserrat", "Trebuchet MS", Helvetica, sans-serif;
+    font-weight: 600;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+    padding: .4em 0.8em;
+    padding-right: 3.1em;
+    background: rgba(200, 33, 19, 0.85);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    transition: .2s;
+    text-transform: uppercase;
+    min-width: 11em;
+}
+
+.userprofile .button::before,
+.userprofile .button::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding-top: inherit;
+    padding-bottom: inherit;
+    width: 2.8em;
+    content: "\00a0";
+    font-family: 'FontAwesome', sans-serif;
+    font-size: 1.1em;
+    text-align: center;
+    transition: .2s;
+    transform-origin: 50% 60%;
+}
+
+.userprofile .button::before {
+    background: rgba(200, 0, 0, 0.29999999999999998);
+}
+
+.userprofile .button:hover {
+    background: rgba(200, 0, 0, 0.75);
+}
+
+.userprofile .button:active,
+.userprofile .button:focus {
+    background: rgb(200, 0, 0);
+    outline: none;
+}
+
+.userprofile .upload::after {
+    content: '\f093';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.container .save::after {
+    content: '\f0c7';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.userprofile .save:hover::after,
+.userprofile .upload:hover::after {
+    -webkit-animation: none;
+    -webkit-transform: scale(1.3);
+    animation: none;
+    transform: scale(1.3);
 }
