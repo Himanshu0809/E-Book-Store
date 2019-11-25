@@ -1,37 +1,39 @@
-.navigation {
+.navbar{
     padding: 0;
     height: 70px;
     background: #262626;
+    z-index: 9999;
 }
-.brand {
-    position: absolute;
+
+.navbar-brand{
     padding-left: 20px;
     float: left;
     line-height: 70px;
     text-transform: uppercase;
     font-size: 1.4em;
 }
-.brand a, .brand a:visited {
-    color: #fff;
+.nav-dropdown {
+    position: absolute;
     text-decoration: none;
+    display: none;
+    z-index: 1;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
 }
-.nav-container {
+.nav-dropdown li{
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.navbar button{
+    background-color: #FF4B2B;
+    border-color:#FF4B2B;
+}
+
+.container {
     max-width: 1000px;
     margin: 0 auto;
 }
-nav {
-    float: right;
-}
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-nav ul li {
-    float: left;
-    position: relative;
-}
-nav ul li a, nav ul li a:visited {
+.navbar-collapse ul li a, .navbar-collapse ul li a:visited {
     display: block;
     padding: 0 20px;
     line-height: 70px;
@@ -39,100 +41,72 @@ nav ul li a, nav ul li a:visited {
     color: #fff;
     text-decoration: none;
 }
-nav ul li a:hover, nav ul li a:visited:hover {
+.navbar-collapse ul li a:hover, .navbar-collapse ul li a:visited:hover {
     background: #2581dc;
     color: #fff;
 }
-nav ul li a:not(:only-child):after, nav ul li a:visited:not(:only-child):after {
-    padding-left: 4px;
-    content: ' ▾';
-}
-nav ul li ul li {
-    min-width: 190px;
-}
-nav ul li ul li a {
-    padding: 15px;
-    line-height: 20px;
-}
-.nav-dropdown {
+  .navbar-survival101 {
+    background-color:#262626;
+  }
+  
+  .navbar-survival101 .navbar-brand img {
+    vertical-align: baseline;
+  }
+  
+  .navbar-expand-lg .navbar-nav .nav-link {
+    color: #fff;
+  }
+  
+  .search-box {
+    position: relative;
+    height: 34px;
+  }
+  .search-box input {
+    border: 0;
+    border-radius: 3px !important;
+    padding-right: 28px;
+    font-size: 15px;
+  }
+  
+  .search-box .input-group-btn {
     position: absolute;
-    display: none;
-    z-index: 1;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-}
-/* Mobile navigation */
-.nav-mobile {
-    display: none;
-    position: absolute;
-    top: 0;
     right: 0;
-    background: #262626;
-    height: 70px;
-    width: 70px;
-}
-@media only screen and (max-width: 798px) {
-    .nav-mobile {
-        display: block;
-   }
-    nav {
-        width: 100%;
-        padding: 70px 0 15px;
-   }
-    nav ul {
-        display: none;
-   }
-    nav ul li {
-        float: none;
-   }
-    nav ul li a {
-        padding: 15px;
-        line-height: 20px;
-   }
-    nav ul li ul li a {
-        padding-left: 30px;
-   }
+    top: 0;
+    z-index: 999;
+  }
+  
+  .search-box .input-group-btn button {
+    background-color: transparent;
+    border: 0;
+    padding: 4px 8px;
+    color: rgba(0,0,0,.4);
+    font-size: 20px;
+  }
+  
+  .search-box .input-group-btn button:hover,
+  .search-box .input-group-btn button:active,
+  .search-box .input-group-btn button:focus {
+    color: rgba(0,0,0,.4);
+  }
+  
+  @media (min-width: 992px) {
+    .navbar-expand-lg .navbar-nav .nav-link {
+      padding-right: .7rem;
+      padding-left: .7rem;
+    }
+    
+    .search-box {
+      width: 300px !important;
+    }
+  }
+  
+  @media only screen and (max-width: 798px) {
     .nav-dropdown {
         position: static;
    }
 }
-@media screen and (min-width: 799px) {
-    .nav-list {
-        display: block !important;
-   }
-}
-#nav-toggle {
-    position: absolute;
-    left: 18px;
-    top: 22px;
-    cursor: pointer;
-    padding: 10px 35px 16px 0px;
-}
-#nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
-    cursor: pointer;
-    border-radius: 1px;
-    height: 5px;
-    width: 35px;
-    background: #fff;
-    position: absolute;
-    display: block;
-    content: '';
-    transition: all 300ms ease-in-out;
-}
-#nav-toggle span:before {
-    top: -10px;
-}
-#nav-toggle span:after {
-    bottom: -10px;
-}
-#nav-toggle.active span {
-    background-color: transparent;
-}
-#nav-toggle.active span:before, #nav-toggle.active span:after {
-    top: 0;
-}
-#nav-toggle.active span:before {
-    transform: rotate(45deg);
-}
-#nav-toggle.active span:after {
-    transform: rotate(-45deg);
+
+.navbar form{
+    padding: 12px;
+    margin-left:10px;
 }

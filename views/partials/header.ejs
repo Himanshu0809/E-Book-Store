@@ -57,7 +57,10 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
-
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <title>E-Book Store</title>
 
     <!-- Global site tag (gtag.js) - GOOGLE ANALYTICS -->
@@ -81,38 +84,49 @@
     <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-angle-up"></i></button>
 
     <!-- NAVBAR -->
-    <section class="navigation">
-        <div class="nav-container">
-            <div class="brand">
-                <a href="/" class="pull-left">HG STORE</a>
-            </div>
-            <nav>
-                <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
-                <ul class="nav-list">
-                    <%if(!currentUser){%>
-                    <li class="pull-right">
-                        <a href="/shopping-cart">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-survival101">
+        <div class="container">
+            <a class="navbar-brand" href="/">HG STORE</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+                aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarColor02">
+                <ul class="navbar-nav ml-auto">
+                    <%if(currentUser&& currentUser.isAdmin==="admin"){%>
+                    <li class="nav-item">
+                        <a class="btn btn-primary btn-large" href="/books/new">Add new Book</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-danger btn-large" href="/bestselling/new">Add new BS</a>
+                    </li>
+                    <%}%>
+                                        
+                                <%if(!currentUser){%>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/shopping-cart">
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
                         </a>
                     </li>
-                    <li class="pull-right">
-                        <a href="/login">My Account</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">My Account</a>
                     </li>
-                    <li class="pull-right">
-                        <a href="/contact">Contact us</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact us</a>
                     </li>
                     <%}else{%>
-                    <li class="pull-right">
-                        <a href="/users/<%=currentUser.id%>">Signed in as <%=currentUser.username%></a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/users/<%=currentUser.id%>">Signed in as <%=currentUser.username%></a>
                     </li>
-                    <li class="pull-right">
-                        <a href="/shopping-cart">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/shopping-cart">
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
                         </a>
                     </li>
-                    <li class="pull-right">
-                        <a href="#"><i class="fa fa-user" aria-hidden="true"></i> User Management <span
-                                class="caret"></span></a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-user" aria-hidden="true"></i> User Management <span
+                                class="dropdown-toggle"></span></a>
                         <ul class="nav-dropdown">
                             <li>
                                 <a href="/users/<%=currentUser.id%>"><i class="fa fa-user" aria-hidden="true"></i> User
@@ -129,12 +143,20 @@
                             </li>
                         </ul>
                     </li>
-                    <%}%>       
-                </ul>
-            </nav>
-        </div>
-    </section>
-      
+                    <%}%>    
+                                </ul>
+                                <form class="form-inline" method="GET" action="/books">
+                                    <div class="input-group search-box">
+                                          <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search books here...">
+                                          <button class="btn btn-success" type="submit">Search</button>
+                                      </span>
+                                    </div>
+                                  </form>
+                              </div>
+                            </div>
+                              
+                          </nav>
+              
     <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-end">
 
         <div class="navbar-header">
