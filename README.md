@@ -17,3 +17,5 @@ To play the game, visit the link: http://e-book-store.herokuapp.com/
 
 ## CONTRIBUTE
 **Side Note:** The project aims at in some future to integrate many more features like categorising books searching a book by author name, expanding the book databae, etc.
+
+Issues, PRs, and all your suggestions and discussions are welcomed!
