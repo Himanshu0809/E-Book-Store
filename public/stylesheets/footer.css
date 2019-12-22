@@ -19,7 +19,7 @@ section .section-title {
     background: #FF416C !important;
     background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C) !important;
     background: linear-gradient(to right, #FF4B2B, #FF416C) !important;
-    }
+}
     
 #footer h5{
     padding-left: 10px;
@@ -48,6 +48,7 @@ section .section-title {
     -moz-transition: .5s all ease;
     transition: .5s all ease;
 }
+
 #footer ul.social li:hover a i {
     font-size:30px;
     margin-top:-10px;

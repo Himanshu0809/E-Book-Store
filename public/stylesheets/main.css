@@ -2,6 +2,19 @@
     color: yellow;
 }
 
+.container .jumbotron{
+    margin-top: 20px;
+    background: #FF416C !important;
+    background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C) !important;
+    background: linear-gradient(to right, #FF4B2B, #FF416C) !important;
+    color: white;
+    text-align: center;
+}
+
+.container .jumbotron .container p{
+    font-size: 130%;
+}
+
 /*  ========================================
     Preloader
     ======================================== */
