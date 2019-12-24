@@ -104,10 +104,11 @@
                     </li>
                     <%}%>
                                         
-                                <%if(!currentUser){%>
+                    <%if(!currentUser){%>
                     <li class="nav-item">
                         <a class="nav-link" href="/shopping-cart">
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
+                            <span class="badge" id="cart-qty"><% if (session.cart) { %><%= session.cart.totalQty %><% } %></span>
                         </a>
                     </li>
                     <li class="nav-item">

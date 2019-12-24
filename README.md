@@ -14,6 +14,9 @@ To play the game, visit the link: http://e-book-store.herokuapp.com/
 - **STRIPE**
 - **MONGO ATLAS**
 - **GIT**
+- **NODEMAILER**
+- **MOMENTJS**
+
 
 ## CONTRIBUTE
 **Side Note:** The project aims at in some future to integrate many more features like categorising books searching a book by author name, expanding the book databae, etc.
