@@ -1,6 +1,22 @@
 /*  ======================================
     Shopping Cart
     ====================================== */
+/* TIMER */
+
+#timer-count-down {
+	position: fixed;
+	top: 70px;
+	left: 20px;
+	width: 200px;
+	height: 50px;
+	background: red;
+	display: none;
+	padding: 15px;
+	color: white;
+	border-radius: 15px;
+	text-align: center;
+} 	
+
 
 .cart-form.dark{
     background-color: #f6f6f6;
@@ -112,6 +128,12 @@
 .my-cart .product-removal button{
     background-color: #FF4B2B;
     border-color:#FF4B2B;
+    padding: 10px;
+    border-radius: 40px;
+}
+
+.my-cart .product-removal a{
+    color: white;
 }
 
 .my-cart .product-removal .removal-item :hover{

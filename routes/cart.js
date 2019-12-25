@@ -11,7 +11,7 @@ router.get('/clearcart', function (req, res) {
     setTimeout(function() {
         delete req.session.cart;
         res.json({message: 'Cart cleared!'});
-    }, 600000);
+    }, 1800000);
 });
 
 //Add to cart functionality for books

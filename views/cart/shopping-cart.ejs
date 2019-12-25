@@ -52,18 +52,9 @@
                                             <a href="/add/<%=product.item._id%>"><i class="fas fa-plus-circle"></i></a>
                                         </div>
                                         <div class="product-removal">
-                                            <div class="btn-group">
-                                                <button class="btn btn-danger btn-xs dropdown-toggle"
-                                                    data-toggle="dropdown" type="button">Remove</button>
-                                                <ul class="dropdown-menu">
-                                                    <li class="removal-item"><a
-                                                            href="/reduce/<%=product.item._id%>">Reduce by
-                                                            1</a></li>
-                                                    <li class="removal-item"><a
-                                                            href="/remove/<%=product.item._id%>">Remove
-                                                            All</a></li>
-                                                </ul>
-                                            </div>
+                                           <button class="remove-button">
+                                               <a href="/remove/<%=product.item._id%>">Remove</a>
+                                           </button>
                                         </div>
                                         <div class="product-line-price">Rs. <%=product.price%></div>
                                     </div>
