@@ -3,7 +3,7 @@ E-book-Store is an online book store application which automates the buying and 
 
 To play the game, visit the link: http://e-book-store.herokuapp.com/
 
-## TECHNOLOGIES USED
+## TOOLS & TECHNOLOGIES USED
 - **HTML5**
 - **CSS3**
 - **VANILLA JS**
@@ -16,7 +16,7 @@ To play the game, visit the link: http://e-book-store.herokuapp.com/
 - **GIT**
 - **NODEMAILER**
 - **MOMENTJS**
-
+- **NODE-CRON**
 
 ## CONTRIBUTE
 **Side Note:** The project aims at in some future to integrate many more features like categorising books searching a book by author name, expanding the book databae, etc.
