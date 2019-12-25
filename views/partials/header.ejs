@@ -124,6 +124,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/shopping-cart">
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
+                            <span class="badge" id="cart-qty"><% if (session.cart) { %><%= session.cart.totalQty %><% } %></span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -247,5 +248,5 @@
             </div>
         <%}%>
     </div>
-
+    <div id="timer-count-down">Cart expires in: <span id="timer"></span></div>
     <script type="text/javascript" src="../../public/javascripts/header.js"></script>

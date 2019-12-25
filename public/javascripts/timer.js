@@ -1,21 +1,37 @@
-// fade out any flash messages after 2 seconds
-// if($('#flash')) {
-// 	$('#flash').delay(2000).fadeOut('slow');
-// }
-
 // if there are any items in the cart
-if($('#cart-qty').text() > 0) {
-	// start a timer
-	setTimeout(function() {
-		// after time runs out, confirm if user wants to clear their cart
-		if(confirm('Clear your cart?')) {
-			// send a request to the clearcart route
-			$.get('/clearcart', function(response) {
-				// notify user that cart has been cleared
-				alert(response.message);
-				// remove cart quantity notification from navbar
-				$('#cart-qty').text('');
-			});
-		}
-	}, 3000);
-} 
+if ($('#cart-qty').text() > 0) {
+    //// TESTING sessionStorage Timer
+    const start = sessionStorage.start || Date.now();
+    const timespan = 1800000;
+    const delay = 1000;
+
+
+    function countdown() {
+        const now = Date.now();
+        // show visual timer
+        $('#timer-count-down').show('slow');
+
+        // begin visual timer
+        $('#timer').html((Math.floor((now - start - timespan) / 1000) * -1));
+
+        if (now - start < timespan) {
+            setTimeout(countdown, delay);
+        } else {
+            delete sessionStorage.start;
+        }
+    }
+
+    if (!sessionStorage.start) {
+        sessionStorage.start = start;
+    }
+
+    countdown();
+
+    $.get('/clearcart', function (response) {
+        // remove cart quantity notification from navbar
+        $('#cart-qty').text('');
+        // redirect to /products
+        window.location = '/shopping-cart';
+    });
+
+}

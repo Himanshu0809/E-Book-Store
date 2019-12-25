@@ -6,6 +6,14 @@ var Cart = require("../models/cart");
 var BestSelling = require("../models/bestSelling");
 var Order = require("../models/order");
 
+//clear cart
+router.get('/clearcart', function (req, res) {
+    setTimeout(function() {
+        delete req.session.cart;
+        res.json({message: 'Cart cleared!'});
+    }, 600000);
+});
+
 //Add to cart functionality for books
 router.get("/books/add-to-cart/:id", function (req, res) {
     var productId = req.params.id;
@@ -77,7 +85,7 @@ router.get("/bestselling/add-to-cart/:id", function (req, res) {
     })
 });
 
-
+//see the shopping cart
 router.get("/shopping-cart", function (req, res) {
     if (!req.session.cart) {
         return res.render("cart/shopping-cart", { products: null });
@@ -86,6 +94,7 @@ router.get("/shopping-cart", function (req, res) {
     res.render("cart/shopping-cart", { products: cart.generateArray(), totalPrice: cart.totalPrice });
 })
 
+//checkout route
 router.get("/checkout", middleware.isLoggedIn, function (req, res) {
     if (!req.session.cart) {
         return res.redirect("/shopping-cart");
@@ -134,4 +143,5 @@ router.post("/checkout", middleware.isLoggedIn, function (req, res) {
         }
     )
 });
+
 module.exports = router;
