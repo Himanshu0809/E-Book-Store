@@ -21,6 +21,7 @@ var createError = require('http-errors'),
     nodemailer = require("nodemailer"),
     crypto = require("crypto"),
     logger = require('morgan'),
+    sgMail=require("@sendgrid/mail"),
     favicon = require("serve-favicon"),
     MongoStore = require("connect-mongo")(session);
 

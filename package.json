@@ -10,6 +10,7 @@
   "author": "Himanshu",
   "license": "ISC",
   "dependencies": {
+    "@sendgrid/mail": "^6.4.0",
     "async": "^3.1.0",
     "body-parser": "^1.19.0",
     "cloudinary": "^1.14.0",
