@@ -18,6 +18,7 @@ Visit the link: http://e-book-store.herokuapp.com/
 - **MOMENTJS**      - JavaScript date library for parsing, validating, manipulating, and formatting dates
 - **NODE-CRON**     - to schedule task in node.js(timer)
 - **ONE_SIGNAL**    - to push notifications
+- **SENDGRID**      - to send emails
 
 ## CONTRIBUTE
 **Side Note:** The project aims at in some future to integrate many more features like categorising books searching a book by author name, expanding the book databae, notifications etc.
