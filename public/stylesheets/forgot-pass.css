@@ -18,3 +18,9 @@
 	padding: 0;
 	margin: auto;
 }
+
+.forgot-pass .btn{
+    margin-top: 1em; 
+	background-color: #FF4B2B;
+	border-color:#FF4B2B;
+}
