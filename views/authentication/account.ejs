@@ -43,8 +43,9 @@
                             alt="Avatar" class="avatar">
                     </div>
                 </div>
-                <input type="text" placeholder="Enter Username" name="username" class="form-control" required>
-                <input type="password" placeholder="Enter Password" name="password" class="form-control" required>
+                <input type="text" placeholder="Enter Username" id="username" name="username" class="form-control" required>
+                <input type="password" placeholder="Enter Password" id="password" name="password" class="form-control" required>
+                <button type="button" id="show_password" name="show_password">SHOW</button>
                 <a href="/forgot" class="forgot-password">Forgot your password?</a>
                 <button type="submit" value="Login!">Login</button>
             </form>
@@ -68,6 +69,25 @@
 
 
 <script>
+    $(document).ready(function(){       //checking that the JQUERY is active and ready to execute
+        console.log("hi"); 
+        $('#show_password').on('click', function(){
+            var passwordField=$('#password');
+            //now we need to check the type of field
+            var passwordFieldType=passwordField.attr('type');
+             //if it is password field we need to change it to the text field by jquery attribute method and show the password
+             if(passwordFieldType=='password'){
+                passwordFieldType.attr('type','text');
+                $(this).text('Hide');
+             }
+             //else if the password field is of the type text then we need to change it to pasword so as to hide the password
+             else{
+                passwordFieldType.attr('type','password');
+                $(this).text('Show');
+             }
+        });
+    });
+
     const signUpButton = document.getElementById('signUp');
     const signInButton = document.getElementById('signIn');
     const container = document.getElementById('container');
@@ -75,6 +95,10 @@
     signUpButton.addEventListener('click', () => container.classList.add('right-panel-active'));
 
     signInButton.addEventListener('click', () => container.classList.remove('right-panel-active'));
+</script>
+
+<script>
+    
 </script>
 
 <%include ../partials/footer%>
