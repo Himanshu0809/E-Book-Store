@@ -46,7 +46,9 @@ var indexRoutes = require("./routes/index"),
     reviewRoutes = require("./routes/reviews"),
     cartRoutes = require("./routes/cart");
 
-mongoose.connect("mongodb+srv://Himanshu:MSDhoni07@cluster0-1uhbb.mongodb.net/HJ_Book_Store?retryWrites=true&w=majority", { useNewUrlParser: true })
+var url = process.env.DATABASEURL;
+
+mongoose.connect(url, { useNewUrlParser: true })
     .then(() => console.log(`Database connected`))
     .catch(err => console.log(`Database connection error: ${err.message}`));
 
